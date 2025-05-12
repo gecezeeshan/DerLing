@@ -34,7 +34,7 @@ export default function VocabGame() {
   useEffect(() => {
     async function fetchData() {
       if (debouncedText) {
-        if (translate != "") {
+        if (translate !== "") {
           let _translate = await getExampleSentence(translate);
           setTranslated(_translate);
         } else {
