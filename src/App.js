@@ -18,7 +18,7 @@ export default function VocabGame() {
   const [translate, setTranslate] = useState("");
 
   const [translated, setTranslated] = useState("");
-  const [debouncedText, setDebouncedText] = useState(translate);
+  //const [debouncedText, setDebouncedText] = useState(translate);
   // Debounce effect
   /*useEffect(() => {
     const handler = setTimeout(() => {
