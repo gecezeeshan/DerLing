@@ -20,7 +20,7 @@ export default function VocabGame() {
   const [translated, setTranslated] = useState("");
   const [debouncedText, setDebouncedText] = useState(translate);
   // Debounce effect
-  useEffect(() => {
+  /*useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedText(translate);      
     }, 500);
@@ -43,7 +43,7 @@ export default function VocabGame() {
       }
     }
     fetchData();
-  }, [debouncedText]);
+  }, [debouncedText]);*/
 
   // Load data.json
   useEffect(() => {
