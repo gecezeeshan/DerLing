@@ -5,8 +5,8 @@ import './App.css';
 export default function VocabGame() {
   const [data, setData] = useState([]);
   const [allItems, setAllItems] = useState([]);
-  const [categoryIndex, setCategoryIndex] = useState(null);
-  const [roundCount, setRoundCount] = useState(5);
+  const [ setCategoryIndex] = useState(null);
+  const [roundCount] = useState(5);
   const [currentRound, setCurrentRound] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [options, setOptions] = useState([]);
@@ -16,12 +16,13 @@ export default function VocabGame() {
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [result, setResult] = useState("");
   const [translate, setTranslate] = useState("");
+
   const [translated, setTranslated] = useState("");
   const [debouncedText, setDebouncedText] = useState(translate);
   // Debounce effect
   useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedText(translate);
+      setDebouncedText(translate);      
     }, 500);
 
     return () => {
@@ -33,7 +34,7 @@ export default function VocabGame() {
   useEffect(() => {
     async function fetchData() {
       if (debouncedText) {
-        if (translate) {
+        if (translate != "") {
           let _translate = await getExampleSentence(translate);
           setTranslated(_translate);
         } else {
