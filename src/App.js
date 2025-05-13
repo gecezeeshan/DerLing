@@ -5,7 +5,7 @@ import './App.css';
 export default function VocabGame() {
   const [data, setData] = useState([]);
   const [allItems, setAllItems] = useState([]);
-  const [ setCategoryIndex] = useState(null);
+  const [categoryIndex, setCategoryIndex] = useState(null);
   const [roundCount] = useState(5);
   const [currentRound, setCurrentRound] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -16,13 +16,14 @@ export default function VocabGame() {
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [result, setResult] = useState("");
   const [translate, setTranslate] = useState("");
+  //const [round, setRound] = useState("");
 
   const [translated, setTranslated] = useState("");
-  //const [debouncedText, setDebouncedText] = useState(translate);
+  const [debouncedText, setDebouncedText] = useState(translate);
   // Debounce effect
-  /*useEffect(() => {
+  useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedText(translate);      
+      setDebouncedText(translate);
     }, 500);
 
     return () => {
@@ -43,7 +44,7 @@ export default function VocabGame() {
       }
     }
     fetchData();
-  }, [debouncedText]);*/
+  }, [debouncedText]);
 
   // Load data.json
   useEffect(() => {
@@ -209,9 +210,14 @@ export default function VocabGame() {
                 )}
               </div>
               {currentAnswer &&
-                <button onClick={() => handleNextQuestion()} style={{ margin: 5, padding: 10 }}>
+                (<><button onClick={() => handleNextQuestion()} style={{ margin: 5, padding: 10 }}>
                   Next
-                </button>}
+                </button>
+
+                </>)}
+              <button onClick={() => { handleRestart() }} style={{ margin: 5, padding: 10 }}>
+                Restart
+              </button>
 
 
             </div>
