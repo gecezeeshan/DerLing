@@ -5,7 +5,7 @@ import './App.css';
 export default function VocabGame() {
   const [data, setData] = useState([]);
   const [allItems, setAllItems] = useState([]);
-  const [categoryIndex, setCategoryIndex] = useState(null);
+  const [setCategoryIndex] = useState(null);
   const [roundCount] = useState(5);
   const [currentRound, setCurrentRound] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -21,30 +21,49 @@ export default function VocabGame() {
   const [translated, setTranslated] = useState("");
   const [debouncedText, setDebouncedText] = useState(translate);
   // Debounce effect
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedText(translate);
-    }, 500);
+  // useEffect(() => {
+  //   const handler = setTimeout(() => {
+  //     setDebouncedText(translate);
+  //   }, 500);
 
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [translate]);
+  //   return () => {
+  //     clearTimeout(handler);
+  //   };
+  // }, [translate]);
 
-  // API Call effect
+  // // API Call effect
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     if (debouncedText) {
+  //       if (translate !== "") {
+  //         let _translate = await getExampleSentence(translate);
+  //         setTranslated(_translate);
+  //       } else {
+  //         setTranslated("Please enter a word to translate.");
+  //       }
+  //     }
+  //   }
+  //   fetchData();
+  // }, [debouncedText]);
+
+  ///////
   useEffect(() => {
-    async function fetchData() {
+    const fetchTranslation = async () => {
       if (debouncedText) {
-        if (translate !== "") {
+        if (translate) {
           let _translate = await getExampleSentence(translate);
           setTranslated(_translate);
         } else {
           setTranslated("Please enter a word to translate.");
         }
       }
-    }
-    fetchData();
-  }, [debouncedText]);
+    };
+    fetchTranslation();
+  }, [debouncedText, translate]); // ✅ include both
+
+
+  /////
+
 
   // Load data.json
   useEffect(() => {
