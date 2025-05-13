@@ -149,3 +149,13 @@ button:active {
 .button:hover {
   background: linear-gradient(to right, #388e3c, #66bb6a);
 }
+
+.my-section {
+  margin-top: 20px; /* default for desktop */
+}
+
+@media (max-width: 768px) {
+  .my-section {
+    margin-top: 60px; /* larger top margin for mobile */
+  }
+}

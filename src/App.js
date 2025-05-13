@@ -17,54 +17,36 @@ export default function VocabGame() {
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [result, setResult] = useState("");
   const [translate, setTranslate] = useState("");
-  //const [round, setRound] = useState("");
-
+  
   const [translated, setTranslated] = useState("");
   // eslint-disable-next-line
   const [debouncedText, setDebouncedText] = useState(translate);
   // Debounce effect
-  // useEffect(() => {
-  //   const handler = setTimeout(() => {
-  //     setDebouncedText(translate);
-  //   }, 500);
-
-  //   return () => {
-  //     clearTimeout(handler);
-  //   };
-  // }, [translate]);
-
-  // // API Call effect
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     if (debouncedText) {
-  //       if (translate !== "") {
-  //         let _translate = await getExampleSentence(translate);
-  //         setTranslated(_translate);
-  //       } else {
-  //         setTranslated("Please enter a word to translate.");
-  //       }
-  //     }
-  //   }
-  //   fetchData();
-  // }, [debouncedText]);
-
-  ///////
   useEffect(() => {
-    const fetchTranslation = async () => {
+    const handler = setTimeout(() => {
+      setDebouncedText(translate);
+    }, 500);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [translate]);
+
+  // API Call effect
+  useEffect(() => {
+    async function fetchData() {
       if (debouncedText) {
-        if (translate) {
+        if (translate !== "") {
           let _translate = await getExampleSentence(translate);
           setTranslated(_translate);
         } else {
           setTranslated("Please enter a word to translate.");
         }
       }
-    };
-    fetchTranslation();
-  }, [debouncedText, translate]); // ✅ include both
+    }
+    fetchData();
+  }, [debouncedText, translate]);
 
-
-  /////
 
 
   // Load data.json
@@ -199,7 +181,7 @@ export default function VocabGame() {
   return (
     <>
 
-      <div className="container">
+      <div className="container my-section">
         <div className="row">
           <div className="column">
             <div style={{ padding: 20 }}>
