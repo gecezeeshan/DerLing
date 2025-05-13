@@ -5,7 +5,8 @@ import './App.css';
 export default function VocabGame() {
   const [data, setData] = useState([]);
   const [allItems, setAllItems] = useState([]);
-  const [setCategoryIndex] = useState(0);
+  // eslint-disable-next-line
+  const [catetoryIndex,setCategoryIndex] = useState(0);
   const [roundCount] = useState(5);
   const [currentRound, setCurrentRound] = useState(1);
   const [currentQuestion, setCurrentQuestion] = useState(null);
