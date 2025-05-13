@@ -19,6 +19,7 @@ export default function VocabGame() {
   //const [round, setRound] = useState("");
 
   const [translated, setTranslated] = useState("");
+  // eslint-disable-next-line
   const [debouncedText, setDebouncedText] = useState(translate);
   // Debounce effect
   // useEffect(() => {
