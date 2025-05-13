@@ -6,9 +6,13 @@ export default function VocabGame() {
   const [data, setData] = useState([]);
   const [allItems, setAllItems] = useState([]);
   // eslint-disable-next-line
-  const [catetoryIndex,setCategoryIndex] = useState(0);
-  const [roundCount] = useState(5);
+  const [categoryIndex, setCategoryIndex] = useState(0);
+
+  
+  const [roundCount, setRoundCount] = useState(null);
+
   const [currentRound, setCurrentRound] = useState(1);
+
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [options, setOptions] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState(0);
@@ -147,6 +151,14 @@ export default function VocabGame() {
     }
   };
 
+  const handleTranslateToDutch = async () => {
+    if (translate) {
+      let _translate = await getDutchFromEnglish(translate);
+      setTranslated(_translate);
+    } else {
+      setTranslated("Please enter a word to translate.");
+    }
+  };
 
   const getExampleSentence = async (word) => {
     try {
@@ -161,17 +173,54 @@ export default function VocabGame() {
     }
   };
 
+  
+
+  const getDutchFromEnglish = async (word) => {
+    try {
+      const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=en&tl=de&q=${encodeURIComponent(word)}`;
+      const response = await axios.get(url);
+      return JSON.stringify(response.data[0]);
+      //setTranslation();
+    } catch (error) {
+      console.error("Translation error", error);
+      return "Failed to translate.";
+      //setTranslation("Failed to translate.");
+    }
+  };
+
   if (!gameStarted) {
     return (
-      <div style={{ padding: 20 }}>
+      <div style={{ padding: 20, textAlign: "center" }}>
         <h1> Vocabia</h1>
-        <h2>Select a Category</h2>
-        {data.map((cat, idx) => (
-          <p key={idx} style={{ float: "left", margin: 10 }}>
-            <button onClick={() => selectCategory(idx + 1)}>{cat.category}</button>
-          </p>
-        ))}
-        <button onClick={() => selectCategory(0)}>All Categories</button>
+
+<div style={{ marginBottom: 10 }}>
+  <label>Select Category: </label>
+  <select onChange={(e) => setCategoryIndex(parseInt(e.target.value))}>
+    <option value="0">All Categories</option>
+    {data.map((cat, idx) => (
+      <option key={idx} value={idx + 1}>{cat.category}</option>
+    ))}
+  </select>
+</div>
+
+<div style={{ marginBottom: 10 }}>
+  <label>Number of Rounds: </label>
+  <input
+    type="number"
+    min="1"
+    max="20"
+    value={roundCount || ""}
+    onChange={(e) => setRoundCount(parseInt(e.target.value))}
+  />
+</div>
+
+<button
+  disabled={!roundCount}
+  onClick={() => selectCategory(categoryIndex || 0)}
+>
+  Start Game
+</button>
+
       </div>
     );
   }
@@ -181,7 +230,7 @@ export default function VocabGame() {
   return (
     <>
 
-      <div className="container my-section">
+      <div className="container">
         <div className="row">
           <div className="column">
             <div style={{ padding: 20 }}>
@@ -245,7 +294,10 @@ export default function VocabGame() {
             {/* <input type="text" className="input" value={translate} onChange={(e) => setTranslate(e.target.value)} /> */}
 
             <button onClick={() => handleTranslate()} style={{ margin: 5, padding: 10 }}>
-              Translate
+              To English
+            </button>
+            <button onClick={() => handleTranslateToDutch()} style={{ margin: 5, padding: 10 }}>
+              To Dutch
             </button>
             {translated && (
               <>

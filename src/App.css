@@ -155,7 +155,11 @@ button:active {
 }
 
 @media (max-width: 768px) {
-  .my-section {
-    margin-top: 60px; /* larger top margin for mobile */
+  .my-section {/*
+    margin-top: 900px;  larger top margin for mobile */
+
+
   }
+
+  
 }
