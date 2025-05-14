@@ -495,7 +495,7 @@
         ]
     },
     {
-        "category": "**Days of the/*  */ Week:**",
+        "category": "Days of the Week:",
         "items": [
             {
                 "english": "Monday",
@@ -535,7 +535,7 @@
         ]
     },
     {
-        "category": "**Months of the Year:**",
+        "category": "Months of the Year:",
         "items": [
             {
                 "english": "January",
@@ -600,7 +600,7 @@
         ]
     },
     {
-        "category": "**Seasons:**",
+        "category": "Seasons:",
         "items": [
             {
                 "english": "spring",
@@ -4190,7 +4190,7 @@
         ]
     },
     {
-        "category": "🏥 Health & Body",
+        "category": "Health & Body",
         "items": []
     },
     {
@@ -4634,7 +4634,7 @@
         ]
     },
     {
-        "category": "🏘️ Places in Town",
+        "category": "Places in Town",
         "items": []
     },
     {
@@ -4943,7 +4943,7 @@
         ]
     },
     {
-        "category": "🧳 Holidays & Leisure",
+        "category": "Holidays & Leisure",
         "items": []
     },
     {
@@ -5797,7 +5797,7 @@
         ]
     },
     {
-        "category": "🐶 Nature & Animals",
+        "category": "Nature & Animals",
         "items": []
     },
     {
@@ -6396,7 +6396,7 @@
         ]
     },
     {
-        "category": "🔧 Verbs & Grammar Helpers",
+        "category": "Verbs & Grammar Helpers",
         "items": []
     },
     {
@@ -7085,7 +7085,7 @@
         ]
     },
     {
-        "category": "🛠️ Emergency & Safety",
+        "category": "Emergency & Safety",
         "items": []
     },
     {
