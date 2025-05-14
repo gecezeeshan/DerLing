@@ -151,15 +151,38 @@ button:active {
 }
 
 .my-section {
-  margin-top: 20px; /* default for desktop */
+  margin-top: 20px;
+  /* default for desktop */
+}
+
+.tranlationDiv {
+  background: #faf0e6;
+  padding: 20px;
+  border-radius: 12px;
+  flex: 1 1 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  width: 80%;
+  /* or any width you want */
+  padding: 10px;
+  border: 1px solid #ccc;
+  word-wrap: break-word;
+  /* ensures long words wrap */
+  white-space: normal;
+  /* default: allows wrapping */
+  align-self: center;
+  font-size: 10pt;
+  color: #333;
+
 }
 
 @media (max-width: 768px) {
-  .my-section {/*
+  .my-section {
+    /*
     margin-top: 900px;  larger top margin for mobile */
 
 
   }
 
-  
+
 }
