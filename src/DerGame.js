@@ -7,7 +7,7 @@ const DerGame = () => {
   const [allItems, setAllItems] = useState([]);
   // eslint-disable-next-line
   const [categoryIndex, setCategoryIndex] = useState(0);
-
+  // eslint-disable-next-line
   const [translate, setTranslate] = useState("");
   const [roundCount, setRoundCount] = useState(null);
 
@@ -21,7 +21,7 @@ const DerGame = () => {
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [result, setResult] = useState("");
 
-
+  // eslint-disable-next-line
   const [translated, setTranslated] = useState("");
   // eslint-disable-next-line
   const [debouncedText, setDebouncedText] = useState(translate);

@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
 import './App.css';
 import DerTranslate from "./DerTranslate";
 import DerGame from "./DerGame";
 
 export default function VocabGame() {
- 
+
 
 
   return (
@@ -14,11 +13,11 @@ export default function VocabGame() {
         <div className="row">
           <div className="column">
             <>
-            <DerGame></DerGame>
+              <DerGame></DerGame>
             </>
           </div>
           <div className="column">
-        
+
             <DerTranslate></DerTranslate>
 
 
