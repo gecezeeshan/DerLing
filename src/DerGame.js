@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import './App.css';
 import axios from "axios";
 const DerGame = () => {
+
   const [data, setData] = useState([]);
   const [allItems, setAllItems] = useState([]);
   // eslint-disable-next-line
   const [categoryIndex, setCategoryIndex] = useState(0);
   // eslint-disable-next-line
   const [translate, setTranslate] = useState("");
-  const [roundCount, setRoundCount] = useState(null);
+  const [roundCount, setRoundCount] = useState(5);
 
   const [currentRound, setCurrentRound] = useState(1);
 
@@ -20,6 +21,8 @@ const DerGame = () => {
   const [translation, setTranslation] = useState("");
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [result, setResult] = useState("");
+  const [lang, setLang] = useState("de");
+
 
   // eslint-disable-next-line
   const [translated, setTranslated] = useState("");
@@ -55,6 +58,7 @@ const DerGame = () => {
 
   const getExampleSentence = async (word) => {
     try {
+
       const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=de&tl=en&q=${encodeURIComponent(word)}`;
       const response = await axios.get(url);
       return JSON.stringify(response.data[0]);
@@ -186,9 +190,16 @@ const DerGame = () => {
 
         <button
           disabled={!roundCount}
-          onClick={() => selectCategory(categoryIndex || 0)}
+          onClick={() => { selectCategory(categoryIndex || 0); setLang("de") }}
         >
-          Start Game
+          Start Game DE
+        </button>
+        &nbsp;&nbsp;
+        <button
+          disabled={!roundCount}
+          onClick={() => { selectCategory(categoryIndex || 0); setLang("ar") }}
+        >
+          Start Game AR
         </button>
 
       </div>
@@ -203,8 +214,17 @@ const DerGame = () => {
 
       <div style={{ padding: 20 }}>
         <h1>Round {currentRound} / {roundCount}</h1>
-        <h2>What is the meaning of the German word:</h2>
-        <h3 style={{ color: "#007bff" }}>{currentQuestion.german}</h3>
+        {lang === "de" &&
+          <><h2>What is the meaning of the German word:</h2>
+            <h3 style={{ color: "#007bff" }}>{currentQuestion.german}</h3>
+          </>
+        }
+        {lang === "ar" &&
+          <><h2>What is the meaning of the Arabic word:</h2>
+            <h3 style={{ color: "#007bff" }}>{currentQuestion.arabic}</h3>
+          </>
+
+        }
 
         {options.map((opt, idx) => (
           <button key={idx} onClick={() => handleAnswer(opt)} style={{ margin: 5, padding: 10 }}>
@@ -221,8 +241,10 @@ const DerGame = () => {
 
 
         <div style={{ marginTop: 20 }}>
-          {currentAnswer &&
+          {lang === "de" && currentAnswer &&
             <pre>{currentQuestion.usage}</pre>}
+          {lang === "ar" && currentAnswer &&
+            <pre>{currentQuestion.arabicUsage}</pre>}
           {translation && (
             <>
               <pre>{translation}</pre>
@@ -232,7 +254,7 @@ const DerGame = () => {
         {currentAnswer &&
           (<><button onClick={() => handleNextQuestion()} style={{ margin: 5, padding: 10 }}>
             Next
-          </button>
+          </button> <br></br>
 
           </>)}
         <button onClick={() => { handleRestart() }} style={{ margin: 5, padding: 10 }}>
