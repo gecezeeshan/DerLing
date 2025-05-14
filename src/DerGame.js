@@ -142,7 +142,7 @@ const DerGame = () => {
     }
 
     let _translate = await getExampleSentence(currentQuestion.usage);
-    setTranslation(_translate);
+    setTranslation(_translate.replace(/"/g, ""));
 
 
   };
@@ -234,7 +234,7 @@ const DerGame = () => {
         <div style={{ marginTop: 20 }}>
           {(
             <>
-              <pre>{currentAnswer}</pre>
+              <pre className="translation">{currentAnswer}</pre>
             </>
           )}
         </div>
@@ -242,12 +242,12 @@ const DerGame = () => {
 
         <div style={{ marginTop: 20 }}>
           {lang === "de" && currentAnswer &&
-            <pre>{currentQuestion.usage}</pre>}
+            <pre className="translation">{currentQuestion.usage}</pre>}
           {lang === "ar" && currentAnswer &&
-            <pre>{currentQuestion.arabicUsage}</pre>}
+            <pre className="translation">{currentQuestion.arabicUsage}</pre>}
           {translation && (
             <>
-              <pre>{translation}</pre>
+              <pre className="translationEnglish">{translation}</pre>
             </>
           )}
         </div>

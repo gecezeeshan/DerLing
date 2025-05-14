@@ -188,6 +188,20 @@ button:active {
 
 }
 
+.translation {
+
+  font-size: 12pt;
+  color: #000;
+  font-weight: bold;
+}
+
+.translationEnglish {
+
+  font-size: 12pt;
+  color: #32cd32;
+  font-weight: bold;
+}
+
 @media (max-width: 768px) {
   .my-section {
     /*
