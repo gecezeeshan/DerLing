@@ -1,12 +1,12 @@
-import React from 'react'   
+import { useState } from "react";
+import axios from "axios";
 
-const translation = () => {
-  const [translation, setTranslation] = useState("");
-  const [result, setResult] = useState("");
+const DerTranslate = () => {
   const [translate, setTranslate] = useState("");
 
 
-    
+  const [translated, setTranslated] = useState("");
+
   const handleTranslate = async () => {
     if (translate) {
       let _translate = await getExampleSentence(translate);
@@ -19,7 +19,6 @@ const translation = () => {
   const handleClear = async () => {
     setTranslate("");
     setTranslated("");
-    setTranslation("");
   };
 
   const handleTranslateToDutch = async () => {
@@ -87,33 +86,35 @@ const translation = () => {
   return (
     <>
       <div className="">Quick Translate</div>
-            <textarea className="input" value={translate} onChange={(e) => setTranslate(e.target.value)} style={{ width: "80%" }} >
+      <textarea className="input" value={translate} onChange={(e) => setTranslate(e.target.value)} style={{ width: "80%" }} >
 
-            </textarea>
-            {/* <input type="text" className="input" value={translate} onChange={(e) => setTranslate(e.target.value)} /> */}
-            <button onClick={() => handleClear()} style={{ margin: 5, padding: 10 }}>
-              Clear
-            </button>
-            <button onClick={() => handleTranslate()} style={{ margin: 5, padding: 10 }}>
-              To English
-            </button>
-            <button onClick={() => handleTranslateToDutch()} style={{ margin: 5, padding: 10 }}>
-              To Dutch
-            </button>
-            <button onClick={() => handleTranslateToArabic()} style={{ margin: 5, padding: 10 }}>
-              To Arabic
-            </button>
-            {translated && (
-              <>
-                <center>
-                  <div className="tranlationDiv">{translated}</div>
-                </center>
-              </>
-            )}
-            </>
+      </textarea>
+      {/* <input type="text" className="input" value={translate} onChange={(e) => setTranslate(e.target.value)} /> */}
+      <div className="tranlationActions">
+        <button onClick={() => handleClear()} style={{ margin: 5, padding: 10 }}>
+          Clear
+        </button>
+        <button onClick={() => handleTranslate()} style={{ margin: 5, padding: 10 }}>
+          To English
+        </button>
+        <button onClick={() => handleTranslateToDutch()} style={{ margin: 5, padding: 10 }}>
+          To Dutch
+        </button>
+        <button onClick={() => handleTranslateToArabic()} style={{ margin: 5, padding: 10 }}>
+          To Arabic
+        </button>
+      </div>
+      {translated && (
+        <>
+          <center>
+            <div className="tranlationDiv">{translated.replace('"', '').replace('"', '')}</div>
+          </center>
+        </>
+      )}
+    </>
 
 
   )
 }
 
-export default translation
+export default DerTranslate
