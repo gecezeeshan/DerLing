@@ -59,7 +59,7 @@ export default function DerList({ selectedCategory }) {
       </table>
     </div>
   
-    {/* Cards for small screens */}
+    {/* Cards for small screens 
     <div className="block md:hidden space-y-4">
       {categoryData.items.map((item, index) => (
         <div key={index} className="border rounded-xl p-4 shadow bg-white">
@@ -80,7 +80,7 @@ export default function DerList({ selectedCategory }) {
           </div>
         </div>
       ))}
-    </div>
+    </div>*/}
   </div>
   
   );
