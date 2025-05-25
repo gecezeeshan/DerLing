@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import './App.css';
@@ -10,11 +12,12 @@ const DerGame = ({ items, lang, roundCount, onRestart }) => {
   const [translation, setTranslation] = useState("");
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [result, setResult] = useState("");
-
+// eslint-disable-next-line
   useEffect(() => {
 
     if (items && items.length > 0) {
       console.log("Items received in DerGame:", items);
+      // eslint-disable-next-line
       prepareQuestion(items);
     }
   }, [items]);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export default function DerList({ selectedCategory }) {
+    // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState([]);
   const [categoryData, setCategoryData] = useState(null);
 
