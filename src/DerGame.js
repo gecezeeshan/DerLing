@@ -1,282 +1,120 @@
-
 import { useEffect, useState } from "react";
-import './App.css';
 import axios from "axios";
-const DerGame = () => {
+import './App.css';
 
-  const [data, setData] = useState([]);
-  const [allItems, setAllItems] = useState([]);
-  // eslint-disable-next-line
-  const [categoryIndex, setCategoryIndex] = useState(0);
-  // eslint-disable-next-line
-  const [translate, setTranslate] = useState("");
-  const [roundCount, setRoundCount] = useState(5);
-
+const DerGame = ({ items, lang, roundCount, onRestart }) => {
   const [currentRound, setCurrentRound] = useState(1);
-
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [options, setOptions] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [gameStarted, setGameStarted] = useState(false);
   const [translation, setTranslation] = useState("");
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [result, setResult] = useState("");
-  const [lang, setLang] = useState("de");
 
-
-  // eslint-disable-next-line
-  const [translated, setTranslated] = useState("");
-  // eslint-disable-next-line
-  const [debouncedText, setDebouncedText] = useState(translate);
-  // Debounce effect
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedText(translate);
-    }, 500);
 
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [translate]);
-
-  // API Call effect
-  useEffect(() => {
-    async function fetchData() {
-      if (debouncedText) {
-        if (translate !== "") {
-          let _translate = await getExampleSentence(translate);
-          setTranslated(_translate);
-        } else {
-          setTranslated("Please enter a word to translate.");
-        }
-      }
+    if (items && items.length > 0) {
+      console.log("Items received in DerGame:", items);
+      prepareQuestion(items);
     }
-    fetchData();
-  }, [debouncedText, translate]);
+  }, [items]);
+  
+  
+  
 
-
+  const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
 
   const getExampleSentence = async (word) => {
     try {
-
       const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=de&tl=en&q=${encodeURIComponent(word)}`;
       const response = await axios.get(url);
       return JSON.stringify(response.data[0]);
-      //setTranslation();
     } catch (error) {
       console.error("Translation error", error);
       return "Failed to translate.";
-      //setTranslation("Failed to translate.");
     }
-  };
-
-
-  // Load data.json
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("/data.json");
-      const json = await res.json();
-      setData(json);
-    }
-    fetchData();
-  }, []);
-
-  const selectCategory = (index) => {
-    setCategoryIndex(index);
-
-    let items = [];
-    if (index === 0) {
-      // All categories
-      data.forEach((category) => {
-        items = [...items, ...category.items];
-      });
-    } else {
-      items = data[index - 1].items;
-    }
-    setAllItems(items);
-    setGameStarted(true);
-    prepareQuestion(items);
   };
 
   const prepareQuestion = (items) => {
+    console.log("Preparing question with items:", items); // 👈 log this
+    if (!items || items.length < 3) {
+      console.warn("Not enough items to prepare question.");
+      return;
+    }
+  
     const correct = items[Math.floor(Math.random() * items.length)];
     const wrongChoices = [];
-
+  
     while (wrongChoices.length < 2) {
       const randomWrong = items[Math.floor(Math.random() * items.length)];
-      if (randomWrong.english !== correct.english && !wrongChoices.includes(randomWrong)) {
+      if (
+        randomWrong.english !== correct.english &&
+        !wrongChoices.includes(randomWrong)
+      ) {
         wrongChoices.push(randomWrong);
       }
     }
-
+  
     const optionList = [correct, ...wrongChoices];
     setOptions(shuffle(optionList));
     setCurrentQuestion(correct);
     setTranslation("");
     setCurrentAnswer("");
   };
-
-  const shuffle = (arr) => {
-    return arr.sort(() => Math.random() - 0.5);
-  };
-
+  
+  
   const handleNextQuestion = () => {
-
     if (currentRound < roundCount) {
       setCurrentRound(currentRound + 1);
-      prepareQuestion(allItems);
+      prepareQuestion(items);
     } else {
       setResult(`🎯 Game Over! You answered ${correctAnswers} out of ${roundCount} correctly.`);
-
     }
-
-  }
+  };
 
   const handleAnswer = async (selectedOption) => {
     if (selectedOption.english === currentQuestion.english) {
-
-      setCurrentAnswer("✅ Correct! ")
-      setCorrectAnswers(correctAnswers + 1);
+      setCurrentAnswer("✅ Correct!");
+      setCorrectAnswers((prev) => prev + 1);
     } else {
       setCurrentAnswer(`❌ Incorrect! Correct answer: ${currentQuestion.english}`);
     }
 
     let _translate = await getExampleSentence(currentQuestion.usage);
     setTranslation(_translate.replace(/"/g, ""));
-
-
   };
-
-  const resetGame = () => {
-    setCategoryIndex(null);
-    setGameStarted(false);
-    setCurrentRound(1);
-    setCorrectAnswers(0);
-    setCurrentQuestion(null);
-    setOptions([]);
-    setTranslation("");
-  };
-  const handleRestart = () => {
-    resetGame();
-    setResult("");
-  };
-
-
-  if (!gameStarted) {
-    return (
-      <div style={{ padding: 20, textAlign: "center" }}>
-        <h1> Vocabia</h1>
-
-        <div style={{ marginBottom: 10 }}>
-          <select onChange={(e) => setCategoryIndex(parseInt(e.target.value))}>
-            <option value="0">All Categories</option>
-            {data.sort((a, b) => a.category.localeCompare(b.category))
-              .map((cat, idx) => (
-                <option key={idx} value={idx + 1}>{cat.category}</option>
-              ))}
-          </select>
-        </div>
-
-        <div style={{ marginBottom: 10 }}>
-          <label>Number of Rounds: </label>
-          <input
-            type="number"
-            min="1"
-            max="20"
-            value={roundCount || ""}
-            onChange={(e) => setRoundCount(parseInt(e.target.value))}
-          />
-        </div>
-
-        <button
-          disabled={!roundCount}
-          onClick={() => { selectCategory(categoryIndex || 0); setLang("de") }}
-        >
-          Start Game DE
-        </button>
-        &nbsp;&nbsp;
-        <button
-          disabled={!roundCount}
-          onClick={() => { selectCategory(categoryIndex || 0); setLang("ar") }}
-        >
-          Start Game AR
-        </button>
-
-      </div>
-    );
-  }
 
   if (!currentQuestion) return <div>Loading question...</div>;
 
   return (
-    <>
+    <div style={{ padding: 20 }}>
+      <h1>Round {currentRound} / {roundCount}</h1>
+      {lang === "de" && <><h2>What is the meaning of the German word:</h2><h3 style={{ color: "#007bff" }}>{currentQuestion.german}</h3></>}
+      {lang === "ar" && <><h2>What is the meaning of the Arabic word:</h2><h3 style={{ color: "#007bff" }}>{currentQuestion.arabic}</h3></>}
 
+      {options.map((opt, idx) => (
+        <button key={idx} onClick={() => handleAnswer(opt)} style={{ margin: 5, padding: 10 }}>{opt.english}</button>
+      ))}
 
-      <div style={{ padding: 20 }}>
-        <h1>Round {currentRound} / {roundCount}</h1>
-        {lang === "de" &&
-          <><h2>What is the meaning of the German word:</h2>
-            <h3 style={{ color: "#007bff" }}>{currentQuestion.german}</h3>
-          </>
-        }
-        {lang === "ar" &&
-          <><h2>What is the meaning of the Arabic word:</h2>
-            <h3 style={{ color: "#007bff" }}>{currentQuestion.arabic}</h3>
-          </>
-
-        }
-
-        {options.map((opt, idx) => (
-          <button key={idx} onClick={() => handleAnswer(opt)} style={{ margin: 5, padding: 10 }}>
-            {opt.english}
-          </button>
-        ))}
+      {currentAnswer && (
         <div style={{ marginTop: 20 }}>
-          {(
-            <>
-              <pre className="translation">{currentAnswer}</pre>
-            </>
-          )}
+          <pre className="translation">{currentAnswer}</pre>
+          <pre className="translation">{lang === "de" ? currentQuestion.usage : currentQuestion.arabicUsage}</pre>
+          <pre className="translationEnglish">{translation}</pre>
+          <button onClick={handleNextQuestion} style={{ margin: 5, padding: 10 }}>Next</button>
         </div>
+      )}
 
+      <button onClick={onRestart} style={{ margin: 5, padding: 10 }}>Restart</button>
 
+      {result && (
         <div style={{ marginTop: 20 }}>
-          {lang === "de" && currentAnswer &&
-            <pre className="translation">{currentQuestion.usage}</pre>}
-          {lang === "ar" && currentAnswer &&
-            <pre className="translation">{currentQuestion.arabicUsage}</pre>}
-          {translation && (
-            <>
-              <pre className="translationEnglish">{translation}</pre>
-            </>
-          )}
+          {result}
+          <button onClick={onRestart} style={{ margin: 5, padding: 10 }}>Restart</button>
         </div>
-        {currentAnswer &&
-          (<><button onClick={() => handleNextQuestion()} style={{ margin: 5, padding: 10 }}>
-            Next
-          </button> <br></br>
+      )}
+    </div>
+  );
+};
 
-          </>)}
-        <button onClick={() => { handleRestart() }} style={{ margin: 5, padding: 10 }}>
-          Restart
-        </button>
-
-
-      </div>
-
-
-
-      <div style={{ marginTop: 20 }}>
-        {result}
-        {result &&
-          <button onClick={() => handleRestart()} style={{ margin: 5, padding: 10 }}>
-            Restart
-          </button>}
-
-      </div>
-
-    </>
-  )
-}
-
-export default DerGame
+export default DerGame;
