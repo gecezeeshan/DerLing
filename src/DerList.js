@@ -30,34 +30,6 @@ export default function DerList({ selectedCategory }) {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-    <h2 className="text-2xl font-bold mb-4 text-center">{categoryData.category}</h2>
-  
-    {/* Table for medium and up screens 
-    <div className="hidden md:block overflow-x-auto">
-      <table className="min-w-full border-collapse border border-gray-300">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="border border-gray-300 px-4 py-2 text-left">English</th>
-            <th className="border border-gray-300 px-4 py-2 text-left">German</th>
-            <th className="border border-gray-300 px-4 py-2 text-left">Usage</th>
-            <th className="border border-gray-300 px-4 py-2 text-left">Arabic</th>
-            <th className="border border-gray-300 px-4 py-2 text-left">Arabic Usage</th>
-          </tr>
-        </thead>
-        <tbody>
-          {categoryData.items.map((item, index) => (
-            <tr key={index} className="hover:bg-gray-50">
-              <td className="border border-gray-300 px-4 py-2">{item.english}</td>
-              <td className="border border-gray-300 px-4 py-2">{item.german}</td>
-              <td className="border border-gray-300 px-4 py-2 italic text-gray-600">{item.usage}</td>
-              <td className="border border-gray-300 px-4 py-2">{item.arabic}</td>
-              <td className="border border-gray-300 px-4 py-2 italic text-right text-gray-600">{item.arabicUsage}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>*/}
   
     
   <div className="table-container">
@@ -98,7 +70,7 @@ export default function DerList({ selectedCategory }) {
         ))}
       </div>
     </div>
-  </div>
+
   
   );
 }
