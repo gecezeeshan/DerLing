@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -212,4 +213,63 @@ button:active {
   }
 
 
+}
+
+
+/* App.css */
+
+.table-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.responsive-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.responsive-table th,
+.responsive-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.card-view {
+  display: none;
+}
+
+/* Show card view on small screens */
+@media (max-width: 768px) {
+  .responsive-table {
+    display: none;
+  }
+
+  .card-view {
+    display: block;
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .card div {
+    margin-bottom: 0.5rem;
+  }
+
+  .card .italic {
+    font-style: italic;
+    color: #666;
+  }
+
+  .card .text-right {
+    text-align: right;
+  }
 }

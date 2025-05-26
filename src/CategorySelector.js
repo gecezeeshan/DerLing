@@ -30,7 +30,7 @@ const CategorySelector = ({ data, categoryIndex, roundCount, setCategoryIndex, s
       &nbsp;&nbsp;
       <button disabled={!roundCount} onClick={() => onStart("ar")}>Start Game AR</button>
       &nbsp;&nbsp;
-      <button  onClick={() => onStart("de")}>Show List</button>
+      <button  onClick={() => onStart("de",true)}>Show List</button>
     </div>
   );
 };

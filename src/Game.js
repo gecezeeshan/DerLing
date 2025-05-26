@@ -19,7 +19,7 @@ export default function Game({ onCategorySelect }) {
     fetchData();
   }, []);
 
-  const startGame = (selectedLang) => {
+  const startGame = (selectedLang, showList=false) => {
     setLang(selectedLang);
     let items = [];
     let selectedCategoryName = "";
@@ -34,7 +34,9 @@ export default function Game({ onCategorySelect }) {
     }
   
     setAllItems(items);
-    setGameStarted(true);
+    if(!showList) {
+      setGameStarted(true);
+    } 
   
     // Notify parent about selected category
     if (onCategorySelect) {

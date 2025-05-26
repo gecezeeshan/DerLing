@@ -33,7 +33,7 @@ export default function DerList({ selectedCategory }) {
     <div className="max-w-4xl mx-auto p-4">
     <h2 className="text-2xl font-bold mb-4 text-center">{categoryData.category}</h2>
   
-    {/* Table for medium and up screens */}
+    {/* Table for medium and up screens 
     <div className="hidden md:block overflow-x-auto">
       <table className="min-w-full border-collapse border border-gray-300">
         <thead className="bg-gray-100">
@@ -57,30 +57,47 @@ export default function DerList({ selectedCategory }) {
           ))}
         </tbody>
       </table>
-    </div>
-  
-    {/* Cards for small screens 
-    <div className="block md:hidden space-y-4">
-      {categoryData.items.map((item, index) => (
-        <div key={index} className="border rounded-xl p-4 shadow bg-white">
-          <div className="mb-2">
-            <strong>English:</strong> {item.english}
-          </div>
-          <div className="mb-2">
-            <strong>German:</strong> {item.german}
-          </div>
-          <div className="mb-2 italic text-gray-600">
-            <strong>Usage:</strong> {item.usage}
-          </div>
-          <div className="mb-2">
-            <strong>Arabic:</strong> {item.arabic}
-          </div>
-          <div className="italic text-right text-gray-600">
-            <strong>Arabic Usage:</strong> {item.arabicUsage}
-          </div>
-        </div>
-      ))}
     </div>*/}
+  
+    
+  <div className="table-container">
+      <h2>{categoryData.category}</h2>
+
+      <table className="responsive-table">
+        <thead>
+          <tr>
+            <th>English</th>
+            <th>German</th>
+            <th>Usage</th>
+            <th>Arabic</th>
+            <th>Arabic Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {categoryData.items.map((item, index) => (
+            <tr key={index}>
+              <td>{item.english}</td>
+              <td>{item.german}</td>
+              <td className="italic">{item.usage}</td>
+              <td>{item.arabic}</td>
+              <td className="italic text-right">{item.arabicUsage}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div className="card-view">
+        {categoryData.items.map((item, index) => (
+          <div key={index} className="card">
+            <div><strong>English:</strong> {item.english}</div>
+            <div><strong>German:</strong> {item.german}</div>
+            <div className="italic"><strong>Usage:</strong> {item.usage}</div>
+            <div><strong>Arabic:</strong> {item.arabic}</div>
+            <div className="italic text-right"><strong>Arabic Usage:</strong> {item.arabicUsage}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   </div>
   
   );
