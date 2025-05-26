@@ -16,18 +16,30 @@ export default function App() {
     <>
       <div className="container">
         <div className="row">
-          <div className="column">
-            <Game onCategorySelect={setSelectedCategory} />  
+          <div className="column left">
+            <Game onCategorySelect={setSelectedCategory} />
           </div>
-          <div className="column">
+          <div className="column right">
             <DerTranslate />
           </div>
         </div>
+        {selectedCategory &&
+          <div className="row">
+            <div className="column full">
 
-        <div className="row">
-          <div className="column">
-            {selectedCategory && <DerList selectedCategory={selectedCategory} />}
-          </div></div>
-      </div></>
+              <>
+                <DerList selectedCategory={selectedCategory} />
+                <button className="restart-button" onClick={() => setSelectedCategory(null)}>
+                  Restart
+                </button>
+              </>
+
+
+
+            </div>
+          </div>}
+      </div>
+
+    </>
   );
 }

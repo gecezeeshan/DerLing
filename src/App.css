@@ -1,4 +1,15 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto; /* Allow vertical scroll */
+}
 
+.container {
+  min-height: 100vh; /* Full height of the viewport */
+  padding: 16px;
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
@@ -82,7 +93,6 @@ button:active {
   margin: 40px auto;
   padding: 20px;
   text-align: center;
-  margin-top: 400px ;
 }
 
 .heading {
@@ -153,7 +163,7 @@ button:active {
 }
 
 .my-section {
-  margin-top: 20px;
+
   /* default for desktop */
 }
 
@@ -163,7 +173,6 @@ button:active {
   border-radius: 5px;
   flex: 1 1 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
   width: 80%;
   /* or any width you want */
   padding: 10px;
@@ -272,4 +281,28 @@ button:active {
   .card .text-right {
     text-align: right;
   }
+}
+
+
+.container {
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+}
+
+.left, .right {
+  flex: 1;
+}
+
+.full {
+  flex: 1 1 100%;
 }
