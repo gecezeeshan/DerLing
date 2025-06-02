@@ -19,11 +19,11 @@ export default function Game({ onCategorySelect }) {
     fetchData();
   }, []);
 
-  const startGame = (selectedLang, showList=false) => {
+  const startGame = (selectedLang, showList = false) => {
     setLang(selectedLang);
     let items = [];
     let selectedCategoryName = "";
-  
+
     if (categoryIndex === 0) {
       data.forEach((cat) => (items = [...items, ...cat.items]));
       selectedCategoryName = "All";
@@ -32,12 +32,12 @@ export default function Game({ onCategorySelect }) {
       items = category.items;
       selectedCategoryName = category.category;
     }
-  
+
     setAllItems(items);
-    if(!showList) {
+    if (!showList) {
       setGameStarted(true);
-    } 
-  
+    }
+
     // Notify parent about selected category
     if (onCategorySelect) {
       onCategorySelect(selectedCategoryName);

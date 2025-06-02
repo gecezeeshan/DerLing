@@ -4,6 +4,7 @@ export default function DerList({ selectedCategory }) {
   // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState([]);
   const [categoryData, setCategoryData] = useState(null);
+  const [showTranslation, setShowTranslation] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -59,10 +60,23 @@ export default function DerList({ selectedCategory }) {
       <div className="card-view">
         {categoryData.items.map((item, index) => (
           <div key={index} className="card">
-            <div><strong></strong> {item.english} -  {item.german} - {item.arabic}</div>
+            <div>
+              <input type="button" value={!showTranslation ? "Show" : "Hide"} className="copy-button"
+                onClick={() => { setShowTranslation(!showTranslation) }} />
+            </div>
+
+            <div>{item.english}
+              {showTranslation &&
+                <span> - {item.german} - {item.arabic}</span>}
+            </div>
             <div className="italic"><strong></strong> {item.englishUsage}</div>
-            <div className="italic"><strong></strong> {item.usage}</div>
-            <div className="italic text-right"><strong></strong> {item.arabicUsage}</div>
+            {showTranslation &&
+              <>
+                <div className="italic"><strong></strong> {item.usage}</div>
+                <div className="italic text-right"><strong></strong> {item.arabicUsage}</div>
+              </>
+            }
+
           </div>
         ))}
       </div>
