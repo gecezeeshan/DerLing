@@ -16,7 +16,7 @@ export default function DerList({ selectedCategory }) {
       );
 
       setCategoryData(cat);
-      setVisibleTranslations({}); // reset on category change
+      setVisibleTranslations({}); // Reset per category
     }
 
     if (selectedCategory) {
@@ -24,6 +24,7 @@ export default function DerList({ selectedCategory }) {
     }
   }, [selectedCategory]);
 
+  // Toggle translation visibility for a specific index
   const toggleTranslation = (index) => {
     setVisibleTranslations((prev) => ({
       ...prev,
