@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 export default function DerList({ selectedCategory }) {
-  // eslint-disable-next-line no-unused-vars
   const [data, setData] = useState([]);
   const [categoryData, setCategoryData] = useState(null);
-  const [showTranslation, setShowTranslation] = useState(false);
+  const [visibleTranslations, setVisibleTranslations] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -12,12 +11,12 @@ export default function DerList({ selectedCategory }) {
       const json = await res.json();
       setData(json);
 
-      // Moved inside useEffect and depends on selectedCategory
       const cat = json.find(
         (c) => c.category.toLowerCase() === selectedCategory?.toLowerCase()
       );
 
       setCategoryData(cat);
+      setVisibleTranslations({}); // reset on category change
     }
 
     if (selectedCategory) {
@@ -25,14 +24,18 @@ export default function DerList({ selectedCategory }) {
     }
   }, [selectedCategory]);
 
+  const toggleTranslation = (index) => {
+    setVisibleTranslations((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   if (!categoryData || !categoryData.items || categoryData.items.length === 0) {
     return <p className="text-center text-gray-500">No data available for "{selectedCategory}"</p>;
   }
 
   return (
-
-
     <div className="table-container">
       <h2>{categoryData.category}</h2>
 
@@ -61,27 +64,32 @@ export default function DerList({ selectedCategory }) {
         {categoryData.items.map((item, index) => (
           <div key={index} className="card">
             <div>
-              <input type="button" value={!showTranslation ? "Show" : "Hide"} className="copy-button"
-                onClick={() => { setShowTranslation(!showTranslation) }} />
+              <input
+                type="button"
+                value={visibleTranslations[index] ? "Hide" : "Show"}
+                className="copy-button"
+                onClick={() => toggleTranslation(index)}
+              />
             </div>
 
-            <div>{item.english}
-              {showTranslation &&
-                <span> - {item.german} - {item.arabic}</span>}
+            <div>
+              {item.english}
+              {visibleTranslations[index] && (
+                <span> - {item.german} - {item.arabic}</span>
+              )}
             </div>
-            <div className="italic"><strong></strong> {item.englishUsage}</div>
-            {showTranslation &&
+
+            <div className="italic">{item.englishUsage}</div>
+
+            {visibleTranslations[index] && (
               <>
-                <div className="italic"><strong></strong> {item.usage}</div>
-                <div className="italic text-right"><strong></strong> {item.arabicUsage}</div>
+                <div className="italic">{item.usage}</div>
+                <div className="italic text-right">{item.arabicUsage}</div>
               </>
-            }
-
+            )}
           </div>
         ))}
       </div>
     </div>
-
-
   );
 }
