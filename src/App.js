@@ -1,45 +1,42 @@
 
-import { useState } from 'react';
 import './App.css';
-import DerTranslate from './DerTranslate';
-import DerList from './DerList'; // Make sure it's imported
-import Game from './Game';
+import { useNavigate } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Counter from './Counter';
+import Dict from './Dict';
+const styles = {
+ 
+  button: {
+    margin: '10px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    cursor: 'pointer'
+  }
+};
+
+function Home() {
+  const navigate = useNavigate();
+
+  return (
+    <div style={styles.container}>
+      <button onClick={() => navigate('/Counter')} style={styles.button}>Go to Counter</button>
+      <button onClick={() => navigate('/Dict')} style={styles.button}>Go to Dictionary</button>
+    </div>
+  );
+}
+
 export default function App() {
-  // const [gameStarted, setGameStarted] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  // const startGame = () => {
-  //   setGameStarted(true);
-  // };
+
 
 
   return (
-    <>
-      <div className="container">
-        <div className="row">
-          <div className="column left">
-            <Game onCategorySelect={setSelectedCategory} />
-          </div>
-          <div className="column right">
-            <DerTranslate />
-          </div>
-        </div>
-        {selectedCategory &&
-          <div className="row">
-            <div className="column full">
-
-              <>
-                <DerList selectedCategory={selectedCategory} />
-                <button className="restart-button" onClick={() => setSelectedCategory(null)}>
-                  Restart
-                </button>
-              </>
-
-
-
-            </div>
-          </div>}
-      </div>
-
-    </>
+    
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Counter" element={<Counter />} />
+        <Route path="/Dictionary" element={<Dict />} />
+      </Routes>
+    </Router>
   );
 }
