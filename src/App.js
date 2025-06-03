@@ -19,8 +19,8 @@ function Home() {
 
   return (
     <div style={styles.container}>
-      <button onClick={() => navigate('/Counter')} style={styles.button}>Go to Counter</button>
-      <button onClick={() => navigate('/Dict')} style={styles.button}>Go to Dictionary</button>
+      <button onClick={() => navigate('/Counter')} style={styles.button}>Counter</button>
+      <button onClick={() => navigate('/Dict')} style={styles.button}>Dictionary</button>
     </div>
   );
 }
@@ -35,7 +35,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Counter" element={<Counter />} />
-        <Route path="/Dictionary" element={<Dict />} />
+        <Route path="/Dict" element={<Dict />} />
       </Routes>
     </Router>
   );
