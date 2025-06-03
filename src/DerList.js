@@ -68,7 +68,7 @@ export default function DerList({ selectedCategory }) {
             <div>
               <input
                 type="button"
-                value={visibleTranslations[index] ? "Hide" : "Showw"}
+                value={visibleTranslations[index] ? "Hide" : "Show"}
                 className="copy-button"
                 onClick={() => toggleTranslation(index)}
               />
