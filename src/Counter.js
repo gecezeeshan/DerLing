@@ -23,7 +23,7 @@ export default function Counter() {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#f4f4f4',
+      backgroundColor: '#dcdcdc',
       cursor: 'pointer',
       overflow: 'hidden'
     },
@@ -49,7 +49,7 @@ export default function Counter() {
 
   return (
     <div style={styles.container} onClick={handleClickAnywhere}>
-      <h1 style={styles.counterText}>Count: {count}</h1>
+      <h1 style={styles.counterText}> {count}</h1>
       <button onClick={resetCounter} style={styles.resetButton}>Reset</button>
       <button onClick={(e) => { e.stopPropagation(); navigate('/'); }} style={styles.button}>
         Home
