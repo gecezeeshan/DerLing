@@ -1,7 +1,8 @@
-/* Global tap highlight fix */
+/* GLOBAL STYLES */
 * {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  box-sizing: border-box;
 }
 
 html, body {
@@ -9,37 +10,43 @@ html, body {
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden;
-  -webkit-tap-highlight-color: transparent;
+  overflow: hidden; /* prevents scroll */
+  font-family: sans-serif;
+  background-color: #fff;
 }
 
 #root {
   height: 100%;
   width: 100%;
-  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
 }
 
+/* COMPONENT STYLES */
 .container {
   position: relative;
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   cursor: pointer;
   overflow: hidden;
-  -webkit-tap-highlight-color: transparent;
 }
 
-.counterText {
-  font-size: 48px;
-  margin-bottom: 20px;
+.topButtons {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1;
 }
 
 .resetButton,
 .homeButton {
-  position: absolute;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
@@ -52,14 +59,6 @@ html, body {
   touch-action: manipulation;
 }
 
-.resetButton {
-  bottom: 80px;
-}
-
-.homeButton {
-  bottom: 20px;
-}
-
 .resetButton:focus,
 .resetButton:active,
 .homeButton:focus,
@@ -67,4 +66,9 @@ html, body {
   outline: none;
   box-shadow: none;
   background-color: transparent;
+}
+
+.counterText {
+  font-size: 64px;
+  margin-top: 60px; /* Give space for top buttons */
 }
