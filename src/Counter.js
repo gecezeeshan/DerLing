@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Counter.css'; // External CSS
+import './Counter.css';
 
 export default function Counter() {
   const [count, setCount] = useState(0);
@@ -17,17 +17,19 @@ export default function Counter() {
 
   return (
     <div className="container" onClick={handleClickAnywhere}>
+      <div className="topButtons">
+        <button className="resetButton" onClick={resetCounter}>Reset</button>
+        <button
+          className="homeButton"
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate('/');
+          }}
+        >
+          Home
+        </button>
+      </div>
       <h1 className="counterText">{count}</h1>
-      <button className="resetButton" onClick={resetCounter}>Reset</button>
-      <button
-        className="homeButton"
-        onClick={(e) => {
-          e.stopPropagation();
-          navigate('/');
-        }}
-      >
-        Home
-      </button>
     </div>
   );
 }
