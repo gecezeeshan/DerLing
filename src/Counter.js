@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Counter.css'; // Import external styles
+import './Counter.css'; // External CSS
 
 export default function Counter() {
   const [count, setCount] = useState(0);
@@ -11,7 +11,7 @@ export default function Counter() {
   };
 
   const resetCounter = (e) => {
-    e.stopPropagation(); // Prevent reset button click from incrementing
+    e.stopPropagation();
     setCount(0);
   };
 
@@ -30,59 +30,4 @@ export default function Counter() {
       </button>
     </div>
   );
-
-  comst styles ={
-.container {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.counterText {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.resetButton,
-.homeButton {
-  position: absolute;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  background: none;
-  border: 1px solid #ccc;
-  outline: none;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  box-shadow: none;
-  touch-action: manipulation;
-}
-
-/* Position-specific styles */
-.resetButton {
-  bottom: 80px;
-}
-
-.homeButton {
-  bottom: 20px;
-}
-
-.resetButton:focus,
-.resetButton:active,
-.homeButton:focus,
-.homeButton:active {
-  outline: none;
-  box-shadow: none;
-  background-color: transparent;
-}
-
-
-    
-  }
 }
