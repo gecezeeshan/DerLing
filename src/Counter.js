@@ -31,19 +31,29 @@ export default function Counter() {
       marginBottom: '20px'
     },
     resetButton: {
-      position: 'absolute',
-      bottom: '80px',
-      padding: '10px 20px',
-      fontSize: '16px',
-      cursor: 'pointer'
-    },
-    button: {
-      position: 'absolute',
-      bottom: '20px',
-      padding: '10px 20px',
-      fontSize: '16px',
-      cursor: 'pointer'
-    }
+  position: 'absolute',
+  bottom: '80px',
+  padding: '10px 20px',
+  fontSize: '16px',
+  cursor: 'pointer',
+  background: 'none',
+  border: '1px solid #ccc',
+  outline: 'none',
+  userSelect: 'none',
+  WebkitTapHighlightColor: 'transparent'
+},
+button: {
+  position: 'absolute',
+  bottom: '20px',
+  padding: '10px 20px',
+  fontSize: '16px',
+  cursor: 'pointer',
+  background: 'none',
+  border: '1px solid #ccc',
+  outline: 'none',
+  userSelect: 'none',
+  WebkitTapHighlightColor: 'transparent'
+}
   };
 
   return (
