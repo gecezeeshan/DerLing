@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Counter.css'; // Import external styles
 
 export default function Counter() {
   const [count, setCount] = useState(0);
@@ -14,55 +15,74 @@ export default function Counter() {
     setCount(0);
   };
 
-  const styles = {
-    container: {
-      position: 'relative',
-      height: '100vh',
-      width: '100vw',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      cursor: 'pointer',
-      overflow: 'hidden'
-    },
-    counterText: {
-      fontSize: '48px',
-      marginBottom: '20px'
-    },
-    resetButton: {
-  position: 'absolute',
-  bottom: '80px',
-  padding: '10px 20px',
-  fontSize: '16px',
-  cursor: 'pointer',
-  background: 'none',
-  border: '1px solid #ccc',
-  outline: 'none',
-  userSelect: 'none',
-  WebkitTapHighlightColor: 'transparent'
-},
-button: {
-  position: 'absolute',
-  bottom: '20px',
-  padding: '10px 20px',
-  fontSize: '16px',
-  cursor: 'pointer',
-  background: 'none',
-  border: '1px solid #ccc',
-  outline: 'none',
-  userSelect: 'none',
-  WebkitTapHighlightColor: 'transparent'
-}
-  };
-
   return (
-    <div style={styles.container} onClick={handleClickAnywhere}>
-      <h1 style={styles.counterText}> {count}</h1>
-      <button onClick={resetCounter} style={styles.resetButton}>Reset</button>
-      <button onClick={(e) => { e.stopPropagation(); navigate('/'); }} style={styles.button}>
+    <div className="container" onClick={handleClickAnywhere}>
+      <h1 className="counterText">{count}</h1>
+      <button className="resetButton" onClick={resetCounter}>Reset</button>
+      <button
+        className="homeButton"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigate('/');
+        }}
+      >
         Home
       </button>
     </div>
   );
+
+  comst styles ={
+.container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.counterText {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.resetButton,
+.homeButton {
+  position: absolute;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #ccc;
+  outline: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: none;
+  touch-action: manipulation;
+}
+
+/* Position-specific styles */
+.resetButton {
+  bottom: 80px;
+}
+
+.homeButton {
+  bottom: 20px;
+}
+
+.resetButton:focus,
+.resetButton:active,
+.homeButton:focus,
+.homeButton:active {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+
+    
+  }
 }
