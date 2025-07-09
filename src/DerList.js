@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function DerList({ selectedCategory }) {
+export default function DerList({ selectedCategory, className }) {
   // eslint-disable-next-line
   const [data, setData] = useState([]);
   const [categoryData, setCategoryData] = useState(null);
@@ -38,6 +38,7 @@ export default function DerList({ selectedCategory }) {
   }
 
   return (
+       <div className={className}>
     <div className="table-container">
       <h2>{categoryData.category}</h2>
 
@@ -92,6 +93,7 @@ export default function DerList({ selectedCategory }) {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

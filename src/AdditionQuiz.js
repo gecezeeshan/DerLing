@@ -9,7 +9,7 @@ const AdditionQuiz = () => {
   const [score, setScore] = useState(0);
   const [quizStarted, setQuizStarted] = useState(false);
   const [quizEnded, setQuizEnded] = useState(false);
-
+  const [feedback, setFeedback] = useState(""); // ✅ new
 
   const generateRandom = () => Math.floor(Math.random() * 10) + 1;
 
@@ -17,6 +17,7 @@ const AdditionQuiz = () => {
     setNum1(generateRandom());
     setNum2(generateRandom());
     setUserAnswer("");
+    setFeedback("");
   };
 
   const startQuiz = () => {
@@ -29,22 +30,30 @@ const AdditionQuiz = () => {
 
   const handleAnswer = () => {
     const correctAnswer = num1 + num2;
-    if (parseInt(userAnswer) === correctAnswer) {
+    const isCorrect = parseInt(userAnswer) === correctAnswer;
+
+    if (isCorrect) {
       setScore(score + 1);
+      setFeedback("✅ Correct!");
+    } else {
+      setFeedback(`❌ Incorrect! Correct Answer: ${correctAnswer}`);
     }
 
-    if (currentRound < rounds) {
-      setCurrentRound(currentRound + 1);
-      generateQuestion();
-    } else {
-      setQuizEnded(true);
-      setQuizStarted(false);
-    }
+    // Wait 1.2 seconds before next question or ending quiz
+    setTimeout(() => {
+      if (currentRound < rounds) {
+        setCurrentRound(currentRound + 1);
+        generateQuestion();
+      } else {
+        setQuizEnded(true);
+        setQuizStarted(false);
+      }
+    }, 1200);
   };
 
   return (
     <div style={{ padding: "40px", textAlign: "center", fontFamily: "Arial" }}>
-      <h1 style={{ fontSize: "40px" }}>🧠 Tens Quiz Game</h1>
+      <h1 style={{ fontSize: "40px" }}>➕ Addition Quiz (1–10)</h1>
 
       {!quizStarted && !quizEnded && (
         <>
@@ -89,6 +98,7 @@ const AdditionQuiz = () => {
             type="number"
             value={userAnswer}
             onChange={(e) => setUserAnswer(e.target.value)}
+            disabled={feedback !== ""} // disable input while showing feedback
             style={{
               fontSize: "28px",
               padding: "10px",
@@ -99,6 +109,7 @@ const AdditionQuiz = () => {
           <br /><br />
           <button
             onClick={handleAnswer}
+            disabled={userAnswer === "" || feedback !== ""}
             style={{
               fontSize: "24px",
               padding: "15px 40px",
@@ -107,6 +118,13 @@ const AdditionQuiz = () => {
           >
             Submit Answer
           </button>
+
+          {/* ✅ Show feedback */}
+          {feedback && (
+            <p style={{ fontSize: "28px", marginTop: "20px", color: feedback.includes("Correct") ? "green" : "red" }}>
+              {feedback}
+            </p>
+          )}
         </div>
       )}
 
@@ -117,7 +135,11 @@ const AdditionQuiz = () => {
             You got <strong>{score}</strong> out of <strong>{rounds}</strong> correct.
           </p>
           <button
-            onClick={() => setQuizEnded(false)}
+            onClick={() => {
+              setQuizEnded(false);
+              setRounds(0);
+              setUserAnswer("");
+            }}
             style={{
               fontSize: "24px",
               padding: "15px 40px",

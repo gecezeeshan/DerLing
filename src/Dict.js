@@ -40,7 +40,7 @@ export default function Dict() {
             <div className="column full">
 
               <>
-                <DerList selectedCategory={selectedCategory} />
+              <DerList selectedCategory={selectedCategory} className="der-list-scroll" />
                 <button className="restart-button" onClick={() => setSelectedCategory(null)}>
                   Restart
                 </button>
