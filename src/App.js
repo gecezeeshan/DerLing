@@ -1,29 +1,21 @@
 
-import './App.css';
-import { useNavigate } from 'react-router-dom'; 
+//import './App.css';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Counter from './Counter';
 import Dict from './Dict';
+import Home from './Home';
 import AdditionQuiz from './AdditionQuiz';
-const styles = {
- 
-  button: {
-    margin: '10px',
-    padding: '10px 20px',
-    fontSize: '16px',
-    cursor: 'pointer'
-  }
-};
 
-function Home() {
-  const navigate = useNavigate();
+function HomePage() {
+ 
 
   return (
-    <div style={styles.container}>
-            <button onClick={() => navigate('/Addition')} style={styles.button}>Addition</button>
-      <button onClick={() => navigate('/Counter')} style={styles.button}>Counter</button>
-      <button onClick={() => navigate('/Dict')} style={styles.button}>Dictionary</button>
-    </div>
+
+    <>
+      <Home></Home>
+      
+    </>
   );
 }
 
@@ -32,10 +24,10 @@ export default function App() {
 
 
   return (
-    
+
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/Addition" element={<AdditionQuiz />} />
         <Route path="/Counter" element={<Counter />} />
         <Route path="/Dict" element={<Dict />} />

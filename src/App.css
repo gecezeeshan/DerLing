@@ -1,15 +1,25 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow-y: auto; /* Allow vertical scroll */
+  overflow-y: auto;
+  /* Allow vertical scroll */
 }
 
-.container {
-  min-height: 100vh; /* Full height of the viewport */
-  padding: 16px;
-  box-sizing: border-box;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
 }
+
+
 .App {
   text-align: center;
 }
@@ -50,17 +60,6 @@ html, body, #root {
   }
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-}
-
 h1 {
   color: #333;
 }
@@ -88,12 +87,7 @@ button:active {
 
 /* App.css */
 
-.container {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 20px;
-  text-align: center;
-}
+
 
 .heading {
   font-size: 2.5rem;
@@ -266,7 +260,7 @@ button:active {
     margin-bottom: 1rem;
     padding: 1rem;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   .card div {
@@ -284,10 +278,6 @@ button:active {
 }
 
 
-.container {
-  padding: 20px;
-}
-
 .row {
   display: flex;
   flex-direction: row;
@@ -299,7 +289,8 @@ button:active {
   flex: 1;
 }
 
-.left, .right {
+.left,
+.right {
   flex: 1;
 }
 
@@ -308,9 +299,93 @@ button:active {
 }
 
 .der-list-scroll {
-  max-height: 70vh; /* Adjust based on your layout */
+  max-height: 70vh;
+  /* Adjust based on your layout */
   overflow-y: auto;
   padding: 10px;
   border: 1px solid #ccc;
   margin-top: 20px;
+}
+
+/* Spacer for fixed header */
+.header-spacer {
+  height: 64px;
+  /* Match header height */
+}
+
+/* Custom Backgrounds */
+.bg-custom-sidebar {
+  background-color: #2e3b55;
+  /* Darker sidebar */
+}
+
+.bg-custom-content {
+  background-color: #f9f9fc;
+  /* Light main content */
+}
+
+.bg-custom-footer {
+  background-color: #1c1f26;
+  /* Custom footer color */
+}
+
+/* Optional: Hover effect on sidebar items */
+.hover-bg:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.bg-custom-sidebar {
+  background-color: #2e3b55;
+}
+
+.bg-custom-content {
+  background-color: #f9f9fc;
+}
+
+.bg-custom-footer {
+  background-color: #1c1f26;
+}
+
+.hover-bg:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.sidebar {
+  width: 250px;
+  height: calc(100vh - 112px);
+  overflow-y: auto;
+}
+
+/* Mobile slide-in sidebar */
+@media (max-width: 767px) {
+  .sidebar {
+    position: fixed;
+    top: 64px;
+    left: -250px;
+    height: calc(100vh - 112px);
+    width: 250px;
+    z-index: 1040;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .mobile-sidebar-overlay {
+    display: none;
+  }
+
+  .mobile-sidebar-overlay.show {
+    display: block;
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1030;
+  }
 }
