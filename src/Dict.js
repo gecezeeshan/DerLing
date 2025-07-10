@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import './App.css';
 import { useNavigate } from 'react-router-dom';
-import DerTranslate from './DerTranslate';
 import DerList from './DerList'; // Make sure it's imported
 import Game from './Game';
 export default function Dict() {

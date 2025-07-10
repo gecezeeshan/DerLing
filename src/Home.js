@@ -5,7 +5,6 @@ import DerTranslate from './DerTranslate';
 import AdditionQuiz from './AdditionQuiz';
 
 export default function Home() {
-  const navigate = useNavigate();
   const [comp, setComp] = React.useState('Dict');
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
