@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Dict from './Dict';
 import DerTranslate from './DerTranslate';
 import AdditionQuiz from './AdditionQuiz';
