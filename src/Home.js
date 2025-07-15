@@ -1,130 +1,113 @@
-import React, { useState, useRef, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import Dict from './Dict';
+import DerTranslate from './DerTranslate';
+import AdditionQuiz from './AdditionQuiz';
+import Ocr from './Ocr';
 
-const Ocr = () => {
-  const [fileInput, setFileInput] = useState(null);
-  const [ocrResult, setOcrResult] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [imagePreview, setImagePreview] = useState(null);
-  const pasteBoxRef = useRef(null);
+export default function Home() {
+  const [comp, setComp] = React.useState('Dict');
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
-  const RunOCR = async (imageFile) => {
-    if (!imageFile) {
-      alert("No image selected.");
-      return;
-    }
-
-    setIsLoading(true);
-    setOcrResult("");
-
-    try {
-      const url = `https://snipit-61pi.onrender.com/extract-text`;
-      const formData = new FormData();
-      formData.append("image", imageFile);
-
-      const response = await axios.post(url, formData);
-      setOcrResult(response.data.text || "No text detected.");
-    } catch (error) {
-      console.error("OCR error", error);
-      setOcrResult("Error processing the image.");
-    } finally {
-      setIsLoading(false);
-    }
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
   };
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setFileInput(file);
-      setImagePreview(URL.createObjectURL(file));
-      RunOCR(file);
-    }
+  const closeSidebar = () => {
+    setSidebarOpen(false);
   };
-
-  const handlePaste = (e) => {
-    const items = e.clipboardData.items;
-    for (let item of items) {
-      if (item.type.indexOf("image") !== -1) {
-        const file = item.getAsFile();
-        setFileInput(file);
-        setImagePreview(URL.createObjectURL(file));
-        RunOCR(file);
-        if (pasteBoxRef.current) {
-          pasteBoxRef.current.innerText = "";
-        }
-        break;
-      }
-    }
-  };
-
-  const handleRefresh = () => {
-    setFileInput(null);
-    setOcrResult("");
-    setImagePreview(null);
-    if (pasteBoxRef.current) {
-      pasteBoxRef.current.innerText = "📋 Paste image here (Ctrl+V)";
-    }
-  };
-
-  useEffect(() => {
-    const box = pasteBoxRef.current;
-    box.addEventListener("paste", handlePaste);
-    return () => box.removeEventListener("paste", handlePaste);
-  }, []);
 
   return (
-    <div style={{ maxWidth: "600px", margin: "auto", padding: "20px" }}>
-      <h1>OCR Tool</h1>
+    <div className="app-wrapper">
+      {/* Header - Fixed */}
+      <header className="header bg-secondary text-white py-3 px-4 fixed-top">
+        <nav className="d-flex justify-content-between align-items-center">
+          <div className="fs-4 fw-bold">UtiliMate</div>
+          <div className="d-md-none">
+            {/* Hamburger Icon */}
+            <button
+              className="btn btn-outline-light"
+              onClick={toggleSidebar}
+              aria-label="Toggle Sidebar"
+            >
+              ☰
+            </button>
+          </div>
+          <ul className="nav d-none d-md-flex">
+            <li className="nav-item">
+              <a href="#" className="nav-link text-white">Home</a>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link text-white">About</a>
+            </li>
+            <li className="nav-item">
+              <a href="#" className="nav-link text-white">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-      <div style={{ marginBottom: "10px" }}>
-        <input type="file" accept="image/*" onChange={handleFileChange} />
-        <button onClick={handleRefresh} style={{ marginLeft: "10px" }}>
-          🔄 Refresh
-        </button>
-      </div>
+      {/* Spacer for fixed header */}
+      <div className="header-spacer" style={{ height: '64px' }} />
 
+      {/* Mobile Sidebar Overlay */}
       <div
-        ref={pasteBoxRef}
-        contentEditable
-        suppressContentEditableWarning={true}
-        style={{
-          border: "2px dashed #ccc",
-          padding: "20px",
-          height: "150px",
-          textAlign: "center",
-          color: "#888",
-          marginBottom: "10px",
-          overflow: "auto",
-        }}
-      >
-        📋 Paste image here (Ctrl+V)
+        className={`mobile-sidebar-overlay ${sidebarOpen ? 'show' : ''}`}
+        onClick={closeSidebar}
+      ></div>
+
+      {/* Layout */}
+      <div className="d-flex" style={{ minHeight: 'calc(100vh - 112px)' }}>
+        {/* Sidebar */}
+        <aside
+          className={`sidebar bg-custom-sidebar p-3 ${sidebarOpen ? 'open' : ''
+            } d-md-block`}
+        >
+          {/* <h5 className="fw-bold mb-3 text-white">Sidebar</h5> */}
+          <ul className="list-unstyled">
+            <li className="p-2 rounded text-white hover-bg">
+              <button onClick={() => { setComp("Addition"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                Addition
+              </button>
+            </li>
+            <li className="p-2 rounded text-white hover-bg">
+              <button onClick={() => { setComp("Translate"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                Translate
+              </button>
+            </li>
+            <li className="p-2 rounded text-white hover-bg">
+              <button onClick={() => { setComp("Dict"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                Dict
+              </button>
+            </li>
+            <li className="p-2 rounded text-white hover-bg">
+              <button onClick={() => { setComp("OCR"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                Image To Text
+              </button>
+            </li>
+          </ul>
+        </aside>
+
+        {/* Main Content */}
+        <main
+          className="flex-grow-1 p-4 bg-custom-content text-dark"
+          style={{
+            height: 'calc(100vh - 112px)',
+            overflowY: 'auto'
+          }}
+        >
+          <div className="mb-4">
+            {comp === "Addition" && <AdditionQuiz />}
+            {comp === "Dict" && <Dict />}
+            {comp === "Translate" && <DerTranslate />}
+            {comp === "OCR" && <Ocr />}
+          </div>
+        </main>
       </div>
 
-      {imagePreview && (
-        <div style={{ marginBottom: "10px" }}>
-          <strong>Preview:</strong>
-          <img
-            src={imagePreview}
-            alt="Selected or pasted"
-            style={{ width: "100%", maxHeight: "300px", objectFit: "contain" }}
-          />
-        </div>
-      )}
-
-      <button onClick={() => RunOCR(fileInput)} disabled={isLoading}>
-        {isLoading ? "Processing..." : "Process OCR"}
-      </button>
-
-      <div style={{ marginTop: "20px" }}>
-        <h3>OCR Result</h3>
-        <textarea
-          value={ocrResult}
-          readOnly
-          style={{ width: "100%", height: "200px" }}
-        />
-      </div>
+      {/* Footer */}
+      <footer className="footer bg-custom-footer text-white text-center py-2 fixed-bottom small">
+        © 2025 My Company. All rights reserved.
+      </footer>
     </div>
   );
-};
-
-export default Ocr;
+}
