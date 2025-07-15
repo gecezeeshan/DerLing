@@ -5,7 +5,6 @@ const Ocr = () => {
   const [fileInput, setFileInput] = useState(null);
   const [ocrResult, setOcrResult] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [imagePreview, setImagePreview] = useState(null);
   const pasteBoxRef = useRef(null);
 
   const RunOCR = async (imageFile) => {
@@ -34,11 +33,8 @@ const Ocr = () => {
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setFileInput(file);
-      setImagePreview(URL.createObjectURL(file));
-      RunOCR(file);
-    }
+    setFileInput(file);
+    if (file) RunOCR(file);
   };
 
   const handlePaste = (e) => {
@@ -47,22 +43,9 @@ const Ocr = () => {
       if (item.type.indexOf("image") !== -1) {
         const file = item.getAsFile();
         setFileInput(file);
-        setImagePreview(URL.createObjectURL(file));
         RunOCR(file);
-        if (pasteBoxRef.current) {
-          pasteBoxRef.current.innerText = "";
-        }
         break;
       }
-    }
-  };
-
-  const handleRefresh = () => {
-    setFileInput(null);
-    setOcrResult("");
-    setImagePreview(null);
-    if (pasteBoxRef.current) {
-      pasteBoxRef.current.innerText = "📋 Paste image here (Ctrl+V)";
     }
   };
 
@@ -78,15 +61,11 @@ const Ocr = () => {
 
       <div style={{ marginBottom: "10px" }}>
         <input type="file" accept="image/*" onChange={handleFileChange} />
-        <button onClick={handleRefresh} style={{ marginLeft: "10px" }}>
-          🔄 Refresh
-        </button>
       </div>
 
       <div
         ref={pasteBoxRef}
         contentEditable
-        suppressContentEditableWarning={true}
         style={{
           border: "2px dashed #ccc",
           padding: "20px",
@@ -94,22 +73,10 @@ const Ocr = () => {
           textAlign: "center",
           color: "#888",
           marginBottom: "10px",
-          overflow: "auto",
         }}
       >
         📋 Paste image here (Ctrl+V)
       </div>
-
-      {imagePreview && (
-        <div style={{ marginBottom: "10px" }}>
-          <strong>Preview:</strong>
-          <img
-            src={imagePreview}
-            alt="Selected or pasted"
-            style={{ width: "100%", maxHeight: "300px", objectFit: "contain" }}
-          />
-        </div>
-      )}
 
       <button onClick={() => RunOCR(fileInput)} disabled={isLoading}>
         {isLoading ? "Processing..." : "Process OCR"}
