@@ -12,7 +12,7 @@ const DerGame = ({ items, lang, roundCount, onRestart }) => {
   const [translation, setTranslation] = useState("");
   const [currentAnswer, setCurrentAnswer] = useState("");
   const [result, setResult] = useState("");
-// eslint-disable-next-line
+  // eslint-disable-next-line
   useEffect(() => {
 
     if (items && items.length > 0) {
@@ -21,9 +21,9 @@ const DerGame = ({ items, lang, roundCount, onRestart }) => {
       prepareQuestion(items);
     }
   }, [items]);
-  
-  
-  
+
+
+
 
   const shuffle = (arr) => arr.sort(() => Math.random() - 0.5);
 
@@ -44,10 +44,10 @@ const DerGame = ({ items, lang, roundCount, onRestart }) => {
       console.warn("Not enough items to prepare question.");
       return;
     }
-  
+
     const correct = items[Math.floor(Math.random() * items.length)];
     const wrongChoices = [];
-  
+
     while (wrongChoices.length < 2) {
       const randomWrong = items[Math.floor(Math.random() * items.length)];
       if (
@@ -57,15 +57,15 @@ const DerGame = ({ items, lang, roundCount, onRestart }) => {
         wrongChoices.push(randomWrong);
       }
     }
-  
+
     const optionList = [correct, ...wrongChoices];
     setOptions(shuffle(optionList));
     setCurrentQuestion(correct);
     setTranslation("");
     setCurrentAnswer("");
   };
-  
-  
+
+
   const handleNextQuestion = () => {
     if (currentRound < roundCount) {
       setCurrentRound(currentRound + 1);
@@ -108,7 +108,7 @@ const DerGame = ({ items, lang, roundCount, onRestart }) => {
         </div>
       )}
 
-      <button onClick={onRestart} style={{ margin: 5, padding: 10 }}>Restart</button>
+
 
       {result && (
         <div style={{ marginTop: 20 }}>

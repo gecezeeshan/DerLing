@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
-const CategorySelector = ({ data, categoryIndex, roundCount, setCategoryIndex, setRoundCount, onStart }) => {
+
+const CategorySelector = ({ data, categoryIndex, roundCount, setCategoryIndex, setRoundCount, onStart, onShowList }) => {
+  const [showList, setShowList] = useState(false);
   return (
     <div style={{ padding: 20, textAlign: "center" }}>
       <h1>Vocabia</h1>
@@ -15,7 +17,7 @@ const CategorySelector = ({ data, categoryIndex, roundCount, setCategoryIndex, s
         </select>
       </div>
 
-      <div style={{ marginBottom: 10 }}>
+      <div style={{ marginBottom: 10, display: "none" }}>
         <label>Number of Rounds: </label>
         <input
           type="number"
@@ -30,7 +32,7 @@ const CategorySelector = ({ data, categoryIndex, roundCount, setCategoryIndex, s
       &nbsp;&nbsp;
       <button disabled={!roundCount} onClick={() => onStart("ar")}>Start Game AR</button>
       &nbsp;&nbsp;
-      <button  onClick={() => onStart("de",true)}>Show List</button>
+      <button onClick={() => {setShowList(!showList), onShowList(showList)}}>Show List</button>
     </div>
   );
 };

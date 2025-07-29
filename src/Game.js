@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import CategorySelector from "./CategorySelector";
 import DerGame from "./DerGame";
+import FlipCardGame from "./FlipCardGame";
+import { useNavigate } from 'react-router-dom';
 
-export default function Game({ onCategorySelect }) {
+export default function Game({ onCategorySelect , onShowList }) {
   const [data, setData] = useState([]);
   const [allItems, setAllItems] = useState([]);
   const [categoryIndex, setCategoryIndex] = useState(0);
   const [roundCount, setRoundCount] = useState(5);
   const [lang, setLang] = useState("de");
   const [gameStarted, setGameStarted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -34,9 +37,9 @@ export default function Game({ onCategorySelect }) {
     }
 
     setAllItems(items);
-    if (!showList) {
-      setGameStarted(true);
-    }
+    // if (!showList) {
+    setGameStarted(true);
+    // }
 
     // Notify parent about selected category
     if (onCategorySelect) {
@@ -48,6 +51,13 @@ export default function Game({ onCategorySelect }) {
     setGameStarted(false);
   };
 
+  const handleFinish = (result) => {
+    //alert(`🎉 Finished!\n\n✅ Known: ${result.known}\n❌ Don't Know: ${result.unknown}\n📚 Total: ${result.total}`);
+    onCategorySelect(null); // Reset selected category
+    setGameStarted(false);
+
+  };
+
   return (
     <>
       {!gameStarted ? (
@@ -55,17 +65,29 @@ export default function Game({ onCategorySelect }) {
           data={data}
           categoryIndex={categoryIndex}
           setCategoryIndex={setCategoryIndex}
+          onShowList={onShowList}
           roundCount={roundCount}
           setRoundCount={setRoundCount}
           onStart={startGame}
         />
       ) : (
-        <DerGame
-          items={allItems}
-          lang={lang}
-          roundCount={roundCount}
-          onRestart={handleRestart}
-        />
+        <>
+          {/* <DerGame
+            items={allItems}
+            lang={lang}
+            roundCount={roundCount}
+            onRestart={handleRestart}
+          /> */}
+
+
+          <FlipCardGame
+            items={allItems}
+            lang={lang}
+            roundCount={roundCount}
+            onRestart={handleRestart}
+            onFinish={handleFinish}></FlipCardGame>
+
+        </>
       )}
     </>
   );
