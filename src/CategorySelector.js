@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { Label } from "recharts";
 
 
-const CategorySelector = ({ data, categoryIndex, roundCount, setCategoryIndex, setRoundCount, onStart, onShowList }) => {
+const CategorySelector = ({ data, roundCount, setCategoryIndex, setRoundCount, onStart, onShowList }) => {
   const [showList, setShowList] = useState(false);
   return (
     <div style={{ padding: 20, textAlign: "center" }}>
@@ -32,7 +33,7 @@ const CategorySelector = ({ data, categoryIndex, roundCount, setCategoryIndex, s
       &nbsp;&nbsp;
       <button disabled={!roundCount} onClick={() => onStart("ar")}>Start Game AR</button>
       &nbsp;&nbsp;
-      <button onClick={() => {setShowList(!showList), onShowList(showList)}}>Show List</button>
+      <button onClick={() => { setShowList(!showList), onShowList(showList) }}> {!showList ? "Show List" : "Hide List"}</button>
     </div>
   );
 };

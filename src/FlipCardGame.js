@@ -16,23 +16,33 @@ const FlipCardGame = ({ items, lang, onFinish }) => {
 
     useEffect(() => {
         const fetchTranslation = async () => {
-            let currentWord1 = items[currentIndex];
-            let _translate = await getExampleSentence(currentWord1.usage);
-            setTranslation(_translate.replace(/"/g, ""));
+            const currentWord = items[currentIndex];
+            const text = lang === "de" ? currentWord.usage : currentWord.arabicUsage;
+
+            try {
+                const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=${lang}&tl=en&q=${encodeURIComponent(text)}`;
+                const response = await axios.get(url);
+                const translated = response.data?.[0];
+                setTranslation(translated ? JSON.stringify(translated).replace(/"/g, "") : "No translation found.");
+            } catch (error) {
+                console.error("Translation fetch error:", error);
+                setTranslation("⚠️ Failed to fetch translation.");
+            }
+        };
+
+        if (items && items.length > 0) {
+            fetchTranslation();
         }
 
-        fetchTranslation();
 
-
-    }, currentIndex);
+    }, [currentIndex, lang, items]);
 
     const handleFlip = () => setIsFlipped(!isFlipped);
 
 
 
     const getExampleSentence = async (word) => {
-        try {
-            debugger;
+        try {            
             const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=de&tl=en&q=${encodeURIComponent(word)}`;
             const response = await axios.get(url);
             return JSON.stringify(response.data[0]);
@@ -51,6 +61,13 @@ const FlipCardGame = ({ items, lang, onFinish }) => {
 
         if (currentIndex < items.length - 1) {
             setCurrentIndex(prev => prev + 1);
+            const fetchTranslation = async () => {
+                let currentWord1 = items[currentIndex];
+                let _translate = await getExampleSentence(currentWord1.usage);
+                setTranslation(_translate.replace(/"/g, ""));
+            }
+
+            fetchTranslation();
         } else {
             onFinish?.({
                 known: knownCount + (known ? 1 : 0),

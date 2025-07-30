@@ -11,19 +11,27 @@ export default function Dict({ onShowList }) {
   //   setGameStarted(true);
   // };
 
+  const onShowListHandler = (showList) => {
+    setShowList(showList);
+  }
 
+
+  const onCategorySelectHandler = (category) => {
+    setSelectedCategory(category);
+  }
   return (
     <>
       <div className="container">
         <div className="row">
           <div className="column left">
-            <Game onCategorySelect={setSelectedCategory} onShowList={setShowList} />
+            <Game onCategorySelect={onCategorySelectHandler} onShowList={onShowListHandler} />
+
           </div>
           {/* <div className="column right">
             <DerTranslate />
           </div> */}
         </div>
-        {selectedCategory && showList &&
+        {showList &&
           <div className="row">
             <div className="column full">
 

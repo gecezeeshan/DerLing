@@ -6,6 +6,7 @@ import Ocr from './Ocr';
 
 export default function Home() {
   const [comp, setComp] = React.useState('Dict');
+  const [dictKey, setDictKey] = React.useState(0);
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   const toggleSidebar = () => {
@@ -75,7 +76,15 @@ export default function Home() {
               </button>
             </li>
             <li className="p-2 rounded text-white hover-bg">
-              <button onClick={() => { setComp("Dict"); closeSidebar(); }} className="btn btn-link text-white p-0">
+              <button onClick={() => {
+                if (comp === "Dict") {
+                  setDictKey(prev => prev + 1); // force reset
+                }
+                setComp("Dict");
+                closeSidebar();
+              }}
+
+                className="btn btn-link text-white p-0">
                 Dict
               </button>
             </li>
@@ -97,7 +106,7 @@ export default function Home() {
         >
           <div className="mb-4">
             {comp === "Addition" && <AdditionQuiz />}
-            {comp === "Dict" && <Dict />}
+            {comp === "Dict" && <Dict key={dictKey} />}
             {comp === "Translate" && <DerTranslate />}
             {comp === "OCR" && <Ocr />}
           </div>

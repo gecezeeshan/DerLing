@@ -4,7 +4,7 @@ import DerGame from "./DerGame";
 import FlipCardGame from "./FlipCardGame";
 import { useNavigate } from 'react-router-dom';
 
-export default function Game({ onCategorySelect , onShowList }) {
+export default function Game({ onCategorySelect, onShowList }) {
   const [data, setData] = useState([]);
   const [allItems, setAllItems] = useState([]);
   const [categoryIndex, setCategoryIndex] = useState(0);
@@ -58,14 +58,24 @@ export default function Game({ onCategorySelect , onShowList }) {
 
   };
 
+  const onShowListHandler = (showList) => {
+    onShowList(showList);
+  }
+  const setCategoryIndexHandler = (index) => {
+    setCategoryIndex(index);
+    const category = data[index - 1];
+    var selectedCategoryName = category.category;
+    onCategorySelect(selectedCategoryName);
+  };
+
   return (
     <>
       {!gameStarted ? (
         <CategorySelector
           data={data}
           categoryIndex={categoryIndex}
-          setCategoryIndex={setCategoryIndex}
-          onShowList={onShowList}
+          setCategoryIndex={setCategoryIndexHandler}
+          onShowList={onShowListHandler}
           roundCount={roundCount}
           setRoundCount={setRoundCount}
           onStart={startGame}
