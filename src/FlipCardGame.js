@@ -42,7 +42,7 @@ const FlipCardGame = ({ items, lang, onFinish }) => {
 
 
     const getExampleSentence = async (word) => {
-        try {            
+        try {
             const url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=de&tl=en&q=${encodeURIComponent(word)}`;
             const response = await axios.get(url);
             return JSON.stringify(response.data[0]);
@@ -60,13 +60,13 @@ const FlipCardGame = ({ items, lang, onFinish }) => {
         setIsFlipped(false); // reset flip state
 
         if (currentIndex < items.length - 1) {
-            setCurrentIndex(prev => prev + 1);
+
             const fetchTranslation = async () => {
                 let currentWord1 = items[currentIndex];
                 let _translate = await getExampleSentence(currentWord1.usage);
                 setTranslation(_translate.replace(/"/g, ""));
             }
-
+            setCurrentIndex(prev => prev + 1);
             fetchTranslation();
         } else {
             onFinish?.({

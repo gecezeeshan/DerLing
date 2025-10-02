@@ -2,6 +2,7 @@ import React from 'react';
 import Dict from './Dict';
 import DerTranslate from './DerTranslate';
 import AdditionQuiz from './AdditionQuiz';
+import WhatsAppQuickChat from './WhatsApp';
 import Ocr from './Ocr';
 
 export default function Home() {
@@ -93,6 +94,11 @@ export default function Home() {
                 Image To Text
               </button>
             </li>
+            <li className="p-2 rounded text-white hover-bg">
+              <button onClick={() => { setComp("WhatsAppQuickChat"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                Whatsapp Link
+              </button>
+            </li>
           </ul>
         </aside>
 
@@ -109,6 +115,7 @@ export default function Home() {
             {comp === "Dict" && <Dict key={dictKey} />}
             {comp === "Translate" && <DerTranslate />}
             {comp === "OCR" && <Ocr />}
+            {comp === "WhatsAppQuickChat" && <WhatsAppQuickChat />}
           </div>
         </main>
       </div>
