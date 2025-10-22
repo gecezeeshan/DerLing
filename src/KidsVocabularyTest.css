@@ -124,3 +124,41 @@
 .kids-vocab-container .message:empty {
   display: none;
 }
+
+
+/* 👀 Show Word and Skip buttons */
+.kids-vocab-container .extra-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kids-vocab-container .show-btn {
+  background-color: #ffb84d;
+  color: #333;
+}
+
+.kids-vocab-container .show-btn:hover {
+  background-color: #ffa31a;
+}
+
+.kids-vocab-container .skip-btn {
+  background-color: #888;
+}
+
+.kids-vocab-container .skip-btn:hover {
+  background-color: #666;
+}
+
+.kids-vocab-container .showed-word {
+  margin-top: 10px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #2d6a4f;
+  background: #e9f5e9;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
