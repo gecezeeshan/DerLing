@@ -87,3 +87,40 @@
   font-weight: 600;
   color: #666;
 }
+
+
+/* 👀 Show Word Section */
+.kids-vocab-container .show-word-area {
+  margin-top: 15px;
+}
+
+.kids-vocab-container .show-word-area button {
+  background-color: #ffb84d;
+  color: #333;
+}
+
+.kids-vocab-container .show-word-area button:hover {
+  background-color: #ffa31a;
+}
+
+.kids-vocab-container .showed-word {
+  margin-top: 10px;
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #2d6a4f;
+  background: #e9f5e9;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* 🎉 End Message when Quiz Finishes */
+.kids-vocab-container .message {
+  font-size: 1.2em;
+  color: #333;
+  margin-top: 20px;
+}
+
+.kids-vocab-container .message:empty {
+  display: none;
+}
