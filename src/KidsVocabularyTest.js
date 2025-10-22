@@ -6,6 +6,7 @@ export default function KidsVocabularyTest() {
   const [remainingWords, setRemainingWords] = useState([]);
   const [currentWord, setCurrentWord] = useState('');
   const [userInput, setUserInput] = useState('');
+  const [typedList, setTypedList] = useState('');
   const [score, setScore] = useState(0);
   const [wrong, setWrong] = useState(0);
   const [attempted, setAttempted] = useState(0);
@@ -100,7 +101,7 @@ export default function KidsVocabularyTest() {
     }
   };
 
-  // ✅ Upload word list
+  // ✅ Upload file
   const handleFileUpload = (event) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -115,19 +116,38 @@ export default function KidsVocabularyTest() {
         .filter(Boolean);
 
       if (list.length > 0) {
-        setWords(list);
-        setRemainingWords(list);
-        setScore(0);
-        setWrong(0);
-        setAttempted(0);
-        setMessage('');
-        const first = list[Math.floor(Math.random() * list.length)];
-        setCurrentWord(first);
-        setRemainingWords(list.filter((w) => w !== first));
-        setTimeout(() => speakWord(), 400);
+        initializeQuiz(list);
       }
     };
     reader.readAsText(file);
+  };
+
+  // ✅ Start quiz from typed words
+  const handleStartFromText = () => {
+    const list = typedList
+      .split(/[\n,]+/)
+      .map((w) => w.trim())
+      .filter(Boolean);
+
+    if (list.length === 0) {
+      alert('Please type or paste some words first.');
+      return;
+    }
+    initializeQuiz(list);
+  };
+
+  // ✅ Common quiz initializer
+  const initializeQuiz = (list) => {
+    setWords(list);
+    setRemainingWords(list);
+    setScore(0);
+    setWrong(0);
+    setAttempted(0);
+    setMessage('');
+    const first = list[Math.floor(Math.random() * list.length)];
+    setCurrentWord(first);
+    setRemainingWords(list.filter((w) => w !== first));
+    setTimeout(() => speakWord(), 400);
   };
 
   const handleCheck = () => {
@@ -144,8 +164,19 @@ export default function KidsVocabularyTest() {
     <div className="kids-vocab-container">
       <h1>🧠 Kids Vocabulary Test</h1>
 
+      {/* 🔤 Manual Input Section */}
+      <textarea
+        className="word-input-box"
+        value={typedList}
+        onChange={(e) => setTypedList(e.target.value)}
+        placeholder="Type or paste words here (comma or newline separated)..."
+      />
+      <button type="button" onClick={handleStartFromText}>
+        ▶️ Start Test
+      </button>
+
+      <p className="info">OR upload a .txt/.csv file:</p>
       <input type="file" accept=".txt,.csv" onChange={handleFileUpload} />
-      <p className="info">Upload words (one per line or comma-separated)</p>
 
       {words.length > 0 && currentWord ? (
         <div className="quiz-box">
@@ -196,7 +227,7 @@ export default function KidsVocabularyTest() {
           </div>
         </div>
       ) : (
-        <p className="empty-state">Upload a word list to begin the quiz.</p>
+        <p className="empty-state">Enter or upload words to begin the quiz.</p>
       )}
     </div>
   );

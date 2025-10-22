@@ -164,3 +164,15 @@
 }
 
 
+/* ✏️ Word input box */
+.kids-vocab-container .word-input-box {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  font-family: 'Comic Sans MS', sans-serif;
+  margin-top: 10px;
+}
