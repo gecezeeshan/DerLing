@@ -4,6 +4,7 @@ import DerTranslate from './DerTranslate';
 import AdditionQuiz from './AdditionQuiz';
 import WhatsAppQuickChat from './WhatsApp';
 import Ocr from './Ocr';
+import KidsVocabularyTest from './KidsVocabularyTest';
 
 export default function Home() {
   const [comp, setComp] = React.useState('Dict');
@@ -72,6 +73,11 @@ export default function Home() {
               </button>
             </li>
             <li className="p-2 rounded text-white hover-bg">
+              <button onClick={() => { setComp("Vocabulary"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                Kids Vocabulary Test
+              </button>
+            </li>
+            <li className="p-2 rounded text-white hover-bg">
               <button onClick={() => { setComp("Translate"); closeSidebar(); }} className="btn btn-link text-white p-0">
                 Translate
               </button>
@@ -112,6 +118,7 @@ export default function Home() {
         >
           <div className="mb-4">
             {comp === "Addition" && <AdditionQuiz />}
+            {comp === "Vocabulary" && <KidsVocabularyTest />}
             {comp === "Dict" && <Dict key={dictKey} />}
             {comp === "Translate" && <DerTranslate />}
             {comp === "OCR" && <Ocr />}

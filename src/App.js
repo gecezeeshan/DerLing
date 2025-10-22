@@ -7,6 +7,7 @@ import Dict from './Dict';
 import Home from './Home';
 import AdditionQuiz from './AdditionQuiz';
 import Ocr from './Ocr';
+import KidsVocabularyTest from './KidsVocabularyTest';
 
 function HomePage() {
 
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/Counter" element={<Counter />} />
         <Route path="/Dict" element={<Dict />} />
         <Route path="/OCR" element={<Ocr />} />
+        <Route path="/KidsVocabulary" element={<KidsVocabularyTest />} />
       </Routes>
     </Router>
   );
