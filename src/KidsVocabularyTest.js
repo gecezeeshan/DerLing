@@ -1,233 +1,156 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import './KidsVocabularyTest.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
-export default function KidsVocabularyTest() {
+export default function App() {
   const [words, setWords] = useState([]);
-  const [remainingWords, setRemainingWords] = useState([]);
-  const [currentWord, setCurrentWord] = useState('');
-  const [userInput, setUserInput] = useState('');
-  const [typedList, setTypedList] = useState('');
+  const [currentWord, setCurrentWord] = useState("");
+  const [spokenLetters, setSpokenLetters] = useState([]);
   const [score, setScore] = useState(0);
-  const [wrong, setWrong] = useState(0);
   const [attempted, setAttempted] = useState(0);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [listening, setListening] = useState(false);
-  const [showWord, setShowWord] = useState(false);
-  const recognitionRef = useRef(null);
+  const [recognition, setRecognition] = useState(null);
 
-  // ✅ Speak the word
-  const speakWord = useCallback(() => {
-    if (!currentWord || typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(currentWord);
-    utterance.lang = 'en-US';
-    utterance.rate = 0.8;
-    window.speechSynthesis.speak(utterance);
-  }, [currentWord]);
-
-  // ✅ Pick next word
-  const pickNextWord = useCallback(() => {
-    if (remainingWords.length === 0) {
-      setCurrentWord('');
-      setMessage('🎉 Quiz Finished!');
-      return;
-    }
-    const randomIndex = Math.floor(Math.random() * remainingWords.length);
-    const nextWord = remainingWords[randomIndex];
-    const updated = [...remainingWords];
-    updated.splice(randomIndex, 1);
-    setRemainingWords(updated);
-    setCurrentWord(nextWord);
-    setShowWord(false);
-    setTimeout(() => speakWord(), 400);
-  }, [remainingWords, speakWord]);
-
-  // ✅ Check answer
-  const checkAnswer = useCallback(
-    (answer) => {
-      if (!currentWord) return;
-      const normalized = answer.trim().toLowerCase();
-      const correct = currentWord.trim().toLowerCase();
-      setAttempted((p) => p + 1);
-
-      if (normalized === correct) {
-        setScore((p) => p + 1);
-        setMessage('🎉 Correct!');
-      } else {
-        setWrong((p) => p + 1);
-        setMessage(`❌ Wrong! The correct word was: ${currentWord}`);
-      }
-
-      setUserInput('');
-      setTimeout(() => pickNextWord(), 1500);
-    },
-    [currentWord, pickNextWord]
-  );
-
-  // ✅ Speech recognition setup
+  // Initialize Speech Recognition
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) return;
+    if ("webkitSpeechRecognition" in window || "SpeechRecognition" in window) {
+      const SpeechRecognition =
+        window.SpeechRecognition || window.webkitSpeechRecognition;
+      const recog = new SpeechRecognition();
+      recog.lang = "en-US";
+      recog.continuous = true;
+      recog.interimResults = false;
 
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'en-US';
-    recognition.continuous = false;
-    recognition.interimResults = false;
+      recog.onresult = (event) => {
+        const speech = event.results[event.results.length - 1][0].transcript
+          .trim()
+          .toUpperCase();
 
-    recognition.onresult = (e) => {
-      const transcript = e.results[0][0].transcript.trim().toLowerCase();
-      checkAnswer(transcript);
-      setListening(false);
-    };
-    recognition.onend = () => setListening(false);
-    recognitionRef.current = recognition;
+        // Extract letters only (A-Z)
+        const letters = speech.replace(/[^A-Z]/g, "").split("");
+        if (letters.length > 0) {
+          setSpokenLetters((prev) => [...prev, ...letters]);
+        }
+      };
 
-    return () => recognition.stop();
-  }, [checkAnswer]);
-
-  const startListening = () => {
-    const recognition = recognitionRef.current;
-    if (!recognition) {
-      alert('Speech Recognition not supported on this browser.');
-      return;
+      recog.onend = () => setListening(false);
+      setRecognition(recog);
+    } else {
+      alert("Speech Recognition not supported on this browser. Use Chrome.");
     }
-    setListening(true);
-    try {
-      recognition.start();
-    } catch (error) {
-      console.error('Speech error', error);
-      setListening(false);
-    }
-  };
+  }, []);
 
-  // ✅ Upload file
-  const handleFileUpload = (event) => {
-    const file = event.target.files?.[0];
+  // File upload
+  const handleFileUpload = (e) => {
+    const file = e.target.files[0];
     if (!file) return;
+
     const reader = new FileReader();
-    reader.onload = (e) => {
-      const text = e.target?.result;
-      if (typeof text !== 'string') return;
-
-      const list = text
-        .split(/[\n,]+/)
-        .map((w) => w.trim())
-        .filter(Boolean);
-
-      if (list.length > 0) {
-        initializeQuiz(list);
-      }
+    reader.onload = (event) => {
+      const text = event.target.result;
+      const list = text.split(/[\n,]+/).map((w) => w.trim()).filter(Boolean);
+      setWords(list);
+      pickRandomWord(list);
     };
     reader.readAsText(file);
   };
 
-  // ✅ Start quiz from typed words
-  const handleStartFromText = () => {
-    const list = typedList
-      .split(/[\n,]+/)
-      .map((w) => w.trim())
-      .filter(Boolean);
+  // Speak word aloud
+  const speakWord = () => {
+    if (!currentWord) return;
+    const utter = new SpeechSynthesisUtterance(currentWord);
+    utter.lang = "en-US";
+    utter.rate = 0.8;
+    window.speechSynthesis.speak(utter);
+  };
 
-    if (list.length === 0) {
-      alert('Please type or paste some words first.');
-      return;
+  // Pick random word
+  const pickRandomWord = (list = words) => {
+    if (list.length > 0) {
+      const next = list[Math.floor(Math.random() * list.length)];
+      setCurrentWord(next);
+      setSpokenLetters([]);
+      setMessage("");
     }
-    initializeQuiz(list);
   };
 
-  // ✅ Common quiz initializer
-  const initializeQuiz = (list) => {
-    setWords(list);
-    setRemainingWords(list);
-    setScore(0);
-    setWrong(0);
-    setAttempted(0);
-    setMessage('');
-    const first = list[Math.floor(Math.random() * list.length)];
-    setCurrentWord(first);
-    setRemainingWords(list.filter((w) => w !== first));
-    setTimeout(() => speakWord(), 400);
+  // Start listening for letters
+  const startListening = () => {
+    if (!recognition) return;
+    setSpokenLetters([]);
+    setListening(true);
+    recognition.start();
   };
 
-  const handleCheck = () => {
-    if (userInput.trim()) checkAnswer(userInput);
+  // Stop listening
+  const stopListening = () => {
+    if (recognition) recognition.stop();
+    setListening(false);
   };
 
-  const handleSkip = () => {
-    setAttempted((p) => p + 1);
-    setMessage(`⏭️ Skipped! The word was: ${currentWord}`);
-    setTimeout(() => pickNextWord(), 1000);
+  // Check spelling
+  const checkAnswer = () => {
+    const spelledWord = spokenLetters.join("").toLowerCase();
+    const correct = currentWord.toLowerCase();
+
+    setAttempted((a) => a + 1);
+    if (spelledWord === correct) {
+      setScore((s) => s + 1);
+      setMessage("🎉 Correct! Great spelling!");
+    } else {
+      setMessage(`❌ Incorrect. The word was "${currentWord}".`);
+    }
+
+    setTimeout(() => {
+      pickRandomWord();
+      speakWord();
+    }, 2000);
   };
 
   return (
-    <div className="kids-vocab-container">
-      <h1>🧠 Kids Vocabulary Test</h1>
+    <div className="app-container">
+      <h1>🧒 Spelling Bee App</h1>
 
-      {/* 🔤 Manual Input Section */}
-      <textarea
-        className="word-input-box"
-        value={typedList}
-        onChange={(e) => setTypedList(e.target.value)}
-        placeholder="Type or paste words here (comma or newline separated)..."
-      />
-      <button type="button" onClick={handleStartFromText}>
-        ▶️ Start Test
-      </button>
-
-      <p className="info">OR upload a .txt/.csv file:</p>
       <input type="file" accept=".txt,.csv" onChange={handleFileUpload} />
+      <p className="info">Upload words (one per line or comma-separated)</p>
 
-      {words.length > 0 && currentWord ? (
+      {words.length > 0 && (
         <div className="quiz-box">
-          <h2>Listen carefully 👂</h2>
-          <button type="button" onClick={speakWord}>🔊 Play Word</button>
+          <h2>Listen to the word and spell it letter by letter!</h2>
+          <button onClick={speakWord}>🔊 Play Word</button>
 
-          <div className="input-area">
-            <input
-              type="text"
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              placeholder="Type the word..."
-            />
-            <button type="button" onClick={handleCheck}>Check</button>
-          </div>
-
-          <p className="divider">OR</p>
-
-          <button
-            type="button"
-            className={listening ? 'mic-on' : 'mic-off'}
-            onClick={startListening}
-            disabled={listening}
-          >
-            {listening ? '🎙️ Listening...' : '🎤 Speak the Word'}
-          </button>
-
-          <div className="extra-buttons">
-            {!showWord && (
-              <button type="button" className="show-btn" onClick={() => setShowWord(true)}>
-                👀 Show Word
+          <div className="mic-controls">
+            {!listening ? (
+              <button onClick={startListening}>🎤 Start Speaking</button>
+            ) : (
+              <button className="stop-btn" onClick={stopListening}>
+                ⏹️ Stop Listening
               </button>
             )}
-            <button type="button" className="skip-btn" onClick={handleSkip}>
-              ⏭️ Skip
-            </button>
           </div>
 
-          {showWord && <p className="showed-word">📖 {currentWord}</p>}
+          <div className="spelling-box">
+            <h3>📝 Your Spelling:</h3>
+            <div className="letters">
+              {spokenLetters.map((l, i) => (
+                <span key={i} className="letter">
+                  {l}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <button className="check-btn" onClick={checkAnswer}>
+            ✅ Check
+          </button>
 
           <p className="message">{message}</p>
 
           <div className="score">
-            <p>✅ Correct: <b>{score}</b></p>
-            <p>❌ Wrong: <b>{wrong}</b></p>
-            <p>📊 Attempted: <b>{attempted}</b></p>
-            <p>🧾 Remaining: <b>{remainingWords.length}</b></p>
+            <p>✅ Score: {score}</p>
+            <p>📊 Attempted: {attempted}</p>
           </div>
         </div>
-      ) : (
-        <p className="empty-state">Enter or upload words to begin the quiz.</p>
       )}
     </div>
   );
