@@ -176,3 +176,78 @@
   font-family: 'Comic Sans MS', sans-serif;
   margin-top: 10px;
 }
+
+.app-container {
+  text-align: center;
+  margin: 40px auto;
+  font-family: "Comic Sans MS", sans-serif;
+  max-width: 600px;
+  color: #333;
+}
+
+.quiz-box {
+  margin-top: 30px;
+  background: #fef9ef;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+button {
+  margin: 8px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #357ac7;
+}
+
+.stop-btn {
+  background-color: #e24a4a;
+}
+
+.check-btn {
+  background-color: #44b77b;
+}
+
+.letters {
+  margin-top: 10px;
+  font-size: 1.8em;
+  letter-spacing: 0.3em;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  min-height: 40px;
+  display: inline-block;
+}
+
+.letter {
+  color: #222;
+  font-weight: bold;
+}
+
+.message {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.score {
+  margin-top: 20px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.info {
+  color: #555;
+  font-style: italic;
+}
+
+
