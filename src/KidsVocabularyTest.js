@@ -23,19 +23,23 @@ export default function KidsSpellingBee() {
     window.speechSynthesis.speak(utterance);
   }, [currentWord]);
 
-  const pickNextWord = useCallback(() => {
-    if (remainingWords.length === 0) {
-      setCurrentWord("");
-      return;
-    }
-    const randomIndex = Math.floor(Math.random() * remainingWords.length);
-    const nextWord = remainingWords[randomIndex];
-    const updatedRemaining = [...remainingWords];
-    updatedRemaining.splice(randomIndex, 1);
-    setRemainingWords(updatedRemaining);
-    setCurrentWord(nextWord);
-    setTimeout(() => speakWord(), 400);
-  }, [remainingWords, speakWord]);
+const pickNextWord = useCallback(() => {
+  if (remainingWords.length === 0) {
+    setCurrentWord("");
+    return;
+  }
+
+  const randomIndex = Math.floor(Math.random() * remainingWords.length);
+  const nextWord = remainingWords[randomIndex];
+
+  const updatedRemaining = [...remainingWords];
+  updatedRemaining.splice(randomIndex, 1);
+
+  setRemainingWords(updatedRemaining);
+  setCurrentWord(nextWord);
+
+  // ✅ Do NOT auto speak on check
+}, [remainingWords]);
 
   const checkAnswer = useCallback(
     (answer) => {
@@ -80,18 +84,22 @@ export default function KidsSpellingBee() {
     recognitionRef.current.start();
   };
 
-  const initializeQuiz = (list) => {
-    setWords(list);
-    setRemainingWords(list);
-    setCorrectCount(0);
-    setWrongCount(0);
-    setResults([]);
-    setMessage("");
-    const first = list[Math.floor(Math.random() * list.length)];
-    setCurrentWord(first);
-    setRemainingWords(list.filter((w) => w !== first));
-    setTimeout(() => speakWord(), 400);
-  };
+const initializeQuiz = (list) => {
+  setWords(list);
+  setRemainingWords(list);
+  setCorrectCount(0);
+  setWrongCount(0);
+  setResults([]);
+  setMessage("");
+
+  const first = list[Math.floor(Math.random() * list.length)];
+  setCurrentWord(first);
+  setRemainingWords(list.filter((w) => w !== first));
+
+  // ✅ Speak once when quiz starts
+  setTimeout(() => speakWord(first), 400);
+};
+
 
   const handleStartFromText = () => {
     const list = typedList
