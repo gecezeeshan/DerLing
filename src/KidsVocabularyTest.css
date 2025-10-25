@@ -1,22 +1,40 @@
+/* 🌟 Main Wrapper */
 .kids-vocab-container {
   text-align: center;
   margin: 40px auto;
-  font-family: 'Comic Sans MS', sans-serif;
-  max-width: 600px;
+  font-family: "Comic Sans MS", sans-serif;
+  max-width: 650px;
   color: #333;
 }
 
+/* 🧾 Quiz Box */
 .kids-vocab-container .quiz-box {
   margin-top: 30px;
-  background: #f8f9ff;
+  background: #fef9ef;
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.kids-vocab-container button {
+/* ✏️ Word Input Box */
+.kids-vocab-container .word-input-box,
+.word-input-box {
+  width: 100%;
+  min-height: 150px;
+  padding: 15px;
+  font-size: 1.1em;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  resize: vertical;
+  margin-top: 15px;
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+/* 🧠 Buttons */
+.kids-vocab-container button,
+button {
   margin: 8px;
-  padding: 12px 20px;
+  padding: 12px 22px;
   border: none;
   border-radius: 8px;
   background-color: #4a90e2;
@@ -26,20 +44,63 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-.kids-vocab-container button:hover {
+.kids-vocab-container button:hover,
+button:hover {
   background-color: #357ac7;
 }
 
-.kids-vocab-container button:disabled {
+button:disabled {
   background-color: #a3c4ea;
   cursor: not-allowed;
 }
 
-.kids-vocab-container .mic-on {
+/* 🎤 Mic */
+.mic-on,
+.stop-btn {
   background-color: #e24a4a;
 }
 
-.kids-vocab-container .input-area {
+/* ✅ Check Answer */
+.check-btn {
+  background-color: #44b77b;
+}
+.check-btn:hover {
+  background-color: #3da86e;
+}
+
+/* 👀 Show + Skip Buttons */
+.kids-vocab-container .extra-buttons,
+.show-word-area {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kids-vocab-container .show-btn,
+.show-word-area button {
+  background-color: #ffb84d;
+  color: #333;
+}
+.kids-vocab-container .show-btn:hover,
+.show-word-area button:hover {
+  background-color: #ffa31a;
+}
+
+.kids-vocab-container .skip-btn,
+.skip-btn {
+  background-color: #888;
+  color: #fff;
+}
+.kids-vocab-container .skip-btn:hover,
+.skip-btn:hover {
+  background-color: #666;
+}
+
+/* ✍️ Typing Input */
+.kids-vocab-container .input-area,
+.input-area {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -47,132 +108,90 @@
   margin-top: 16px;
 }
 
-.kids-vocab-container .input-area input {
-  flex: 1 1 220px;
-  padding: 10px;
-  font-size: 1.1em;
+.kids-vocab-container .input-area input,
+.typed-input {
+  flex: 1 1 240px;
+  padding: 12px;
+  font-size: 1.2em;
   border-radius: 8px;
   border: 1px solid #ccc;
+  outline: none;
+  text-align: center;
+  font-family: "Comic Sans MS", sans-serif;
 }
 
-.kids-vocab-container .message {
+/* 🔡 Spoken-letter style (if used later) */
+.typed-input {
+  font-size: 1.8em;
+  width: 70%;
   margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-family: monospace;
+}
+
+/* 👁️ Showed Word */
+.kids-vocab-container .showed-word,
+.showed-word {
+  margin-top: 10px;
+  font-size: 1.4em;
   font-weight: bold;
+  color: #2d6a4f;
+  background: #e9f5e9;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* 💬 Feedback Message */
+.kids-vocab-container .message,
+.message {
+  margin-top: 18px;
+  font-weight: bold;
+  font-size: 1.2em;
   color: #333;
 }
-
-.kids-vocab-container .score {
-  margin-top: 20px;
-  background: #fff;
-  padding: 10px;
-  border-radius: 10px;
+.message:empty {
+  display: none;
 }
 
-.kids-vocab-container .score-value {
-  font-weight: 600;
-}
-
-.kids-vocab-container .info {
+/* 📢 Info Text */
+.kids-vocab-container .info,
+.info {
   color: #555;
   font-style: italic;
+  margin-top: 8px;
 }
 
-.kids-vocab-container .empty-state {
+/* 🔚 Empty State */
+.kids-vocab-container .empty-state,
+.empty-state {
   margin-top: 20px;
   color: #777;
 }
 
-.kids-vocab-container .divider {
+/* ➖ Divider */
+.kids-vocab-container .divider,
+.divider {
   margin: 18px 0 8px;
   font-weight: 600;
   color: #666;
 }
 
-
-/* 👀 Show Word Section */
-.kids-vocab-container .show-word-area {
+/* 🎉 Results Box */
+.result-box {
+  margin-top: 30px;
+  padding: 25px;
+  background: #fff8eb;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+.result-box ul {
+  list-style: none;
+  padding: 0;
   margin-top: 15px;
 }
-
-.kids-vocab-container .show-word-area button {
-  background-color: #ffb84d;
-  color: #333;
-}
-
-.kids-vocab-container .show-word-area button:hover {
-  background-color: #ffa31a;
-}
-
-.kids-vocab-container .showed-word {
-  margin-top: 10px;
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #2d6a4f;
-  background: #e9f5e9;
-  padding: 8px 16px;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-/* 🎉 End Message when Quiz Finishes */
-.kids-vocab-container .message {
+.result-box li {
+  padding: 6px 0;
   font-size: 1.2em;
-  color: #333;
-  margin-top: 20px;
-}
-
-.kids-vocab-container .message:empty {
-  display: none;
-}
-
-
-/* 👀 Show Word and Skip buttons */
-.kids-vocab-container .extra-buttons {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.kids-vocab-container .show-btn {
-  background-color: #ffb84d;
-  color: #333;
-}
-
-.kids-vocab-container .show-btn:hover {
-  background-color: #ffa31a;
-}
-
-.kids-vocab-container .skip-btn {
-  background-color: #888;
-}
-
-.kids-vocab-container .skip-btn:hover {
-  background-color: #666;
-}
-
-.kids-vocab-container .showed-word {
-  margin-top: 10px;
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #2d6a4f;
-  background: #e9f5e9;
-  padding: 8px 16px;
-  border-radius: 8px;
-  display: inline-block;
-}
-
-
-/* ✏️ Word input box */
-.kids-vocab-container .word-input-box {
-  width: 100%;
-  min-height: 100px;
-  padding: 10px;
-  font-size: 1em;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  resize: vertical;
-  font-family: 'Comic Sans MS', sans-serif;
-  margin-top: 10px;
 }
