@@ -8,7 +8,7 @@ import Home from './Home';
 import AdditionQuiz from './AdditionQuiz';
 import Ocr from './Ocr';
 import KidsVocabularyTest from './KidsVocabularyTest';
-
+import KidsHangman from './KidsHangman';
 function HomePage() {
 
 
@@ -35,6 +35,7 @@ export default function App() {
         <Route path="/Dict" element={<Dict />} />
         <Route path="/OCR" element={<Ocr />} />
         <Route path="/KidsVocabulary" element={<KidsVocabularyTest />} />
+        <Route path="/KidsHangman" element={<KidsHangman />} />
       </Routes>
     </Router>
   );
