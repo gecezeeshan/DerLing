@@ -17,6 +17,7 @@ export default function KidsHangman() {
 
   const normalizedWord = current.toUpperCase();
 
+  // ✅ Masked display (_ _ _ _)
   const masked = useMemo(() => {
     return normalizedWord
       .split("")
@@ -24,44 +25,53 @@ export default function KidsHangman() {
       .join(" ");
   }, [normalizedWord, guessed]);
 
-  const quizFinished = results.length === words.length && words.length > 0;
+  // ✅ Speak the word
+  const speakWord = useCallback((word = current) => {
+    if (!word || !window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(word);
+    utter.lang = "en-US";
+    utter.rate = 0.8;
+    window.speechSynthesis.speak(utter);
+  }, [current]);
 
+  // ✅ Setup new word
   const initRound = useCallback((list) => {
     const index = Math.floor(Math.random() * list.length);
     const word = list[index];
     const rest = list.filter((_, i) => i !== index);
+
     setCurrent(word);
     setRemaining(rest);
     setGuessed(new Set());
     setWrong(0);
     setMessage("");
-  }, []);
 
-  const initializeQuiz = useCallback(
-    (list) => {
-      const clean = list.map((w) => w.trim()).filter(Boolean);
-      if (!clean.length) return;
-      setWords(clean);
-      setResults([]);
-      initRound(clean);
-    },
-    [initRound]
-  );
+    setTimeout(() => speakWord(word), 400); // ✅ play word when shown
+  }, [speakWord]);
 
-  const nextWord = useCallback(
-    (solved) => {
-      setResults((prev) => [...prev, { word: current, solved }]);
-      if (remaining.length === 0) {
-        setCurrent("");
-        return;
-      }
-      initRound(remaining);
-    },
-    [current, remaining, initRound]
-  );
+  const initializeQuiz = useCallback((list) => {
+    const clean = list.map((w) => w.trim()).filter(Boolean);
+    if (!clean.length) return;
+    setWords(clean);
+    setResults([]);
+    initRound(clean);
+  }, [initRound]);
 
+  const nextWord = useCallback((solved) => {
+    setResults((prev) => [...prev, { word: current, solved }]);
+    if (remaining.length === 0) {
+      setCurrent("");
+      return;
+    }
+    initRound(remaining);
+  }, [current, remaining, initRound]);
+
+  const quizFinished = results.length === words.length && words.length > 0;
+
+  // ✅ Guess Letter
   const onLetterClick = (ch) => {
-    if (!current || quizFinished || guessed.has(ch)) return;
+    if (!current || guessed.has(ch)) return;
 
     const newSet = new Set(guessed);
     newSet.add(ch);
@@ -78,13 +88,14 @@ export default function KidsHangman() {
       return;
     }
 
-    // Check solved
+    // ✅ solved
     if (normalizedWord.split("").every((c) => !/[A-Z]/.test(c) || newSet.has(c))) {
-      setMessage("🎉 Great job! You solved it!");
+      setMessage("🎉 Correct!");
       setTimeout(() => nextWord(true), 800);
     }
   };
 
+  // Buttons
   const onRetry = () => {
     setGuessed(new Set());
     setWrong(0);
@@ -107,9 +118,10 @@ export default function KidsHangman() {
     setMessage("");
   };
 
+  // Start Game
   const handleStartFromText = () => {
     const list = typedList.split(/[\n,]+/).map((w) => w.trim()).filter(Boolean);
-    if (!list.length) return alert("Please enter some words first.");
+    if (!list.length) return alert("Please enter words first.");
     initializeQuiz(list);
   };
 
@@ -118,20 +130,19 @@ export default function KidsHangman() {
     if (!file) return;
     const reader = new FileReader();
     reader.onload = (e) => {
-      const text = e.target.result;
-      const list = text.split(/[\n,]+/).map((w) => w.trim()).filter(Boolean);
+      const list = String(e.target.result).split(/[\n,]+/).map((w) => w.trim()).filter(Boolean);
       initializeQuiz(list);
     };
     reader.readAsText(file);
   };
 
+  // Hangman drawing
   const HangmanSVG = () => (
     <svg width="170" height="180" viewBox="0 0 170 180">
       <line x1="20" y1="170" x2="120" y2="170" stroke="#444" strokeWidth="4" />
       <line x1="60" y1="170" x2="60" y2="20" stroke="#444" strokeWidth="4" />
       <line x1="60" y1="20" x2="120" y2="20" stroke="#444" strokeWidth="4" />
       <line x1="120" y1="20" x2="120" y2="40" stroke="#444" strokeWidth="4" />
-
       {wrong > 0 && <circle cx="120" cy="55" r="15" stroke="#e24a4a" strokeWidth="4" fill="none" />}
       {wrong > 1 && <line x1="120" y1="70" x2="120" y2="110" stroke="#e24a4a" strokeWidth="4" />}
       {wrong > 2 && <line x1="120" y1="80" x2="100" y2="95" stroke="#e24a4a" strokeWidth="4" />}
@@ -143,8 +154,9 @@ export default function KidsHangman() {
 
   return (
     <div className="kids-hangman">
-      <h1>🪢 Kids Hangman</h1>
+      <h1>🪢 Kids Hangman (Spelling)</h1>
 
+      {/* Start Screen */}
       {!words.length && (
         <div className="setup-card">
           <textarea
@@ -154,11 +166,12 @@ export default function KidsHangman() {
             placeholder="Type or paste words here..."
           />
           <button onClick={handleStartFromText}>▶️ Start Game</button>
-          <p className="info">or upload a word file:</p>
+          <p className="info">OR Upload .txt / .csv</p>
           <input type="file" accept=".txt,.csv" onChange={handleFileUpload} />
         </div>
       )}
 
+      {/* Game Screen */}
       {!!current && !quizFinished && (
         <div className="game-card">
           <div className="status-row">
@@ -170,6 +183,9 @@ export default function KidsHangman() {
             <HangmanSVG />
             <div className="masked">{masked}</div>
           </div>
+
+          {/* ✅ Play sound button */}
+          <button className="play-btn" onClick={() => speakWord()}>🔊 Hear Word</button>
 
           <div className="keyboard">
             {letters.map((l) => (
@@ -193,21 +209,21 @@ export default function KidsHangman() {
         </div>
       )}
 
+      {/* Result Screen */}
       {quizFinished && (
         <div className="results-card">
-          <h2>🎉 Finished!</h2>
+          <h2>🎉 Completed!</h2>
           <p>
-            ✅ Correct: {results.filter((r) => r.solved).length} &nbsp;|&nbsp;
-            ❌ Wrong: {results.filter((r) => !r.solved).length}
+            ✅ Correct: {results.filter(r => r.solved).length} &nbsp;|&nbsp;
+            ❌ Wrong: {results.filter(r => !r.solved).length}
           </p>
           <ul>
             {results.map((r, i) => (
               <li key={i}>
-                {i + 1}. {r.word} — {r.solved ? "✅ Solved" : "❌ Missed"}
+                {i + 1}. {r.word} — {r.solved ? "✅" : "❌"}
               </li>
             ))}
           </ul>
-
           <button onClick={onRestart}>🔄 Restart</button>
         </div>
       )}

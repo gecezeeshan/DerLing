@@ -79,7 +79,7 @@ export default function Home() {
                 Kids Vocabulary Test
               </button>
             </li>
-              <li className="p-2 rounded text-white hover-bg">
+            <li className="p-2 rounded text-white hover-bg">
               <button onClick={() => { setComp("KidsHangman"); closeSidebar(); }} className="btn btn-link text-white p-0">
                 Kids Hangman
               </button>
