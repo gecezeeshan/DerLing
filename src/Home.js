@@ -115,7 +115,7 @@ export default function Home() {
             </li>
             <li className="p-2 rounded text-white hover-bg">
               <button onClick={() => { setComp("PMP"); closeSidebar(); }} className="btn btn-link text-white p-0">
-                PMP Quiz
+                Quiz
               </button>
             </li>
           </ul>

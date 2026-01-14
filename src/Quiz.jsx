@@ -1,5 +1,4 @@
-import { useMemo, useState } from "react";
-import questionsData from "../public/questions.json";
+import { useMemo, useState, useEffect } from "react";
 
 /**
  * Quiz component:
@@ -8,7 +7,31 @@ import questionsData from "../public/questions.json";
  * - Only after "Check" you can go Next/Previous
  */
 export default function Quiz() {
-  const questions = useMemo(() => questionsData, []);
+  const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let mounted = true;
+    fetch(process.env.PUBLIC_URL + "/questions.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load questions.json");
+        return res.json();
+      })
+      .then((data) => {
+        if (mounted) setQuestions(data);
+      })
+      .catch((err) => {
+        console.error(err);
+        if (mounted) setQuestions([]);
+      })
+      .finally(() => {
+        if (mounted) setLoading(false);
+      });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
   const [index, setIndex] = useState(0);
 
   // selected option for current question
@@ -18,6 +41,10 @@ export default function Quiz() {
 
   // track results per question: { [id]: { selected, isCorrect } }
   const [results, setResults] = useState({});
+
+  if (loading) return <div style={{ padding: 24 }}>Loading questions…</div>;
+  if (!questions || questions.length === 0)
+    return <div style={{ padding: 24 }}>No questions found.</div>;
 
   const q = questions[index];
 
@@ -47,7 +74,7 @@ export default function Quiz() {
 
   return (
     <div style={{ maxWidth: 820, margin: "24px auto", fontFamily: "system-ui, Arial" }}>
-      <h2 style={{ marginBottom: 6 }}>Mock Exam Quiz</h2>
+      <h2 style={{ marginBottom: 6 }}>Quiz</h2>
       <div style={{ opacity: 0.8, marginBottom: 18 }}>
         Progress: {index + 1}/{questions.length} • Answered: {answered}/{questions.length} • Score: {score}
       </div>
