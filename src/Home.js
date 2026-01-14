@@ -6,6 +6,7 @@ import WhatsAppQuickChat from './WhatsApp';
 import Ocr from './Ocr';
 import KidsVocabularyTest from './KidsVocabularyTest';
 import KidsHangman from './KidsHangman';
+import Quiz from './Quiz';
 
 
 export default function Home() {
@@ -69,7 +70,7 @@ export default function Home() {
         >
           {/* <h5 className="fw-bold mb-3 text-white">Sidebar</h5> */}
           <ul className="list-unstyled">
-            <li className="p-2 rounded text-white hover-bg">
+            {/* <li className="p-2 rounded text-white hover-bg">
               <button onClick={() => { setComp("Addition"); closeSidebar(); }} className="btn btn-link text-white p-0">
                 Addition
               </button>
@@ -83,7 +84,7 @@ export default function Home() {
               <button onClick={() => { setComp("KidsHangman"); closeSidebar(); }} className="btn btn-link text-white p-0">
                 Kids Hangman
               </button>
-            </li>
+            </li> */}
             <li className="p-2 rounded text-white hover-bg">
               <button onClick={() => { setComp("Translate"); closeSidebar(); }} className="btn btn-link text-white p-0">
                 Translate
@@ -112,6 +113,11 @@ export default function Home() {
                 Whatsapp Link
               </button>
             </li>
+            <li className="p-2 rounded text-white hover-bg">
+              <button onClick={() => { setComp("PMP"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                PMP Quiz
+              </button>
+            </li>
           </ul>
         </aside>
 
@@ -129,8 +135,9 @@ export default function Home() {
             {comp === "Dict" && <Dict key={dictKey} />}
             {comp === "Translate" && <DerTranslate />}
             {comp === "OCR" && <Ocr />}
-            {comp === "WhatsAppQuickChat" && <WhatsAppQuickChat />} 
-             {comp === "KidsHangman" && <KidsHangman />}
+            {comp === "PMP" && <Quiz />}
+            {comp === "WhatsAppQuickChat" && <WhatsAppQuickChat />}
+            {comp === "KidsHangman" && <KidsHangman />}
           </div>
         </main>
       </div>

@@ -5,10 +5,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Counter from './Counter';
 import Dict from './Dict';
 import Home from './Home';
-import AdditionQuiz from './AdditionQuiz';
+import Quiz from './Quiz';
 import Ocr from './Ocr';
-import KidsVocabularyTest from './KidsVocabularyTest';
-import KidsHangman from './KidsHangman';
+// import KidsVocabularyTest from './KidsVocabularyTest';
+// import KidsHangman from './KidsHangman';
+// import AdditionQuiz from './AdditionQuiz';
+
 function HomePage() {
 
 
@@ -30,12 +32,14 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/Addition" element={<AdditionQuiz />} />
+
         <Route path="/Counter" element={<Counter />} />
         <Route path="/Dict" element={<Dict />} />
         <Route path="/OCR" element={<Ocr />} />
+        <Route path="/PMP" element={<Quiz />} />
+        {/* <Route path="/Addition" element={<AdditionQuiz />} />
         <Route path="/KidsVocabulary" element={<KidsVocabularyTest />} />
-        <Route path="/KidsHangman" element={<KidsHangman />} />
+        <Route path="/KidsHangman" element={<KidsHangman />} /> */}
       </Routes>
     </Router>
   );

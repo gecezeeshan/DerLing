@@ -1,0 +1,1982 @@
+[
+  {
+    "id": 1,
+    "question": "The project team has completed a major deliverable on the game development project. The deliverable was given to the project manager. What action should the project manager take next?",
+    "options": [
+      "Close the project",
+      "Ask the team to review the deliverable",
+      "Get acceptance from the project sponsor",
+      "Check the deliverable for quality requirements"
+    ],
+    "correctAnswer": "Check the deliverable for quality requirements"
+  },
+  {
+    "id": 2,
+    "question": "You are having an issue with the software crashing consistently on the project. What should you use to identify the cause of this issue and the effect it may have on your project?",
+    "options": [
+      "Flowchart",
+      "Continuous improvement",
+      "Histogram",
+      "Ishikawa Diagram"
+    ],
+    "correctAnswer": "Ishikawa Diagram"
+  },
+  {
+    "id": 3,
+    "question": "The product owner has added three new changes to the product backlog. The agile project manager has met with the team and they have decided immediately how to implement these new changes, although these changes will be implemented until three iterations from now. The product owner informs the agile project manager that he is not happy about this. What should the agile project manager do?",
+    "options": [
+      "Ask the product owner when he would like the changes to be implemented",
+      "Inform the product owner of the potential risk of each change",
+      "Tell the team they should not have committed to doing these changes until they were ready to implement them",
+      "Ask the team members to implement the change right away"
+    ],
+    "correctAnswer": "Tell the team they should not have committed to doing these changes until they were ready to implement them"
+  },
+  {
+    "id": 4,
+    "question": "The project manager and sponsor are consulting with banks and other lending institutions in order to obtain funds for the project. What process describes these actions?",
+    "options": [
+      "Determine project financing",
+      "Plan cost management",
+      "Determine budget",
+      "Develop project charter"
+    ],
+    "correctAnswer": "Determine budget"
+  },
+  {
+    "id": 5,
+    "question": "The project manager is working on a project for which the scope, time, and cost are known during the early parts of the project planning. What life cycle will the project manager consider on this project?",
+    "options": [
+      "Straightforward life cycle",
+      "PMBOK life cycle",
+      "Iterative life cycle",
+      "Predictive life cycle"
+    ],
+    "correctAnswer": "Predictive life cycle"
+  },
+  {
+    "id": 6,
+    "question": "The project has managed to build about half of the deliverables needed to complete the project. The project has spent $50,000 on materials and labor. This money that has already been spent is generally referred to as what?",
+    "options": [
+      "Spent cost",
+      "Sunk cost",
+      "Project budget",
+      "Opportunity cost"
+    ],
+    "correctAnswer": "Sunk cost"
+  },
+  {
+    "id": 7,
+    "question": "What is the main difference between the product scope and the project scope?",
+    "options": [
+      "The product scope describes the features and functionality of a product, whereas the project scope describes how to get the features and functionality from the product.",
+      "There is no difference.",
+      "The project scope describes the features and functionality of the product, whereas the product scope describes how to get the features and functionality from the product.",
+      "The project manager plans product scope, and the project team plans the project scope."
+    ],
+    "correctAnswer": "The product scope describes the features and functionality of a product, whereas the project scope describes how to get the features and functionality from the product."
+  },
+  {
+    "id": 8,
+    "question": "While managing the project team the agile project manager is having a very difficult time understanding why team members are always frustrated when communicating with him. What critical soft skills does this project manager lack?",
+    "options": [
+      "Active listening",
+      "Facilitation",
+      "Emotional intelligence",
+      "Negotiation"
+    ],
+    "correctAnswer": "Emotional intelligence"
+  },
+  {
+    "id": 9,
+    "question": "While working on a large utility project for a major metropolitan area, the project manager has noticed that there is no change control board to approve changes for the project. What would be the best step for the project manager to take in this scenario?",
+    "options": [
+      "Establish a change control board for the project",
+      "Ask the project sponsor to approve or deny the changes",
+      "Approve the changes himself",
+      "Approve the changes himself with the help of the project team"
+    ],
+    "correctAnswer": "Establish a change control board for the project"
+  },
+  {
+    "id": 10,
+    "question": "The project team is having a very difficult time deciding what method they should use when programming the new functions in the application. They can choose between four different methods, and the team is evenly split regarding which method to choose. The project manager has decided that he will choose the method for them and will take the responsibility in case it is not the best way to program functions. What best describes this technique?",
+    "options": [
+      "Autocratic",
+      "Voting",
+      "Multi-criteria decision",
+      "Leadership"
+    ],
+    "correctAnswer": "Autocratic"
+  },
+  {
+    "id": 11,
+    "question": "Your company has decided to roll out a new Wi-Fi network for the staff. The sponsor has informed you that encryption on the network is mandatory. Where will the project manager document that the encryption was mandated by the sponsor?",
+    "options": [
+      "Project scope statement",
+      "Scope Baseline",
+      "Requirements documentation",
+      "Requirements traceability Matrix"
+    ],
+    "correctAnswer": "Requirements traceability Matrix"
+  },
+  {
+    "id": 12,
+    "question": "While working with the system administrator, the project manager identifies many different types of resources required for the project to be completed successfully. The project manager classifies them as HR, material, equipment, and consumable resources. Where can the project manager best document these resources?",
+    "options": [
+      "Resource register",
+      "Resource breakdown structure",
+      "Resource requirements",
+      "Resource category matrix"
+    ],
+    "correctAnswer": "Resource breakdown structure"
+  },
+  {
+    "id": 13,
+    "question": "A project manager has just taken over an agile project that is about 50% complete. The project manager is currently reviewing the product backlog and notices the requirements are not in an order he understands. How is the product backlog prioritized?",
+    "options": [
+      "By value",
+      "By regulation",
+      "By cost",
+      "By schedule"
+    ],
+    "correctAnswer": "By value"
+  },
+  {
+    "id": 14,
+    "question": "While managing a product development project, the project manager met with the team to determine some of the key tasks that will ensure they produce a high-quality product. What should they consider the most important concept in quality?",
+    "options": [
+      "Cost of quality only includes the inspection cost",
+      "Quality is about more inspection than prevention",
+      "Quality is about prevention",
+      "High-grade is more important than high-quality"
+    ],
+    "correctAnswer": "Quality is about prevention"
+  },
+  {
+    "id": 15,
+    "question": "While working on an agile project, the project manager met with the project team members to discuss what they did the day before and what they plan to do today. What is the name of this meeting?",
+    "options": [
+      "Project review meeting",
+      "Daily stand-up meeting",
+      "Sprint review meeting",
+      "Sprint planning meeting"
+    ],
+    "correctAnswer": "Daily stand-up meeting"
+  },
+  {
+    "id": 16,
+    "question": "The project manager is having a very difficult time collecting the requirements from the customers. The customers are having a difficult time putting the requirements into logical groupings. What tool can best help them group the requirements?",
+    "options": [
+      "Prototype",
+      "Requirements Documentation",
+      "Decomposition",
+      "Affinity Diagram"
+    ],
+    "correctAnswer": "Affinity Diagram"
+  },
+  {
+    "id": 17,
+    "question": "You’re currently working on a large new building development project. The project team is currently breaking down the deliverables listed in the project scope statement into work that is more manageable. What process best describes this scenario?",
+    "options": [
+      "Create WBS",
+      "Define WBS",
+      "Define scope",
+      "Define activities"
+    ],
+    "correctAnswer": "Create WBS"
+  },
+  {
+    "id": 18,
+    "question": "Which technique should the agile team use to list the reasons for why a particular process was failing during iteration?",
+    "options": [
+      "Check-in analysis",
+      "Fishbone analysis",
+      "SMART goals",
+      "Short subjects"
+    ],
+    "correctAnswer": "Fishbone analysis"
+  },
+  {
+    "id": 19,
+    "question": "The project team is currently having disagreements about the program and methods they would use to implement a few of the features in the product backlog. What role should the agile project manager take during this scenario?",
+    "options": [
+      "Remind them that the resolution can only be approved by the agile project manager",
+      "Coach them to a resolution",
+      "Delegate tasks to find a resolution",
+      "Direct them to a resolution"
+    ],
+    "correctAnswer": "Coach them to a resolution"
+  },
+  {
+    "id": 20,
+    "question": "The project team has completed a bidder conference for the office renovation project. Over 15 different construction companies came to the conference. Directly after the conference, all the companies submitted their bids immediately. What is the next step the project team should take?",
+    "options": [
+      "Update the scope baseline",
+      "Rewrite the statement of work",
+      "Select the seller",
+      "Update the agreement"
+    ],
+    "correctAnswer": "Select the seller"
+  },
+  {
+    "id": 21,
+    "question": "While building the agile space for new agile team, which of the following tools should the project manager ensure is available to all of them?",
+    "options": [
+      "Private offices with virtual meeting software",
+      "A network enabled project management software",
+      "A whiteboard",
+      "A big screen monitor with the latest Kanban software"
+    ],
+    "correctAnswer": "A whiteboard"
+  },
+  {
+    "id": 22,
+    "question": "A project manager working in a large multinational corporation has been assigned to upgrade the company’s website. This project will require inputs for many functional managers across the organization from different countries. Each functional manager would like one of their representatives to be present on the project team. What would be the best tool or technique for handling this scenario in a cost-effective way?",
+    "options": [
+      "Requesting a meeting with all functional managers in one location",
+      "Using virtual teams",
+      "Using collocation",
+      "Visiting each functional manager to collect their requirements in person"
+    ],
+    "correctAnswer": "Using virtual teams"
+  },
+  {
+    "id": 23,
+    "question": "The deliverables for the office relocation project were accepted by the company stakeholders, and all office staff were very happy with the work of the movers. The office manager requested the project be closed immediately due to year-end budgetary closeouts. The movers filed a claim for an additional $300 for moving a copier that was not part of the plan. What should the project manager do next?",
+    "options": [
+      "Close the project immediately and update the accounting department to pay the claim.",
+      "Close the project immediately and inform the office manager.",
+      "Keep the project open and inform claims administration.",
+      "Keep the project open and pay the claim."
+    ],
+    "correctAnswer": "Keep the project open and inform claims administration."
+  },
+  {
+    "id": 24,
+    "question": "While building an agile space, the project manager would like to implement a tool that will allow the team to keep track of the flow of work while limiting the work in progress. What tool best meets these requirements?",
+    "options": [
+      "Whiteboard",
+      "Burndown charts",
+      "Gantt chart",
+      "Kanban development"
+    ],
+    "correctAnswer": "Kanban development"
+  },
+  {
+    "id": 25,
+    "question": "While developing a new smartphone, the project team has identified a specific set of performance measurements that the phone should meet when it is complete. The measurement looks at how fast the phone can boot up and how fast it can shut down. Where should the project team document these measurements?",
+    "options": [
+      "Quality management plan",
+      "Quality checklist",
+      "Quality metrics",
+      "Requirements traceability Matrix"
+    ],
+    "correctAnswer": "Quality metrics"
+  },
+  {
+    "id": 26,
+    "question": "You are currently managing a business process reengineering project and have identified all the risks that can affect the project. You would like to put the risks in order from most impact to least impact on the project. What is the best process for doing so?",
+    "options": [
+      "Perform quantitative risk analysis",
+      "Perform qualitative risk analysis",
+      "Rank Risk",
+      "Plan risk response"
+    ],
+    "correctAnswer": "Perform qualitative risk analysis"
+  },
+  {
+    "id": 27,
+    "question": "The project sponsors have informed the project manager that they would like to be included in the weekly meetings along with the team members. What should the project manager update to include the sponsors in the weekly meetings?",
+    "options": [
+      "Scope management plan",
+      "Communication management plan",
+      "Risk management plan",
+      "Project communications"
+    ],
+    "correctAnswer": "Communication management plan"
+  },
+  {
+    "id": 28,
+    "question": "A project manager decided to assign each team member on a project to no more than one activity at a time. This way, the team doesn’t get burned out and can work at a steady pace. The schedule may increase due to this policy, which is okay with the sponsor. What technique best describes this action?",
+    "options": [
+      "Resource crashing",
+      "Resource movement",
+      "Resource equalization",
+      "Resource leveling"
+    ],
+    "correctAnswer": "Resource leveling"
+  },
+  {
+    "id": 29,
+    "question": "While working on a project with a budget of $5,000, the project manager determines that the earned value on the project so far is $1,750. So far, the project team has spent $2,900. What should the project manager report as the status of the budget?",
+    "options": [
+      "The project is over budget by 60%.",
+      "The project is under budget by 40%.",
+      "The project is under budget by 60%.",
+      "The project is over budget by 40%."
+    ],
+    "correctAnswer": "The project is over budget by 40%."
+  },
+  {
+    "id": 30,
+    "question": "While developing complex software for an organization, the project team creates a computer-generated model of what it will look like when it is done. This model is given to the customers for their feedback. What best describes this model?",
+    "options": [
+      "Screenshots",
+      "Data analysis",
+      "Data representation",
+      "Prototypes"
+    ],
+    "correctAnswer": "Prototypes"
+  },
+  {
+    "id": 31,
+    "question": "The agile project team has decided to do one of the features from the product backlog. The single feature will take six weeks to complete and will be reviewed by the customer. What actions should the agile project manager take next?",
+    "options": [
+      "Informed the team six weeks is too long and they will need to decomposed that feature into smaller increments",
+      "Inform the customers of the six weeks duration",
+      "Arrange the workspace for the team members to get started",
+      "Inform the team they need to conduct the daily standup meetings"
+    ],
+    "correctAnswer": "Informed the team six weeks is too long and they will need to decomposed that feature into smaller increments"
+  },
+  {
+    "id": 32,
+    "question": "After many years of following the agile principles the project team has implemented a few new methods in addition to the agile methods in order to increase the efficiency of the project. This will be known as?",
+    "options": [
+      "Process analysis",
+      "Non-agile processes",
+      "Hybrid processes",
+      "Process tailoring"
+    ],
+    "correctAnswer": "Process tailoring"
+  },
+  {
+    "id": 33,
+    "question": "While working on a network upgrade project, a team member installed the network connection and is now configuring the router in order to work with the network connection. The network connection must be done before the router can be configured. This is an example of what kind of dependency?",
+    "options": [
+      "Discretionary dependency",
+      "Mandatory dependency",
+      "Internal dependency",
+      "External dependency"
+    ],
+    "correctAnswer": "Mandatory dependency"
+  },
+  {
+    "id": 34,
+    "question": "While working on a new server upgrade project, the project manager calculates the SPI of the project to be 1.3. The project sponsor would like an explanation for why the SPI is that high. What would be the project manager’s best response?",
+    "options": [
+      "The project had too many critical paths on it this led to a large delay on the project",
+      "The project team were able to finish the work faster than anticipated and this is what led to the project being ahead of schedule",
+      "The project is currently on schedule due to the level of details that was covered during the planning processes",
+      "The project contained a lot of work that took more time than anticipated and is now completely behind schedule."
+    ],
+    "correctAnswer": "The project team were able to finish the work faster than anticipated and this is what led to the project being ahead of schedule"
+  },
+  {
+    "id": 35,
+    "question": "A project manager is having a very difficult time negotiating with a functional manager. The project manager would like to have Peter, the system administrator, work on the project full time, but the functional manager needs Peter full time to work on the servers throughout the day in case one goes down. After a few days of negotiating, the project manager has determined that he will have Peter from Monday to Wednesday, and the functional manager can have Peter on Thursday and Friday. Although this solution is not the most ideal scenario for the project manager and functional manager, it will have to work for now. What conflict resolution technique was used?",
+    "options": [
+      "Compromising",
+      "Smoothing",
+      "Forcing",
+      "Problem solving"
+    ],
+    "correctAnswer": "Compromising"
+  },
+  {
+    "id": 36,
+    "question": "The project manager and team have decided to hire a contractor to complete building out the remaining section of the datacenter. They have the requirements listed in detail and would like to use a contract that would present the smallest amount of risk to the project. The project team members would like to purchase the materials themselves since there are very familiar with the work. What contract is best for this project?",
+    "options": [
+      "Cost plus contractor fee",
+      "Cost plus fixed fee",
+      "Cost plus project fee",
+      "Time and materials"
+    ],
+    "correctAnswer": "Cost plus fixed fee"
+  },
+  {
+    "id": 37,
+    "question": "While working on a tablet redesign project for large technology company, the project manager received a change request from a key stakeholder. The change request would change the position of the power button from the top to the side of the tablet. After an assessment of the change, the change control board declined the change due to concerns about redesigning the motherboard. What should the project manager do next?",
+    "options": [
+      "Update the lessons learned register",
+      "Conduct perform integrated control",
+      "Update the project management plan",
+      "Update the change log"
+    ],
+    "correctAnswer": "Update the change log"
+  },
+  {
+    "id": 38,
+    "question": "Which of the following would be considered waste on a project?",
+    "options": [
+      "Value-added processes",
+      "Completed work",
+      "Waiting",
+      "Value-added features"
+    ],
+    "correctAnswer": "Waiting"
+  },
+  {
+    "id": 39,
+    "question": "While managing the stakeholders’ engagement, the project manager notices that some of the team members are not respectful to other team members. This has led to a few conflicts between the members. What can the project manager best do about this?",
+    "options": [
+      "Implement ground rules",
+      "Stop the project",
+      "Inform the sponsor",
+      "Release the team"
+    ],
+    "correctAnswer": "Implement ground rules"
+  },
+  {
+    "id": 40,
+    "question": "The project manager has reviewed all the work performance information that has been created so far on the project. He has started to create the overall project status report to present to the project stakeholders. What process is the project manager conducting?",
+    "options": [
+      "Develop project management plan",
+      "Monitor and control project work",
+      "Develop project report",
+      "Direct and manage project work"
+    ],
+    "correctAnswer": "Monitor and control project work"
+  },
+  {
+    "id": 41,
+    "question": "A project has completed 60% of all the work. The team has spent 55% of the project budget. The budget is currently set at $180,000. The sponsor has requested the project’s CPI. What CPI figure should the project manager provide?",
+    "options": [
+      ".99",
+      "$108,000",
+      "$18,000",
+      "1.1"
+    ],
+    "correctAnswer": "1.1"
+  },
+  {
+    "id": 42,
+    "question": "A project manager has completed the project status report. The report states the CPI is 1.1 and the SPI is 1.14. The report was given to the project sponsor, who has become very upset about the project’s progress and has requested an immediate meeting with the project manager. What should the project manager report in the meeting?",
+    "options": [
+      "Their has been many changes to the scope that has cause the project to be over budget",
+      "Their has been many changes to the scope that has cause the project to be behind schedule",
+      "The project is behind schedule and over budget due to scope creep",
+      "The project is progressing on schedule and budget"
+    ],
+    "correctAnswer": "The project is progressing on schedule and budget"
+  },
+  {
+    "id": 43,
+    "question": "While monitoring and controlling a project, the project manager has been comparing the work performance data to the project management plan to see if there is any variance. What process did the project manager finish to get the work performance data?",
+    "options": [
+      "Develop project management plan",
+      "Control Scope",
+      "Monitor and control project work",
+      "Direct and manage project work"
+    ],
+    "correctAnswer": "Direct and manage project work"
+  },
+  {
+    "id": 44,
+    "question": "The project manager, Peter, has been informed by the sponsor that the project needs to be completed 2 weeks earlier than the scheduled time. Peter goes to the team and informs them that they will need to work overtime to complete the project sooner. What is Peter doing to shorten the schedule?",
+    "options": [
+      "Fast tracking",
+      "Scope reduction",
+      "Adding leads to activities",
+      "Crashing"
+    ],
+    "correctAnswer": "Crashing"
+  },
+  {
+    "id": 45,
+    "question": "A project manager is currently working with the team to complete the office redesign project when a sponsor tells him to finish it 2 weeks sooner than planned. The project manager will need 4 new people to join the team to complete the work by the new deadline. What technique is best described in this scenario?",
+    "options": [
+      "Crashing",
+      "Critical path method",
+      "Schedule variance",
+      "Fast tracking"
+    ],
+    "correctAnswer": "Crashing"
+  },
+  {
+    "id": 46,
+    "question": "The project manager has just spoken to one of the software developers, Bill, about the project and has asked for an estimate of how long it will take to code a specific function. Bill said that it would take a maximum of 10 days, but that most likely it will be 6 days. The project manager has calculated the PERT estimated duration of this activity to be 6 days. What is the least amount of days it will take to complete this activity?",
+    "options": [
+      "4",
+      "1",
+      "2",
+      "3"
+    ],
+    "correctAnswer": "2"
+  },
+  {
+    "id": 47,
+    "question": "The project manager and the project team were able to identify a number of risks that could affect the website upgrade project. They listed all of the risks on the risk register. They will now conduct a qualitative risk analysis to prioritize the risks. What will the team look at when prioritizing the risks?",
+    "options": [
+      "Impact only",
+      "Probability and impact",
+      "Probability only",
+      "Source of risks and impact"
+    ],
+    "correctAnswer": "Probability and impact"
+  },
+  {
+    "id": 48,
+    "question": "The product owner would like to see how much work remains to be done on a project. What would be the best agile tool to display this?",
+    "options": [
+      "Cumulative flow diagram",
+      "Velocity chart",
+      "Burnup chart",
+      "Burndown chart"
+    ],
+    "correctAnswer": "Burndown chart"
+  },
+  {
+    "id": 49,
+    "question": "The project manager has released the project team, completed the final lesson learned, and then completed the final report. The PMO has informed the project manager that it is not happy with this approach. What has the project manager done wrong?",
+    "options": [
+      "Not informing the PMO about releasing the team",
+      "Writing the final report after the lessons learned",
+      "Releasing the team and then doing lessons learned",
+      "Nothing, these are the normal steps to closing a project"
+    ],
+    "correctAnswer": "Releasing the team and then doing lessons learned"
+  },
+  {
+    "id": 50,
+    "question": "While working with the project team and conducting a brainstorming session, the project manager noticed that a lot of the ideas the team was coming up with were not organized. What tool can be used by the team to best visually organize their ideas?",
+    "options": [
+      "Flowchart",
+      "Pareto diagram",
+      "Matrix diagram",
+      "Mind mapping"
+    ],
+    "correctAnswer": "Mind mapping"
+  },
+  {
+    "id": 51,
+    "question": "The project manager has noticed that a few team members are having a difficult time following the inspection process to check the quality of new software. What is the best tool to help them see the process, making it easier to follow?",
+    "options": [
+      "Process design chart",
+      "Histogram",
+      "Flowchart",
+      "Control Chart"
+    ],
+    "correctAnswer": "Flowchart"
+  },
+  {
+    "id": 52,
+    "question": "While developing very complex software, the project manager met with some of the industry’s top subject matter experts to understand their perspectives on solving some of the problems in the software. What tool best describes these meetings?",
+    "options": [
+      "Checklists",
+      "Brainstorming",
+      "Focus groups",
+      "Questionnaires and surveys"
+    ],
+    "correctAnswer": "Focus groups"
+  },
+  {
+    "id": 53,
+    "question": "A project manager is having difficulties communicating with the project team; there always seem to be misunderstandings and conflicts. What interpersonal and team skills should the project manager improve on?",
+    "options": [
+      "Lessons learned register",
+      "Passive listening",
+      "Selective listening",
+      "Active listening"
+    ],
+    "correctAnswer": "Active listening"
+  },
+  {
+    "id": 54,
+    "question": "While constructing a roof for a large building, the project team has identified the risk of a snowstorm. Due to the region in the country and the time of the year, the team has decided to take no action or preparations for the snowstorm. What risk response strategy is the team using?",
+    "options": [
+      "Avoid",
+      "Mitigation",
+      "Acceptance",
+      "Enhance"
+    ],
+    "correctAnswer": "Acceptance"
+  },
+  {
+    "id": 55,
+    "question": "While working on a project, the project team has encountered a problem that has halted the project work. The team is unable to come up with a solution and would like to have an outside company come in and finish the rest of the project. What should the project team do next?",
+    "options": [
+      "Create a request for quotation",
+      "Conduct a bidder conference",
+      "Rewrite the scope statement",
+      "Create a request for proposal"
+    ],
+    "correctAnswer": "Create a request for proposal"
+  },
+  {
+    "id": 56,
+    "question": "The project team has finished 60% of the deliverables when management informs the project manager that the project will be canceled immediately and the team will be reassigned to work on a new project that management feels is more important. What should the project manager do right away?",
+    "options": [
+      "Immediately released the team and start working on the new project",
+      "Return to planning to understand why the project might have been terminated",
+      "Inform the project team, conduct a lesson learned session, and formally release the team from the project",
+      "Inform management that the project cannot stop because the deliverables are 60% done"
+    ],
+    "correctAnswer": "Inform the project team, conduct a lesson learned session, and formally release the team from the project"
+  },
+  {
+    "id": 57,
+    "question": "The project manager is informed that a manager in the finance department has requested to be included in the weekly status updates on the project. What document should the project manager update immediately?",
+    "options": [
+      "Stakeholder register",
+      "Risk register",
+      "Issue log",
+      "Project communications"
+    ],
+    "correctAnswer": "Stakeholder register"
+  },
+  {
+    "id": 58,
+    "question": "A team member is working on upgrading the network server while another team member is painting the server room. The outcomes of these two events will not affect each other. What best describes the relationship between these two events?",
+    "options": [
+      "They are not statistically independent",
+      "They are mutually exclusive",
+      "There are statistically independent",
+      "They are statistically insignificant"
+    ],
+    "correctAnswer": "There are statistically independent"
+  },
+  {
+    "id": 59,
+    "question": "While working on a large project, the project manager originally counted 12 stakeholders. A new requirement and six more stakeholders were added to the project. How many communication channels are on this project?",
+    "options": [
+      "153",
+      "360",
+      "306",
+      "160"
+    ],
+    "correctAnswer": "153"
+  },
+  {
+    "id": 60,
+    "question": "When selecting a project, the company looks at different factors that could impact their selection. What document best identifies the need for a project?",
+    "options": [
+      "Project Benefits Report",
+      "Business Case",
+      "Project Charter",
+      "Project Management Plan"
+    ],
+    "correctAnswer": "Business Case"
+  },
+  {
+    "id": 61,
+    "question": "The project team has identified a number of risks that could affect the project. One risk in particular is that the permit to build the foundation has shown up late. They have ranked this risk as the most important in the project since it will cause the largest delay. What process best describes this ranking?",
+    "options": [
+      "Qualitative risk analysis",
+      "Quantitative risk analysis",
+      "Identify risk",
+      "Plan risk management"
+    ],
+    "correctAnswer": "Qualitative risk analysis"
+  },
+  {
+    "id": 62,
+    "question": "When deciding which user stories can be done in the next iteration what should the project team consider?",
+    "options": [
+      "Which story has the least risks",
+      "How large is the story",
+      "How many points the team completed in the past iterations",
+      "Which story is most valuable to the customer"
+    ],
+    "correctAnswer": "How many points the team completed in the past iterations"
+  },
+  {
+    "id": 63,
+    "question": "You are currently working on a large building demolition project. There are many requirements for the potential vendors on the project, and you would like to ensure that they all receive the same information. What is the best tool or technique to ensure all vendors receive the same information about the project?",
+    "options": [
+      "Scope statement",
+      "Requirements traceability Matrix",
+      "Bidder Conference",
+      "Requirements documentation"
+    ],
+    "correctAnswer": "Bidder Conference"
+  },
+  {
+    "id": 64,
+    "question": "While working on a project, the project manager has been inspiring the team members to do the best they can, while also regularly communicating the project’s vision to the team. What skill does this best describe?",
+    "options": [
+      "Networking",
+      "Facilitation",
+      "Active listening",
+      "Leadership"
+    ],
+    "correctAnswer": "Leadership"
+  },
+  {
+    "id": 65,
+    "question": "While conducting a risk assessment on a project, the project manager has identified a new regulatory risk. If the project is not completed by July 31, the company will have to scrap the project. What best describes this?",
+    "options": [
+      "Project work",
+      "Project requirement",
+      "Project scope",
+      "Project constraint"
+    ],
+    "correctAnswer": "Project constraint"
+  },
+  {
+    "id": 66,
+    "question": "While managing a small construction project, the project manager informs the project team members that they are using more materials than necessary to complete the project work. What process describes this scenario?",
+    "options": [
+      "Monitor resources",
+      "Manage team",
+      "Control resources",
+      "Develop team"
+    ],
+    "correctAnswer": "Control resources"
+  },
+  {
+    "id": 67,
+    "question": "The sponsor would like a report about the resources that are being used on the project. He would like to see them broken down by different categories to make them easier to understand. What process will the project manager use to create this?",
+    "options": [
+      "Develop schedule",
+      "Define activities",
+      "Estimate activity resources",
+      "Sequence activities"
+    ],
+    "correctAnswer": "Estimate activity resources"
+  },
+  {
+    "id": 68,
+    "question": "While working on the workstation upgrade project, the project sponsor informs the team that they have to stop the project immediately and start working on a router upgrade project. The sponsor wants the router upgrade project to start in as little as 2 days. What should the project manager do next?",
+    "options": [
+      "Conduct the close project or phase process for the current project and write the final report.",
+      "Inform the sponsor that the router upgrade project plan will take more than 2 days.",
+      "Write the charter for the new router upgrade project.",
+      "Get an authorized project charter for the router upgrade project."
+    ],
+    "correctAnswer": "Conduct the close project or phase process for the current project and write the final report."
+  },
+  {
+    "id": 69,
+    "question": "What is the main benefit for conducting the project using agile methodology versus traditional methodology?",
+    "options": [
+      "Agile project requires funding up front",
+      "Traditional delivers values all up front",
+      "Traditional delivers value at the beginning",
+      "Agile delivers value incrementally"
+    ],
+    "correctAnswer": "Agile delivers value incrementally"
+  },
+  {
+    "id": 70,
+    "question": "While managing a datacenter development project, the project manager has noticed there are many conflicts between the team members on the project. When managing a conflict in a project, what would be the best role for the project manager?",
+    "options": [
+      "Dictator",
+      "Facilitator",
+      "Advisor",
+      "Direct"
+    ],
+    "correctAnswer": "Facilitator"
+  },
+  {
+    "id": 71,
+    "question": "The project manager and the project team are reviewing the completed deliverables to see if they meet the performance requirements outlined in the requirements documentation. This is done so that when the customers are invited to inspect the deliverable, there will be no issues. What is the best output of this process?",
+    "options": [
+      "Requirements documentation",
+      "Verified deliverables",
+      "Accepted deliverables",
+      "Project management plan"
+    ],
+    "correctAnswer": "Verified deliverables"
+  },
+  {
+    "id": 72,
+    "question": "The project sponsor has signed off on the project charter and has spoken to the project manager, who then has to keep the cost down on the project. The project manager agrees to try his best to keep cost down and to finish the project under budget. What should the project manager do next?",
+    "options": [
+      "Meet with the team to determine where money can be saved on the project",
+      "Meet with the stakeholders to gather their requirements",
+      "Implement the project cost reduction program",
+      "Create the WBS"
+    ],
+    "correctAnswer": "Meet with the stakeholders to gather their requirements"
+  },
+  {
+    "id": 73,
+    "question": "The project manager, Mark, overheard that the project team is not satisfied with the way the budget was created. They strongly believe the project will be over budget at the end. What is the next best step for Mark?",
+    "options": [
+      "Review how the budget was created.",
+      "Ask the sponsor for approval to increase the budget.",
+      "Do nothing, because the team didn’t speak to Mark about it.",
+      "Bring the team together and attempt to understand why they feel this way."
+    ],
+    "correctAnswer": "Bring the team together and attempt to understand why they feel this way."
+  },
+  {
+    "id": 74,
+    "question": "As an agile project manager, you have encountered many issues with the product owner. The product owner has refused to prioritize the product backlog, stating that all items are equally important. After educating the product owner about the value of prioritization, he still refuses. What should the agile project manager do?",
+    "options": [
+      "Have the team prioritize the product backlog",
+      "Replace the product owner",
+      "Continue to educate the product owner",
+      "Prioritize the product backlog for the product owner"
+    ],
+    "correctAnswer": "Continue to educate the product owner"
+  },
+  {
+    "id": 75,
+    "question": "While monitoring the status of an agile project, what numerical analysis can the project team use to help determine if the project is on schedule?",
+    "options": [
+      "Return on investment",
+      "Earned value management",
+      "Net present value",
+      "Scheduling management values"
+    ],
+    "correctAnswer": "Earned value management"
+  },
+  {
+    "id": 76,
+    "question": "The risk management plan generally outlines the steps the project will take to conduct risk management processes on the project. Which of the following will the risk management plan not include?",
+    "options": [
+      "The methodology used to manage risks",
+      "A way to categorize the risks",
+      "Positive risks that could affect the project",
+      "Roles and responsibilities for the project team concerning risks processes"
+    ],
+    "correctAnswer": "Positive risks that could affect the project"
+  },
+  {
+    "id": 77,
+    "question": "While working on an agile project, the team receives a request from the customer to deploy the software as soon as the iteration is done. The customer has already checked the completed part of the software and has accepted it. The team has refused to deploy the software. What best explains the team’s refusal?",
+    "options": [
+      "The iteration took too long",
+      "The iteration has many errors",
+      "The iteration is part of a release",
+      "The iteration needs to be closed"
+    ],
+    "correctAnswer": "The iteration is part of a release"
+  },
+  {
+    "id": 78,
+    "question": "While managing a datacenter project, a few customers requested a feature be added to the project that will enhance the security system in the datacenter. The change was submitted to the change control board and was denied due to the high cost of the security system. A few months later another customer submitted the same change back to the project manager. What is the best step the project manager can take in this scenario?",
+    "options": [
+      "Inform the change control board",
+      "Add the security system to the datacenter",
+      "Inform the customers the change cannot be done",
+      "Assess how this change impacts the project management plan"
+    ],
+    "correctAnswer": "Inform the customers the change cannot be done"
+  },
+  {
+    "id": 79,
+    "question": "The agile project team has determined that many of its processes have a lot of waiting and would like to remove all of the waste in the processes. What would be the best tool the agile team can use to improve their processes?",
+    "options": [
+      "Fishbone analysis",
+      "Value stream map",
+      "Process tailoring",
+      "Triple nickel"
+    ],
+    "correctAnswer": "Value stream map"
+  },
+  {
+    "id": 80,
+    "question": "The project manager is currently assigning costs to each individual activity on the project. A team member has informed the project manager that he should include additional cost just in case the software needs more testing. What best describes this additional cost?",
+    "options": [
+      "Project reserve",
+      "Management reserve",
+      "Contingency reserve",
+      "Testing reserve"
+    ],
+    "correctAnswer": "Contingency reserve"
+  },
+  {
+    "id": 81,
+    "question": "While working on a project, the project manager notices that most of their time is spent resolving conflicts between members of the project team. What is the best tool the project manager can use to resolve the problems amongst the team members?",
+    "options": [
+      "Interpersonal and team skills",
+      "Expert judgement",
+      "Colocation",
+      "Training"
+    ],
+    "correctAnswer": "Interpersonal and team skills"
+  },
+  {
+    "id": 82,
+    "question": "The project team has completed the scope baseline and has started to break down each of the work packages into individual activities. What process should the team do next?",
+    "options": [
+      "Create WBS",
+      "Develop Schedule",
+      "Sequence Activity",
+      "Define Scope"
+    ],
+    "correctAnswer": "Sequence Activity"
+  },
+  {
+    "id": 83,
+    "question": "While working on a large multinational project, you identify some of the positive and negative stakeholders. What process group are you currently engaged in?",
+    "options": [
+      "Stakeholder management",
+      "Planning",
+      "Initiating",
+      "Communications management"
+    ],
+    "correctAnswer": "Initiating"
+  },
+  {
+    "id": 84,
+    "question": "The project manager has brought the project team together to explain what the project will be about and what their roles will be. The team members introduce themselves and learn about the different skill sets each of them brings to the project. What stage on Tuckman’s ladder best represents this?",
+    "options": [
+      "Forming",
+      "Storming",
+      "Performing",
+      "Norming"
+    ],
+    "correctAnswer": "Forming"
+  },
+  {
+    "id": 85,
+    "question": "A large development company has just initiated a project to build a 60-story building. The project will take approximately 3 years to complete with a cost of $550 million. The development company has started to facilitate funding for the project by asking private equity firms and banks. What tools does this best represent?",
+    "options": [
+      "Funding limit reconciliation",
+      "Analogous estimates",
+      "Financing",
+      "Parametric estimates"
+    ],
+    "correctAnswer": "Financing"
+  },
+  {
+    "id": 86,
+    "question": "Project manager Mark is working to create the project scope statement for a sales management software. Many stakeholders have requested that a feature be added to enable automated call-backs to leads that come through the website. Mark realizes that adding this feature will not be possible due to the fact that the company’s current network lacks the required hardware. What is the best approach for Mark to take?",
+    "options": [
+      "Tell the stakeholders to submit a change request",
+      "Add the feature as an exclusion to the scope statement",
+      "Add the feature and hope the sponsor approves the budget",
+      "Tell the stakeholders the feature will be added after the project is done"
+    ],
+    "correctAnswer": "Add the feature as an exclusion to the scope statement"
+  },
+  {
+    "id": 87,
+    "question": "While compiling all the work performance information into the work performance report, a project manager notices that the SPI of the project is .6 and the CPI is .7. What action should the project manager take next on this project?",
+    "options": [
+      "None since the project is on the budget and ahead of schedule.",
+      "Create a change request to correct the project.",
+      "Inform the sponsor the project is over budget.",
+      "Inform the sponsor of a major delay."
+    ],
+    "correctAnswer": "Create a change request to correct the project."
+  },
+  {
+    "id": 88,
+    "question": "Which of the following statements is true about projects:",
+    "options": [
+      "Projects are temporary endeavors to create a unique product, service, or results",
+      "Projects are ongoing operations that will create a unique product, service, or result",
+      "Projects are temporary operations that are only done to improve a business",
+      "Projects are ongoing operations to improve business products"
+    ],
+    "correctAnswer": "Projects are temporary endeavors to create a unique product, service, or results"
+  },
+  {
+    "id": 89,
+    "question": "When an organization is considering a project, what are some of the factors that can influence why a project should get done?",
+    "options": [
+      "Making the company shareholders happy",
+      "Meeting regulatory, legal, or social requirements",
+      "Continuing the day-to-day work in a particular department",
+      "Hiring new personnel"
+    ],
+    "correctAnswer": "Meeting regulatory, legal, or social requirements"
+  },
+  {
+    "id": 90,
+    "question": "Your company has just started a project to allow remote workers to join the network using a virtual private network (VPN). During the execution of the project, one of the VPN servers completely fails, and the team will need to replace it as soon as possible. Fortunately, the project team anticipated that this might happen and has a plan for replacing the server. What should the project manager do next?",
+    "options": [
+      "Plan risk response",
+      "Implement risk response",
+      "Conduct risk response",
+      "Perform qualitative risk analysis"
+    ],
+    "correctAnswer": "Implement risk response"
+  },
+  {
+    "id": 91,
+    "question": "The project team has completed the server deployment project. They have tested the server to ensure that it works according to the requirements given to them, and it seems to be functioning correctly. What process group has the team just completed?",
+    "options": [
+      "Executing",
+      "Monitoring and controlling",
+      "Closing",
+      "Planning"
+    ],
+    "correctAnswer": "Executing"
+  },
+  {
+    "id": 92,
+    "question": "The project team is currently working on an advertising project. They have completed a few of the activities, which includes writing the script for the commercial. Once the team completes an activity, what should they do next?",
+    "options": [
+      "Close project or phase",
+      "Update the project manager",
+      "Update project sponsor",
+      "Update work performance data"
+    ],
+    "correctAnswer": "Update work performance data"
+  },
+  {
+    "id": 93,
+    "question": "The project manager has calculated the SPI of the project to be .7 and the CPI to be .9. When reporting the progress of the project to the company stakeholders, what should the project manager say about the project to the stakeholders?",
+    "options": [
+      "The project is progressing on schedule and budget",
+      "A delay from a few vendors has delayed the project",
+      "The project is delayed and over budget",
+      "A few project expenses cost more than the budget of the project"
+    ],
+    "correctAnswer": "The project is delayed and over budget"
+  },
+  {
+    "id": 94,
+    "question": "Senior management has requested an update to the current product upgrade project. The project manager knows she has to keep the information high-level, and as short as possible. Which resource would be the best to show senior management?",
+    "options": [
+      "WBS",
+      "Project schedule network diagram",
+      "Milestone chart",
+      "WBS dictionary"
+    ],
+    "correctAnswer": "Milestone chart"
+  },
+  {
+    "id": 95,
+    "question": "Team members Mark and Bill are currently experiencing conflict in the office move project. Mark believes that it would be best if they moved the furniture first and then the computers, whereas Bill believes it’s best to move the computers and then the furniture. This conflict is causing a serious delay to the project, and both Mark and Bill have decided they will make a decision on what to move first at a later date. What conflict resolution technique best describes this scenario?",
+    "options": [
+      "Withdrawal",
+      "Postponing",
+      "Accommodating",
+      "Compromise"
+    ],
+    "correctAnswer": "Withdrawal"
+  },
+  {
+    "id": 96,
+    "question": "After the project manager has collected the requirements and received approval for the scope statement, what process should the project manager do next?",
+    "options": [
+      "Create scope baseline",
+      "Sequence activities",
+      "Create WBS",
+      "Define activities"
+    ],
+    "correctAnswer": "Create WBS"
+  },
+  {
+    "id": 97,
+    "question": "The project team has been brought together for the first time to work on a network upgrade project. They were able to learn about the functions they will doing on the project and what their roles will be. What will the team do next, according to Tuckman’s ladder?",
+    "options": [
+      "Forming",
+      "Norming",
+      "Storming",
+      "Performing"
+    ],
+    "correctAnswer": "Storming"
+  },
+  {
+    "id": 98,
+    "question": "The work the project will contain and the velocity of the team is currently at 14 points. What is the total size of the project in terms of story points?",
+    "options": [
+      "130",
+      "150",
+      "140",
+      "110"
+    ],
+    "correctAnswer": "140"
+  },
+  {
+    "id": 99,
+    "question": "The project manager is working on a new electrical wiring upgrade project for the entire office. Due to safety issues, the project manager cannot move forward with many parts of the project without inspections and permits from the local Buildings Department. Most permits take approximately 6 weeks to get. Where would the project manager document the opportunity the project should take if a permit comes within 2 weeks instead of the 6 weeks?",
+    "options": [
+      "Issue log",
+      "Risk register",
+      "Assumption log",
+      "Change request"
+    ],
+    "correctAnswer": "Risk register"
+  },
+  {
+    "id": 100,
+    "question": "While analyzing the budget of a project, the project manager notices that the current CPI of the project is .93 and the SPI is 1.1. What best describes what is taking place on this project?",
+    "options": [
+      "Crashing",
+      "Best tracking",
+      "Fast tracking",
+      "Resource leveling"
+    ],
+    "correctAnswer": "Crashing"
+  },
+  {
+    "id": 101,
+    "question": "A company has completed building a new datacenter. The project has many changes that were submitted to the change control board. Most changes were approved, and some were not. Which of the following is not a purpose of the change control board?",
+    "options": [
+      "Stop unnecessary changes",
+      "Manage the change control process",
+      "Assess changes",
+      "Deny changes whenever possible"
+    ],
+    "correctAnswer": "Deny changes whenever possible"
+  },
+  {
+    "id": 102,
+    "question": "While working on a project, you realize that you will not be able to install the server and the workstations at the same time. In fact, the team has alerted you that after the server installation is done, you should wait an additional 4 days before installing the workstations. This is due to the updates the server will need, which is an automated process. What do you need to add to the schedule in order to account for this delay?",
+    "options": [
+      "Lag",
+      "Lead",
+      "Float",
+      "Slack"
+    ],
+    "correctAnswer": "Lag"
+  },
+  {
+    "id": 103,
+    "question": "The project manager and team are currently working to create a list of activities needed to complete the project. They have come to one particular work package that they cannot decompose because they do not know enough about the work yet. They have decided that midway through the project, they will decompose this particular work package. What tool or technique are they using?",
+    "options": [
+      "Forward Planning",
+      "Requirements Future Planning",
+      "Decomposition",
+      "Rolling Wave Planning"
+    ],
+    "correctAnswer": "Rolling Wave Planning"
+  },
+  {
+    "id": 104,
+    "question": "While working on the network upgrade project, the project manager receives many ideas about what to include in the project. The ideas seem to be very scattered and not logically grouped. What tool can best help the project manager group these ideas?",
+    "options": [
+      "Ideas Matrix",
+      "Flowchart",
+      "Affinity diagrams",
+      "Histograms"
+    ],
+    "correctAnswer": "Affinity diagrams"
+  },
+  {
+    "id": 105,
+    "question": "While attempting to determine the schedule for the project, the project manager has been informed from the team that each line of code will take about 15-45 minutes to write and debug. There will be about 1 million lines of code in the application. What schedule-estimating technique best describes this estimate?",
+    "options": [
+      "Analogous",
+      "Bottom-up",
+      "Parametric",
+      "Top-down"
+    ],
+    "correctAnswer": "Parametric"
+  },
+  {
+    "id": 106,
+    "question": "Two team members were having a conflict over what programming method should be used on the new application. They have resolved the conflict. What would be their next step?",
+    "options": [
+      "Nothing, since the conflict has been resolved.",
+      "Confirm that the project manager has agreed to the solutions.",
+      "Implement the new method and verify that it solves the actual problem.",
+      "Confirm that the sponsor agrees to the solution."
+    ],
+    "correctAnswer": "Implement the new method and verify that it solves the actual problem."
+  },
+  {
+    "id": 107,
+    "question": "A change request has been made by a senior stakeholder to add a new reporting function to the current financial software development project. The change was assessed by the project team and approved by the sponsor. What process should the project manager do next?",
+    "options": [
+      "Validate scope",
+      "Perform integrated change control",
+      "Direct and manage project work",
+      "Control quality"
+    ],
+    "correctAnswer": "Direct and manage project work"
+  },
+  {
+    "id": 108,
+    "question": "The project manager and the project team are currently assessing various ways of responding to a particular risk. The project involves reconstructing part of their current office building, and they’re worried about a hurricane hitting and damaging the materials or parts of the unfinished building. The best response they came up with was to purchase insurance in case a hurricane does hit. What kind of strategy is this?",
+    "options": [
+      "Acceptance",
+      "Avoidance",
+      "Mitigate",
+      "Transfer"
+    ],
+    "correctAnswer": "Transfer"
+  },
+  {
+    "id": 109,
+    "question": "The project team is currently working on a project to upgrade all the servers across the organization. Before they are able to get the financial server, the vendor calls and says the server delivery has been delayed 2 weeks. What documents should the project manager update immediately?",
+    "options": [
+      "Work breakdown structure",
+      "Change request",
+      "Issue log",
+      "Project schedule"
+    ],
+    "correctAnswer": "Issue log"
+  },
+  {
+    "id": 110,
+    "question": "The project manager has met with the project team and has informed them that his team performance assessments are done, and he would like to speak with each of them individually about the results. What process group is this?",
+    "options": [
+      "Executing",
+      "Initiating",
+      "Planning",
+      "Monitoring and controlling"
+    ],
+    "correctAnswer": "Executing"
+  },
+  {
+    "id": 111,
+    "question": "When using different prioritization techniques what is the most important aspect that the agile project manager should communicate to the customers?",
+    "options": [
+      "Don’t worry too much about the specifics it’s more important to get the relative prioritization correct",
+      "Make sure to include timing in the use of any prioritization technique",
+      "Prioritization techniques are not needed on agile projects",
+      "Make sure to include cost in the use of any prioritization technique"
+    ],
+    "correctAnswer": "Don’t worry too much about the specifics it’s more important to get the relative prioritization correct"
+  },
+  {
+    "id": 112,
+    "question": "The project manager has just identified a new regulation that can possibly delay the project significantly. The project manager has added this new regulation to the risk register. What should the project manager do next with this risk?",
+    "options": [
+      "Request more funds to finish the project on time",
+      "Conduct a qualitative and quantitative assessment",
+      "Inform the project sponsor",
+      "Come up with a response to the delay in the project schedule"
+    ],
+    "correctAnswer": "Conduct a qualitative and quantitative assessment"
+  },
+  {
+    "id": 113,
+    "question": "The project manager is currently estimating how many programmers will be needed to complete the financial software upgrade project. What document can the project manager use to determine who is available to work on the project?",
+    "options": [
+      "Resource calendar",
+      "Lessons learned register",
+      "Project team calendar",
+      "Availability calendar"
+    ],
+    "correctAnswer": "Resource calendar"
+  },
+  {
+    "id": 114,
+    "question": "In what process does a project manager determine the approach they will use to involve the stakeholders to meet their expectations?",
+    "options": [
+      "Manage stakeholders engagements",
+      "Identify stakeholders",
+      "Plan stakeholders engagement",
+      "Plan communications"
+    ],
+    "correctAnswer": "Plan stakeholders engagement"
+  },
+  {
+    "id": 115,
+    "question": "The project manager is currently analyzing the requirements for the project. He has been informed that the stakeholders will be very disappointed if there are defects in the deliverables. He decides to ensure that the project team receives the right training and the best equipment available to build the deliverables correctly. This will in turn increase the overall cost of the project, but stakeholders do not mind the increase in cost. What best describes this increase in cost?",
+    "options": [
+      "Expert judgement",
+      "Cost of quality",
+      "Cost of the requirements",
+      "Activities cost"
+    ],
+    "correctAnswer": "Cost of quality"
+  },
+  {
+    "id": 116,
+    "question": "After the iteration has completed, where will the team inspect the methods they used to build that increment?",
+    "options": [
+      "Iteration backlog",
+      "Retrospective",
+      "Iteration review",
+      "Iteration planning"
+    ],
+    "correctAnswer": "Retrospective"
+  },
+  {
+    "id": 117,
+    "question": "While working on a project schedule, the project manager notices that activities A, B, and C all have a duration of 4 days. The project manager also notices that activities F and G have a duration of 7 days. Activities A, C, F, and G have a slack of 1 day. Activity B is the only one on the critical path. What is the slack on activity B?",
+    "options": [
+      "1 day",
+      "Cannot be determined",
+      "2 days",
+      "0 days"
+    ],
+    "correctAnswer": "0 days"
+  },
+  {
+    "id": 118,
+    "question": "While working on a project, the project manager asks the team to incorporate more of the user feedback into the deliverables. In an agile project, where do the customers give the team feedback on the product?",
+    "options": [
+      "Retrospective",
+      "Sprint planning meeting",
+      "Sprint review",
+      "Release feedback"
+    ],
+    "correctAnswer": "Sprint review"
+  },
+  {
+    "id": 119,
+    "question": "The project manager is conducting a presentation with a few of the senior stakeholders, and they are not happy with the progress of the project. The project manager has informed them that the delay is due to a contractor that was affected by a major flood a few weeks ago. What process does this best describe?",
+    "options": [
+      "Control communication",
+      "Manage communication",
+      "Conduct communication",
+      "Plan communication management"
+    ],
+    "correctAnswer": "Manage communication"
+  },
+  {
+    "id": 120,
+    "question": "There have been many disputes on the project with the current contractor. The contractor claims the project team is always asking that work not be listed in the contract, and the team claims that the contractor has not been doing the work listed in the contract. What should the project manager do first?",
+    "options": [
+      "Meet with the project team members to understand why they feel the contractor has not been doing the work in the contract",
+      "Contact claims administration",
+      "Meet with the contractor to understand why the team continually asks that the work not be listed in the contract",
+      "Review the contract"
+    ],
+    "correctAnswer": "Review the contract"
+  },
+  {
+    "id": 121,
+    "question": "The project manager is working on a top-secret company project and would like to ensure all the correct security measures are in place for communications regarding the project. What tool should the project manager use?",
+    "options": [
+      "Access controls",
+      "Encryption",
+      "Communication technology",
+      "Communication models"
+    ],
+    "correctAnswer": "Communication technology"
+  },
+  {
+    "id": 122,
+    "question": "While installing the new virtual server, the team discovers a new method that they can use on this project and future projects that can get the installation done in about half the time. This new method involves prepping the server image and cloning the machines. What is the best project document for the team to update?",
+    "options": [
+      "Opportunity register",
+      "Knowledge management register",
+      "Lessons learned register",
+      "Risk register"
+    ],
+    "correctAnswer": "Lessons learned register"
+  },
+  {
+    "id": 123,
+    "question": "The project manager has been informed that the company’s senior management would like a meeting about the status of the project. What should the project manager take to display the current schedule of the project?",
+    "options": [
+      "Gantt chart",
+      "Milestone chart",
+      "WBS",
+      "Network diagram"
+    ],
+    "correctAnswer": "Milestone chart"
+  },
+  {
+    "id": 124,
+    "question": "The datacenter redesign project is currently 30% complete. The project manager is not happy with the way processes are being followed by the team in ensuring that the network wiring will meet its quality requirements. What should the project manager do to improve the processes so as to meet the quality requirements with the network wiring?",
+    "options": [
+      "Monitor and control project work",
+      "Control scope",
+      "Manage quality",
+      "Control quality"
+    ],
+    "correctAnswer": "Manage quality"
+  },
+  {
+    "id": 125,
+    "question": "While working on a project, the CEO of the company has informed you that he would like to terminate the project and have you work on a few other projects. What kind of influence does this best represent?",
+    "options": [
+      "Outwards",
+      "Sideways",
+      "Downwards",
+      "Upwards"
+    ],
+    "correctAnswer": "Upwards"
+  },
+  {
+    "id": 126,
+    "question": "One of the customers would like to add a new component to the project that would likely increase the functionality of the software. What steps should the customer take when adding this new component on an Agile project?",
+    "options": [
+      "Changes are not allowed on agile projects",
+      "Fill out a change request form",
+      "Add it to the product backlog",
+      "Ask the agile project manager for permission to add it to the product backlog"
+    ],
+    "correctAnswer": "Add it to the product backlog"
+  },
+  {
+    "id": 127,
+    "question": "The sponsor makes it clear that he does not want any of the team members to be overworked while working on a project. This means that no team member is allowed to work overtime. The sponsor is okay with the project being delayed due to this. What technique can the project manager best implement to ensure that no team member is overworked?",
+    "options": [
+      "Resource leveling",
+      "Free float",
+      "Resource smoothing",
+      "Lag"
+    ],
+    "correctAnswer": "Resource leveling"
+  },
+  {
+    "id": 128,
+    "question": "While working on a complex software development project, the team is having a difficult time understanding a process used to code a particular report. They find the process to have many different paths and if/then scenarios. They have asked the project manager for a tool that can help them see the process on a large white board or on paper. What’s the best tool the project manager can recommend for the team to help visualize the process?",
+    "options": [
+      "Flowchart",
+      "Fishbone diagram",
+      "Histogram",
+      "Scatter diagram"
+    ],
+    "correctAnswer": "Flowchart"
+  },
+  {
+    "id": 129,
+    "question": "While monitoring a large construction project, the project manager has calculated the SPI of the project to be 1.2. A contractor has informed the project manager that a delivery will be 1 week late. The 1-week delay is 10% of the project schedule. What would mostly likely happen to this project?",
+    "options": [
+      "The project will finish ahead of schedule",
+      "The project will finish behind schedule",
+      "The project will finish under budget",
+      "The project will finish over budget"
+    ],
+    "correctAnswer": "The project will finish ahead of schedule"
+  },
+  {
+    "id": 130,
+    "question": "Project manager Mary was informed by the team that the constant conflicts in the project have slowed down the team so that they are now behind in the work. Mary is not sure what she did wrong while planning the project. She used a RACI chart to assign roles to each team member. She has assigned each activity to at least two people who will be held accountable for the work. What best explains the conflicts in the project?",
+    "options": [
+      "The team misread the RACI chart.",
+      "Only one person should be held accountable for an activity when using a RACI chart.",
+      "A RACI chart is not a tool that you can use to assign work.",
+      "Mary should have used more than just an RACI."
+    ],
+    "correctAnswer": "Only one person should be held accountable for an activity when using a RACI chart."
+  },
+  {
+    "id": 131,
+    "question": "The datacenter redesign project has been executed and is currently 50% complete. One of the project’s key stakeholders has submitted a change request to change the building’s wiring from copper cables to fiber cables. The project manager has contacted a wiring contractor, who said it will take about 2 months to install the fiber at a cost of $2 million. What should the project manager do next?",
+    "options": [
+      "Deny the change due to the high cost",
+      "Deny the change due to the schedule",
+      "Submit the change to change control board",
+      "Update the project management plan"
+    ],
+    "correctAnswer": "Submit the change to change control board"
+  },
+  {
+    "id": 132,
+    "question": "The project manager is currently reviewing all of the meetings that took place over the past few weeks to ensure that it was done according to the communication management plan. What process is the project manager currently conducting?",
+    "options": [
+      "Conduct Communications",
+      "Plan Communications Management",
+      "Manage Communications",
+      "Monitor Communications"
+    ],
+    "correctAnswer": "Monitor Communications"
+  },
+  {
+    "id": 133,
+    "question": "You have just been appointed the new project manager on a product upgrade project. One person in particular at the company feels like the project may cause them to lose their job. This person has expert knowledge of the current product and does not feel that it needs an upgrade. What would you consider this person on your project?",
+    "options": [
+      "Stakeholder",
+      "Subject matter expert",
+      "Team member",
+      "Employee"
+    ],
+    "correctAnswer": "Stakeholder"
+  },
+  {
+    "id": 134,
+    "question": "While measuring quality on a project, the project team decided to just measure the quality as pass/fail. The team has determined that this is the best method because the deliverables are mostly functions that will need to produce a correct result. What best describes this measurement?",
+    "options": [
+      "Statistical sampling",
+      "Mutually exclusive",
+      "Statistical independence",
+      "Attribute sampling"
+    ],
+    "correctAnswer": "Attribute sampling"
+  },
+  {
+    "id": 135,
+    "question": "A major portion of a large construction development project was completed by a contractor. The contractor has completed all the work listed in the agreement but also completed other work the contractor felt had to be done. The contractor is asking for more money that was not listed in the agreement, and the project manager feels that what they’re asking for is too much for the additional work that was completed. What should the project manager do next?",
+    "options": [
+      "Contact claims administration",
+      "Inform the contractor that the project does not have the additional funds to cover the work",
+      "Tell the contractor they should not have done additional work",
+      "Inform the sponsor"
+    ],
+    "correctAnswer": "Contact claims administration"
+  },
+  {
+    "id": 136,
+    "question": "The project team has just assigned costs to all activities on a project. They will now use these costs to find the overall budget of the project. What tool can the project team use to complete this task?",
+    "options": [
+      "Expert judgment",
+      "Bottom-up estimation",
+      "Cost aggregation",
+      "Parametric estimation"
+    ],
+    "correctAnswer": "Cost aggregation"
+  },
+  {
+    "id": 137,
+    "question": "Over the last three weeks the project team has finally been able to establish a shared vision of what the product would look like when it is complete. This is an example of?",
+    "options": [
+      "Progressive elaboration",
+      "Requirements gathering",
+      "Progressive management",
+      "Shared vision"
+    ],
+    "correctAnswer": "Progressive elaboration"
+  },
+  {
+    "id": 138,
+    "question": "The project team is working with the customers to write the user stories. The customers have refused as they claim this would add no value to the project. What would be the best step to resolve this?",
+    "options": [
+      "Educate the users why the user stories are valuable",
+      "Inform them user stories may not be needed",
+      "Have the team write the user stories",
+      "Ask the agile project manager to write the user stories"
+    ],
+    "correctAnswer": "Educate the users why the user stories are valuable"
+  },
+  {
+    "id": 139,
+    "question": "A project manager on an agile project conducts planning at multiple points in time as the scope is refined and changed over the project lifecycle. This is known as?",
+    "options": [
+      "Rolling wave planning",
+      "Agile project planning",
+      "Progressive planning",
+      "Elaborate planning"
+    ],
+    "correctAnswer": "Rolling wave planning"
+  },
+  {
+    "id": 140,
+    "question": "The project manager has decided that most of the stakeholders on the project would like to reference the status reports for the project on the company’s internal website on their own time. This would make it easier for them, as it is very difficult to schedule a meeting with all of them at once. What type of communication best describes this?",
+    "options": [
+      "Interactive communication",
+      "Pull communication",
+      "Push communication",
+      "Technical communication"
+    ],
+    "correctAnswer": "Pull communication"
+  },
+  {
+    "id": 141,
+    "question": "During a new workstation rollout project, a stakeholder asked for a change to some of the software being installed. The change was submitted to the Change Control Board but was rejected due to the high increase in cost of the software being requested. What should the project manager do next?",
+    "options": [
+      "Perform additional analysis on the requested change",
+      "Update the issue log",
+      "Resubmit the change request for additional consideration",
+      "Update the change log"
+    ],
+    "correctAnswer": "Update the change log"
+  },
+  {
+    "id": 142,
+    "question": "The project manager and the team have worked many hours to calculate the amount of time it will take to conduct each activity. They would like to document some of the assumptions they made and the constraints they may face when the project is executed. What document will they use for this?",
+    "options": [
+      "Project schedule",
+      "Duration estimates",
+      "Cost estimates",
+      "Basis of estimates"
+    ],
+    "correctAnswer": "Basis of estimates"
+  },
+  {
+    "id": 143,
+    "question": "The agile project team has completed the Sprint planning meeting. What would be the output of this meeting?",
+    "options": [
+      "Product backlog",
+      "Sprint requirements",
+      "User backlog",
+      "Sprint backlog"
+    ],
+    "correctAnswer": "Sprint backlog"
+  },
+  {
+    "id": 144,
+    "question": "While planning a project, the project manager is given many requirements that the customers would like to add to the project. Upon further investigation, the project manager decides that a few of the requirements will not be feasible within the limited time and cost allocated to the project. What document would best list the requirements that will not be added to this project?",
+    "options": [
+      "Requirements documentation",
+      "Project scope statement",
+      "Project Charter",
+      "Work breakdown structure"
+    ],
+    "correctAnswer": "Project scope statement"
+  },
+  {
+    "id": 145,
+    "question": "During the datacenter development project, the project manager has noticed that some of the work being done on the project is not in the baseline scope. The project manager has analyzed the work completed by the project team and then compared that to the project management plan to see where the differences are. What process best describes the work of the project manager?",
+    "options": [
+      "Validate scope",
+      "Manage scope",
+      "Control scope",
+      "Monitor scope"
+    ],
+    "correctAnswer": "Control scope"
+  },
+  {
+    "id": 146,
+    "question": "While monitoring and controlling the project, the project manager and the team have consistently received broken equipment from a particular vendor. They have spoken with the vendor and implemented a new process that will ensure the equipment does not show up broken. This seems to have solved the problem. What is the next step the project manager should take?",
+    "options": [
+      "Solve the problem",
+      "Check the solution",
+      "Investigate the problem",
+      "Analyze the problem"
+    ],
+    "correctAnswer": "Check the solution"
+  },
+  {
+    "id": 147,
+    "question": "While conducting procurement on a project, the project manager has received many different bids with a wide variance of estimated cost for the work. What can the project manager use to best determine which vendor has given a realistic price?",
+    "options": [
+      "Inspection and audits",
+      "Weighing system",
+      "Screening system",
+      "Independent estimate"
+    ],
+    "correctAnswer": "Independent estimate"
+  },
+  {
+    "id": 148,
+    "question": "Mark is currently working on the workstation upgrade project. He has noticed there are three activities on the critical path, which are activity A, C, and D. Activity B has a slack of 2 and a duration of 4 days. Activity C has a duration of 3 days, and activity D has a duration of 6 days. What is the slack on activity A?",
+    "options": [
+      "Cannot be determined",
+      "4 days",
+      "2 days",
+      "0 days"
+    ],
+    "correctAnswer": "0 days"
+  },
+  {
+    "id": 149,
+    "question": "A project manager wants to ensure that the new cell phone the project is creating will beat or match the performance of new cell projects by other companies. What tool would be the best for the project?",
+    "options": [
+      "Collect requirements",
+      "Benchmark",
+      "Meetings",
+      "Plan quality management"
+    ],
+    "correctAnswer": "Benchmark"
+  },
+  {
+    "id": 150,
+    "question": "The project manager is currently working on a large building renovation project. The project team is almost done with planning when the project sponsor informs the project manager that due to new regulations, the project will need to be completed within 6 months; if not, they will not be able to open the building to the public. What best represents this?",
+    "options": [
+      "Assumptions",
+      "Deliverables",
+      "Constraints",
+      "Work packages"
+    ],
+    "correctAnswer": "Constraints"
+  },
+  {
+    "id": 151,
+    "question": "When managing risks on a project, the project manager should be aware of the individual project risks and which other project risks?",
+    "options": [
+      "Group project risks",
+      "High-probability risks",
+      "Overall project risks",
+      "High-level risks"
+    ],
+    "correctAnswer": "Overall project risks"
+  },
+  {
+    "id": 152,
+    "question": "While planning a major network upgrade project, one stakeholder has given a requirement to upgrade the switches. The project manager has determined that this would be too costly to be included in the project and has decided to exclude it. What process will the project manager use to document this exclusion?",
+    "options": [
+      "Define Scope",
+      "Collect requirements",
+      "Close project or phase",
+      "Create WBS"
+    ],
+    "correctAnswer": "Define Scope"
+  },
+  {
+    "id": 153,
+    "question": "While working on an agile project, the sponsor would like to know how much work remains to be completed on the project. The project manager has scheduled a meeting with the sponsor for the next day. What tool would be best for the project manager to take to the meeting?",
+    "options": [
+      "Project calendar",
+      "Earned value charts",
+      "Pareto chart",
+      "Burndown chart"
+    ],
+    "correctAnswer": "Burndown chart"
+  },
+  {
+    "id": 154,
+    "question": "Which of the following is a method that will be used to conduct frequent verification and validation that can be done every second on the project?",
+    "options": [
+      "Unit testing",
+      "Integration testing",
+      "Pair programming",
+      "Acceptance testing"
+    ],
+    "correctAnswer": "Pair programming"
+  },
+  {
+    "id": 155,
+    "question": "The project team and the project manager held a meeting to discuss a few issues related to the project. The meeting was very productive and led to most of the issues being resolved. A few weeks later, one team member brought up one of the issues that was resolved in the previous meeting as being unresolved. The project manager reviewed the meeting documentation and determined that the issue was resolved, but the team member may not have known about the resolution. What could the project manager have done differently to prevent this miscommunication?",
+    "options": [
+      "Distributed detailed meeting minutes",
+      "Distributed a meeting agenda",
+      "Ensured that the meeting stayed on topic",
+      "Made sure the meeting was timed"
+    ],
+    "correctAnswer": "Distributed detailed meeting minutes"
+  },
+  {
+    "id": 156,
+    "question": "The project planning has been completed for the office renovation project. The project management plan has been approved by the sponsor and senior management. What should the project manager do next?",
+    "options": [
+      "Hold a kickoff meeting",
+      "Inform senior management",
+      "Update the functional managers",
+      "Get all deliverables accepted"
+    ],
+    "correctAnswer": "Hold a kickoff meeting"
+  },
+  {
+    "id": 157,
+    "question": "The project team has been working very hard over the last 4 months to program the financial application and has completed it. The project manager has informed the team that the quality control team will be inspecting it next. What process group best describes what the team has done so far?",
+    "options": [
+      "Planning",
+      "Monitoring and controlling",
+      "Executing",
+      "Closing"
+    ],
+    "correctAnswer": "Executing"
+  },
+  {
+    "id": 158,
+    "question": "What is considered the single most important skill a project manager should have?",
+    "options": [
+      "Communication",
+      "Technology",
+      "Expert judgment",
+      "Business"
+    ],
+    "correctAnswer": "Communication"
+  },
+  {
+    "id": 159,
+    "question": "Which of the following is an XP practice that helps to create a shared vision between the developers and the customers?",
+    "options": [
+      "Retrospectives",
+      "Iteration review meeting",
+      "Daily standup meetings",
+      "Metaphors"
+    ],
+    "correctAnswer": "Metaphors"
+  },
+  {
+    "id": 160,
+    "question": "The product owner has informed the project manager that all items in the product backlog are valuable and they should all get done. How should the agile project manager respond?",
+    "options": [
+      "Agree with the product owner and try to immediately complete as many of the backlog items as possible",
+      "Inform the project team that all items should get done immediately",
+      "Educate the product owner on the benefits of prioritizing the product backlog",
+      "Prioritize the items himself"
+    ],
+    "correctAnswer": "Educate the product owner on the benefits of prioritizing the product backlog"
+  },
+  {
+    "id": 161,
+    "question": "The project team has just started to code a redesigned accounting application when a key stakeholder asks for the application to include a very specific report on the company’s expenses. The stakeholder has submitted a change request to the project manager. What would be the most important input to consider for this change request?",
+    "options": [
+      "Work performance reports",
+      "Accepted deliverables",
+      "Work performance information",
+      "Work performance data"
+    ],
+    "correctAnswer": "Work performance reports"
+  },
+  {
+    "id": 162,
+    "question": "While planning the risk responses for a construction project, the project manager and project team have decided they will have to choose a new electrical contractor due to the fact that the recommended contractor has legal issues with the local building department. The legal issues could cause the project to be delayed. What risk response does this represent?",
+    "options": [
+      "Exploit",
+      "Accept",
+      "Mitigate",
+      "Avoid"
+    ],
+    "correctAnswer": "Avoid"
+  },
+  {
+    "id": 163,
+    "question": "The project manager has to present a risk assessment to senior management and has decided to take the most graphical representation of the probability and impact assessment. What tool should the project manager use?",
+    "options": [
+      "Bubble chart",
+      "Risk register",
+      "Pareto chart",
+      "Risk summary chart"
+    ],
+    "correctAnswer": "Bubble chart"
+  },
+  {
+    "id": 164,
+    "question": "The project manager has been informed that the cost of building a new room in the office will be $15,000, +/- 65%. The project manager wants to know why there is such a large variance in the estimate. The builder said they have not seen the space and it’s just a high-level estimate. What kind of estimate does this best represent?",
+    "options": [
+      "Detail estimate",
+      "Rough order of magnitude estimate",
+      "Definitive estimate",
+      "Materials estimate"
+    ],
+    "correctAnswer": "Rough order of magnitude estimate"
+  },
+  {
+    "id": 165,
+    "question": "Senior management would like your project to have as few risks as possible. Which of the following contracts best meets their criteria?",
+    "options": [
+      "Cost plus fixed fee",
+      "Cost reimbursable",
+      "Fixed price",
+      "Time and material"
+    ],
+    "correctAnswer": "Fixed price"
+  },
+  {
+    "id": 166,
+    "question": "The project has just been initiated, and the project sponsor calls the project manager to ask approximately when he thinks the project will be completed. The project manager replies that they have been unable to thoroughly analyze the work needed to complete the project and that he is not very knowledgeable about this kind of work. The sponsor insists on receiving a high-level estimate. The project manager responds that it will take approximately 3 months to complete the work based on his experience working on a project very similar to this one. What technique best represents this estimate?",
+    "options": [
+      "Analogous estimates",
+      "Parametric estimates",
+      "Bottom-up estimates",
+      "Expert judgement"
+    ],
+    "correctAnswer": "Analogous estimates"
+  },
+  {
+    "id": 167,
+    "question": "Project manager Mark is currently working on a new office automation project and is consistently being asked for updates and meetings with the project sponsor. Mark informs the sponsor that the constant meetings disrupt his work, and his project is starting to fall behind schedule. The sponsor responds by saying that that is his management style. What best describes the sponsor’s management style?",
+    "options": [
+      "Theory Z",
+      "Theory X",
+      "Theory Y",
+      "Maslow’s hierarchy of needs"
+    ],
+    "correctAnswer": "Theory X"
+  },
+  {
+    "id": 168,
+    "question": "After a project manager is assigned to the project with the project charter, he continues to identify the stakeholders on the project. In this process, he creates the stakeholder register. Which of the following statements about the stakeholder register is false?",
+    "options": [
+      "It classifies the stakeholders",
+      "It contains a list of all stakeholders on the project",
+      "It’s only updated in the initiating phase of the project",
+      "It’s updated throughout the project"
+    ],
+    "correctAnswer": "It’s only updated in the initiating phase of the project"
+  },
+  {
+    "id": 169,
+    "question": "The team is concerned with the quality of the product about to be created by the project. What statement about quality management is true?",
+    "options": [
+      "Low-grade, low quality is okay",
+      "High-grade, low quality is okay",
+      "Low-grade, high quality is okay",
+      "Inspection leads to less prevention"
+    ],
+    "correctAnswer": "Low-grade, high quality is okay"
+  },
+  {
+    "id": 170,
+    "question": "While working on a complex web design project, the manager has received a change request from a senior stakeholder to fix a problem with the current intranet server. The project manager has determined that this change is outside the scope of the project and is not covered by the work listed in the project charter. What should the project manager do next?",
+    "options": [
+      "Inform the stakeholder that the change will incur a significant cost and time increase",
+      "Inform the stakeholder that this change request should be considered a new project",
+      "Pass the change to change control board",
+      "Ignore the change request"
+    ],
+    "correctAnswer": "Inform the stakeholder that this change request should be considered a new project"
+  },
+  {
+    "id": 171,
+    "question": "The project manager and team have decided to hire a contractor to complete the installation of the servers for the system’s upgrade project. The terms of agreement have the contractor being paid on a monthly basis until the work is done. During what process will the contractor payments be made?",
+    "options": [
+      "Plan procurement management",
+      "Manage procurement",
+      "Conduct procurement",
+      "Control procurement"
+    ],
+    "correctAnswer": "Control procurement"
+  },
+  {
+    "id": 172,
+    "question": "While constructing a new office space, the sponsor has requested the project manager complete the project sooner. While analyzing the work, the project manager has noticed that some of the work can start before the predecessor work is done. What can the project manager do in this scenario to complete the project sooner?",
+    "options": [
+      "Add lag times between project activities",
+      "Add lead times between project activities",
+      "Add reserves to each project activity",
+      "Add slack times between project activities"
+    ],
+    "correctAnswer": "Add lead times between project activities"
+  },
+  {
+    "id": 173,
+    "question": "Which of the following is not a principle of agile planning?",
+    "options": [
+      "Engage stakeholders",
+      "Conduct planning throughout the project",
+      "Conduct most of the planning at the beginning",
+      "Engage the project team"
+    ],
+    "correctAnswer": "Conduct most of the planning at the beginning"
+  },
+  {
+    "id": 174,
+    "question": "While working on a web design project, the change control board approved a change to the layout of the menu. What process should the project manager conduct next to ensure the change is implemented?",
+    "options": [
+      "Direct and manage project work",
+      "Verify scope",
+      "Update project management plan",
+      "Update change log"
+    ],
+    "correctAnswer": "Direct and manage project work"
+  },
+  {
+    "id": 175,
+    "question": "The project was executed about 3 weeks ago, and the project team seems to be having a lot of difficulties getting along with each other. They are always having conflicts about how to proceed on certain activities, and the project manager has to step in in order to solve these conflicts. What process is the project manager performing?",
+    "options": [
+      "Control Scope",
+      "Control Resources",
+      "Acquire Team",
+      "Manage Team"
+    ],
+    "correctAnswer": "Manage Team"
+  },
+  {
+    "id": 176,
+    "question": "The project manager is having a difficult time keeping the project on plan. There are many changes regarding the project scope, which has led to an increase in the project budget. Management would like a reason why there have been so many scope changes on this project. What would most likely cause many scope changes on a project?",
+    "options": [
+      "The project manager does not have enough training.",
+      "Spent too long creating the project schedule and not enough time on the scope.",
+      "Management did not approve the project.",
+      "Did not gather detailed requirements."
+    ],
+    "correctAnswer": "Did not gather detailed requirements."
+  },
+  {
+    "id": 177,
+    "question": "What is the difference between the product backlog and the iteration backlog?",
+    "options": [
+      "The product backlog contains all work needed to be completed on the project, and the iteration backlog will contain the steps needed to complete the work",
+      "The product backlog contains the work that the project team will do in the next iteration, and the iteration backlog will contain all the steps needed to complete the work",
+      "The product backlog and the iteration backlog will outline the steps needed to manage the product and iteration",
+      "The product backlog contains all work needed to be completed on the project, and the iteration backlog will contain all work that will get done in the next iteration"
+    ],
+    "correctAnswer": "The product backlog contains all work needed to be completed on the project, and the iteration backlog will contain the steps needed to complete the work"
+  },
+  {
+    "id": 178,
+    "question": "The project manager has acquired the project team members and is starting to work with them to complete the project work. During this process, the project manager has utilized a variety of rewards and recognition theories to keep the team motivated. What is the output of this process?",
+    "options": [
+      "Training",
+      "Team performance assessments",
+      "Virtual teams",
+      "Individual and team assessments"
+    ],
+    "correctAnswer": "Team performance assessments"
+  },
+  {
+    "id": 179,
+    "question": "Managing a project can be a very complex task that involves identifying and managing all the stakeholders on the project. The project manager spends 90% of their time doing what important task?",
+    "options": [
+      "Determining how much an activity will cost",
+      "Determining how long it will take to finish an activity",
+      "Determining the needs of the stakeholders",
+      "Communications"
+    ],
+    "correctAnswer": "Communications"
+  },
+  {
+    "id": 180,
+    "question": "During a new smartphone development project, the customers are given a prototype of the product for them to demo. They inform you that the phone constantly reboots, and sometimes the touch screen does not work. What tool can the project team use to find the reasons for these defects?",
+    "options": [
+      "Inspections",
+      "Assumptions analysis",
+      "Histograms",
+      "Ishikawa diagram"
+    ],
+    "correctAnswer": "Ishikawa diagram"
+  }
+]
