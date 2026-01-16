@@ -58,11 +58,13 @@ export default function Quiz() {
   };
 
   const resetQuiz = () => {
-    localStorage.removeItem(STORAGE_KEY);
-    setIndex(0);
-    setSelected("");
-    setChecked(false);
-    setResults({});
+    if (window.confirm("Are you sure you want to restart the quiz? All progress will be lost.")) {
+      localStorage.removeItem(STORAGE_KEY);
+      setIndex(0);
+      setSelected("");
+      setChecked(false);
+      setResults({});
+    }
   };
 
   const score = Object.values(results).filter(r => r.isCorrect).length;
@@ -159,11 +161,11 @@ export default function Quiz() {
           )}
 
           <div style={{ marginTop: 15 }}>
-            <button disabled={!checked || index === 0} onClick={() => goTo(index - 1)}>
+            <button disabled={index === 0} onClick={() => goTo(index - 1)}>
               Previous
             </button>
             <button
-              disabled={!checked || index === questions.length - 1}
+              disabled={index === questions.length - 1}
               onClick={() => goTo(index + 1)}
               style={{ marginLeft: 10 }}
             >
