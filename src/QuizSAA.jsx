@@ -1,9 +1,26 @@
 import { useEffect, useMemo, useState } from "react";
 import questionsData from "./QuestionSaa.json";
 
-const STORAGE_KEY = "mock_exam_progress_v1";
+const STORAGE_KEY = "mock_exam_progress_v2";
 
 export default function QuizSaa() {
+
+  const [isMobile, setIsMobile] = useState(
+  window.innerWidth < 768
+);
+
+useEffect(() => {
+  const handleResize = () => {
+    setIsMobile(window.innerWidth < 768);
+  };
+
+  window.addEventListener("resize", handleResize);
+
+  return () =>
+    window.removeEventListener("resize", handleResize);
+}, []);
+
+
   const questions = useMemo(() => questionsData, []);
 
   const [index, setIndex] = useState(0);
@@ -207,34 +224,38 @@ const toggleOption = (option) => {
 
   return (
     <div
-      style={{
-        display: "flex",
-        gap: 20,
-        maxWidth: 1300,
-        margin: "20px auto",
-        padding: 10
-      }}
-    >
+  style={{
+    display: "flex",
+    flexDirection: isMobile ? "column" : "row",
+    gap: 20,
+    maxWidth: 1300,
+    margin: "20px auto",
+    padding: 10
+  }}
+>
       {/* =========================
           LEFT SIDE NAVIGATION
       ========================= */}
 
       <div
         style={{
-          width: 160,
-          height: "85vh",
-          overflowY: "auto",
-          border: "1px solid #ddd",
-          borderRadius: 8,
-          padding: 10
-        }}
+  width: isMobile ? "100%" : 160,
+  height: isMobile ? "220px" : "85vh",
+  overflowY: "auto",
+  border: "1px solid #ddd",
+  borderRadius: 8,
+  padding: 10,
+  boxSizing: "border-box"
+}}
       >
         <h4 style={{ marginTop: 0 }}>Questions</h4>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
+            gridTemplateColumns: isMobile
+  ? "repeat(6, 1fr)"
+  : "repeat(4, 1fr)",
             gap: 6
           }}
         >
@@ -290,7 +311,12 @@ const toggleOption = (option) => {
           QUESTION AREA
       ========================= */}
 
-      <div style={{ flex: 1 }}>
+     <div
+  style={{
+    flex: 1,
+    width: "100%"
+  }}
+>
         <h2>AWS Mock Exam</h2>
 
         <div style={{ marginBottom: 15 }}>
@@ -306,13 +332,15 @@ const toggleOption = (option) => {
             padding: 20
           }}
         >
-          <div
-            style={{
-              marginBottom: 15,
-              fontSize: 18,
-              fontWeight: "bold"
-            }}
-          >
+        <div
+  style={{
+    marginBottom: 15,
+    fontSize: isMobile ? 16 : 18,
+    fontWeight: "bold",
+    lineHeight: 1.6,
+    wordBreak: "break-word"
+  }}
+>
             {q.question}
           </div>
 
@@ -371,7 +399,14 @@ const toggleOption = (option) => {
             </div>
           )}
 
-          <div style={{ marginTop: 20 }}>
+          <div
+  style={{
+    marginTop: 20,
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 10
+  }}
+>
             <button
               disabled={index === 0}
               onClick={() => goTo(index - 1)}
