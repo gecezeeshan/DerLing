@@ -7,6 +7,7 @@ import Ocr from './Ocr';
 import KidsVocabularyTest from './KidsVocabularyTest';
 import KidsHangman from './KidsHangman';
 import Quiz from './Quiz';
+import QuizSaa from './QuizSAA';
 
 
 export default function Home() {
@@ -118,6 +119,11 @@ export default function Home() {
                 Quiz
               </button>
             </li>
+                 <li className="p-2 rounded text-white hover-bg">
+              <button onClick={() => { setComp("SAA"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                Quiz SAA
+              </button>
+            </li>
           </ul>
         </aside>
 
@@ -136,6 +142,7 @@ export default function Home() {
             {comp === "Translate" && <DerTranslate />}
             {comp === "OCR" && <Ocr />}
             {comp === "PMP" && <Quiz />}
+            {comp === "SAA" && <QuizSaa />}
             {comp === "WhatsAppQuickChat" && <WhatsAppQuickChat />}
             {comp === "KidsHangman" && <KidsHangman />}
           </div>

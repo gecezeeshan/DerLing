@@ -6,6 +6,7 @@ import Counter from './Counter';
 import Dict from './Dict';
 import Home from './Home';
 import Quiz from './Quiz';
+import QuizSaa from './QuizSAA';
 import Ocr from './Ocr';
 // import KidsVocabularyTest from './KidsVocabularyTest';
 // import KidsHangman from './KidsHangman';
@@ -37,6 +38,8 @@ export default function App() {
         <Route path="/Dict" element={<Dict />} />
         <Route path="/OCR" element={<Ocr />} />
         <Route path="/PMP" element={<Quiz />} />
+        <Route path="/SAA" element={<QuizSaa />} />
+
         {/* <Route path="/Addition" element={<AdditionQuiz />} />
         <Route path="/KidsVocabulary" element={<KidsVocabularyTest />} />
         <Route path="/KidsHangman" element={<KidsHangman />} /> */}
