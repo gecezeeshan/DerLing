@@ -219,18 +219,16 @@ function LoanCalculator() {
         </div>
 
         <div>
-          <label>Finance Period</label>
+          <label>Finance Period (Years)</label>
 
-          <select
+          <input
+            type="number"
+            min="1"
+            step="1"
             value={years}
             onChange={(e) => setYears(e.target.value)}
-          >
-            <option value="10">10 Years</option>
-            <option value="15">15 Years</option>
-            <option value="20">20 Years</option>
-            <option value="25">25 Years</option>
-            <option value="30">30 Years</option>
-          </select>
+            placeholder="e.g. 25"
+          />
         </div>
       </div>
 
@@ -474,19 +472,19 @@ function PurchaseBreakdown({
                   <tr key={row.key}>
                     <td>{row.label}</td>
 
-                    <td>
+                    <td data-label="Dubai">
                       {money(data.Dubai[row.key])}
                     </td>
 
-                    <td>
+                    <td data-label="Abu Dhabi">
                       {money(data["Abu Dhabi"][row.key])}
                     </td>
 
-                    <td>
+                    <td data-label="Sharjah">
                       {money(data.Sharjah[row.key])}
                     </td>
 
-                    <td>
+                    <td data-label="Ajman">
                       {money(data.Ajman[row.key])}
                     </td>
                   </tr>
@@ -495,29 +493,29 @@ function PurchaseBreakdown({
                 <tr className="subtotal-row">
                   <td>SUBTOTAL — Additional Costs</td>
 
-                  <td>{money(data.Dubai.subtotal)}</td>
+                  <td data-label="Dubai">{money(data.Dubai.subtotal)}</td>
 
-                  <td>
+                  <td data-label="Abu Dhabi">
                     {money(data["Abu Dhabi"].subtotal)}
                   </td>
 
-                  <td>{money(data.Sharjah.subtotal)}</td>
+                  <td data-label="Sharjah">{money(data.Sharjah.subtotal)}</td>
 
-                  <td>{money(data.Ajman.subtotal)}</td>
+                  <td data-label="Ajman">{money(data.Ajman.subtotal)}</td>
                 </tr>
 
                 <tr className="grand-total-row">
                   <td>GRAND TOTAL</td>
 
-                  <td>{money(data.Dubai.grandTotal)}</td>
+                  <td data-label="Dubai">{money(data.Dubai.grandTotal)}</td>
 
-                  <td>
+                  <td data-label="Abu Dhabi">
                     {money(data["Abu Dhabi"].grandTotal)}
                   </td>
 
-                  <td>{money(data.Sharjah.grandTotal)}</td>
+                  <td data-label="Sharjah">{money(data.Sharjah.grandTotal)}</td>
 
-                  <td>{money(data.Ajman.grandTotal)}</td>
+                  <td data-label="Ajman">{money(data.Ajman.grandTotal)}</td>
                 </tr>
               </tbody>
             </table>
@@ -656,34 +654,18 @@ function PropertyCalculator() {
         </div>
 
         <div>
-          <label>Finance Period</label>
+          <label>Finance Period (Years)</label>
 
-          <select
+          <input
+            type="number"
+            min="1"
+            step="1"
             value={years}
             onChange={(e) =>
               setYears(e.target.value)
             }
-          >
-            <option value="10">
-              10 Years
-            </option>
-
-            <option value="15">
-              15 Years
-            </option>
-
-            <option value="20">
-              20 Years
-            </option>
-
-            <option value="25">
-              25 Years
-            </option>
-
-            <option value="30">
-              30 Years
-            </option>
-          </select>
+            placeholder="e.g. 25"
+          />
         </div>
       </div>
 
@@ -1026,7 +1008,8 @@ export default function PropertyFinanceCalculator() {
         .collapse-header {
           width: 100%;
           border: none;
-          background: #f7f9fb;
+          background: #17483f;
+          color: #ffffff;
           padding: 18px 20px;
           display: flex;
           align-items: center;
@@ -1045,7 +1028,7 @@ export default function PropertyFinanceCalculator() {
         .collapse-header span {
           display: block;
           margin-top: 4px;
-          color: #707b8d;
+          color: #d6e9e3;
           font-size: 12px;
         }
 
@@ -1108,6 +1091,11 @@ export default function PropertyFinanceCalculator() {
 
         .comparison-table tbody tr:hover td {
           background: #fafbfc;
+        }
+
+        .comparison-table tbody td[data-label]::before {
+          content: attr(data-label);
+          display: none;
         }
 
         .subtotal-row td {
@@ -1206,6 +1194,77 @@ export default function PropertyFinanceCalculator() {
 
           .tabs button {
             flex: 1;
+          }
+
+          .breakdown-content {
+            padding: 12px;
+          }
+
+          .table-scroll {
+            overflow: visible;
+          }
+
+          .comparison-table {
+            min-width: 0;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+          }
+
+          .comparison-table thead {
+            display: none;
+          }
+
+          .comparison-table tbody,
+          .comparison-table tr,
+          .comparison-table td {
+            display: block;
+            width: 100%;
+          }
+
+          .comparison-table tbody tr {
+            overflow: hidden;
+            border: 1px solid #e1e6ee;
+            border-radius: 8px;
+            background: #ffffff;
+          }
+
+          .comparison-table th,
+          .comparison-table td {
+            position: static;
+            padding: 9px 12px;
+            text-align: right;
+            white-space: normal;
+          }
+
+          .comparison-table th:first-child,
+          .comparison-table td:first-child {
+            position: static;
+            background: #f1f5f4;
+            text-align: left;
+            font-weight: 700;
+          }
+
+          .comparison-table tbody td[data-label] {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            text-align: right;
+          }
+
+          .comparison-table tbody td[data-label]::before {
+            display: block;
+            color: #596879;
+            font-weight: 600;
+            text-align: left;
+          }
+
+          .subtotal-row td:first-child {
+            background: #e9edf2 !important;
+          }
+
+          .grand-total-row td:first-child {
+            background: #172033 !important;
+            color: #ffffff;
           }
         }
       `}</style>
