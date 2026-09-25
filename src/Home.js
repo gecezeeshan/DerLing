@@ -8,6 +8,7 @@ import KidsVocabularyTest from './KidsVocabularyTest';
 import KidsHangman from './KidsHangman';
 import Quiz from './Quiz';
 import QuizSaa from './QuizSAA';
+import UAEPropertyCalculator from './DerPropCal';
 
 
 export default function Home() {
@@ -124,6 +125,11 @@ export default function Home() {
                 Quiz SAA
               </button>
             </li>
+                <li className="p-2 rounded text-white hover-bg">
+                  <button onClick={() => { setComp("PropertyCalculator"); closeSidebar(); }} className="btn btn-link text-white p-0">
+                    Property Calculator
+                  </button>
+                </li>
           </ul>
         </aside>
 
@@ -145,6 +151,7 @@ export default function Home() {
             {comp === "SAA" && <QuizSaa />}
             {comp === "WhatsAppQuickChat" && <WhatsAppQuickChat />}
             {comp === "KidsHangman" && <KidsHangman />}
+            {comp === "PropertyCalculator" && <UAEPropertyCalculator />}
           </div>
         </main>
       </div>

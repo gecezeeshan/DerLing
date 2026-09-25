@@ -1,15 +1,13 @@
 import React, { useMemo, useState } from "react";
 
-type City = "Dubai" | "Abu Dhabi" | "Sharjah" | "Ajman";
-
-const money = (value: number) =>
+const money = (value) =>
   new Intl.NumberFormat("en-AE", {
     style: "currency",
     currency: "AED",
     maximumFractionDigits: 0,
   }).format(value || 0);
 
-const number = (value: number) =>
+const num = (value) =>
   new Intl.NumberFormat("en-AE", {
     maximumFractionDigits: 2,
   }).format(value || 0);
@@ -20,57 +18,109 @@ const number = (value: number) =>
 
 function AreaConverter() {
   const [sqft, setSqft] = useState("");
+  const [gaz, setGaz] = useState("");
+  const [marla, setMarla] = useState("");
 
-  const sqFeet = Number(sqft) || 0;
+  // Common Pakistan convention
+  // 1 gaz = 9 sq ft
+  // 1 marla = 272.25 sq ft
 
-  /*
-    IMPORTANT:
-    Gaz/Gaj = square yard
-    1 gaz = 9 sq ft
+  const updateFromSqft = (value) => {
+    setSqft(value);
 
-    Marla varies by region.
-    We use the common Pakistan standard:
-    1 marla = 272.25 sq ft
-  */
+    const sqftValue = Number(value);
 
-  const gaz = sqFeet / 9;
-  const marla = sqFeet / 272.25;
+    if (!sqftValue) {
+      setGaz("");
+      setMarla("");
+      return;
+    }
+
+    setGaz(String(sqftValue / 9));
+    setMarla(String(sqftValue / 272.25));
+  };
+
+  const updateFromGaz = (value) => {
+    setGaz(value);
+
+    const gazValue = Number(value);
+
+    if (!gazValue) {
+      setSqft("");
+      setMarla("");
+      return;
+    }
+
+    const sqftValue = gazValue * 9;
+
+    setSqft(String(sqftValue));
+    setMarla(String(sqftValue / 272.25));
+  };
+
+  const updateFromMarla = (value) => {
+    setMarla(value);
+
+    const marlaValue = Number(value);
+
+    if (!marlaValue) {
+      setSqft("");
+      setGaz("");
+      return;
+    }
+
+    const sqftValue = marlaValue * 272.25;
+
+    setSqft(String(sqftValue));
+    setGaz(String(sqftValue / 9));
+  };
 
   return (
     <div className="calculator-card">
       <h2>Area Converter</h2>
+
       <p className="muted">
-        Convert square feet into gaz (square yard) and marla.
+        Enter any one unit. The other two units will be calculated
+        automatically.
       </p>
 
-      <label>Square Feet</label>
-      <input
-        type="number"
-        value={sqft}
-        onChange={(e) => setSqft(e.target.value)}
-        placeholder="e.g. 1200"
-      />
+      <div className="area-grid">
+        <div>
+          <label>Square Feet</label>
 
-      <div className="result-grid">
-        <div className="result-box">
-          <span>Square Feet</span>
-          <strong>{number(sqFeet)} sq ft</strong>
+          <input
+            type="number"
+            value={sqft}
+            onChange={(e) => updateFromSqft(e.target.value)}
+            placeholder="e.g. 1200"
+          />
         </div>
 
-        <div className="result-box">
-          <span>Gaz / Gaj</span>
-          <strong>{number(gaz)} gaz</strong>
+        <div>
+          <label>Gaz / Gaj</label>
+
+          <input
+            type="number"
+            value={gaz}
+            onChange={(e) => updateFromGaz(e.target.value)}
+            placeholder="e.g. 133.33"
+          />
         </div>
 
-        <div className="result-box">
-          <span>Marla</span>
-          <strong>{number(marla)} marla</strong>
+        <div>
+          <label>Marla</label>
+
+          <input
+            type="number"
+            value={marla}
+            onChange={(e) => updateFromMarla(e.target.value)}
+            placeholder="e.g. 4.41"
+          />
         </div>
       </div>
 
       <div className="formula">
-        <div>1 gaz = 9 sq ft</div>
-        <div>1 marla = 272.25 sq ft</div>
+        <div>1 Gaz = 9 sq ft</div>
+        <div>1 Marla = 272.25 sq ft</div>
       </div>
     </div>
   );
@@ -93,6 +143,7 @@ function LoanCalculator() {
     const termYears = Number(years) || 0;
 
     const downPayment = price * (downPercent / 100);
+
     const loanAmount = price - downPayment;
 
     const monthlyRate = rate / 100 / 12;
@@ -113,8 +164,10 @@ function LoanCalculator() {
     }
 
     const yearlyPayment = monthlyPayment * 12;
+
     const totalPayments = monthlyPayment * months;
-    const totalProfitInterest = totalPayments - loanAmount;
+
+    const totalProfit = totalPayments - loanAmount;
 
     return {
       price,
@@ -123,18 +176,18 @@ function LoanCalculator() {
       monthlyPayment,
       yearlyPayment,
       totalPayments,
-      totalProfitInterest,
-      termYears,
+      totalProfit,
     };
   }, [propertyPrice, downPaymentPercent, annualRate, years]);
 
   return (
     <div className="calculator-card">
-      <h2>Home Finance Calculator</h2>
+      <h2>Loan / Home Finance Calculator</h2>
 
       <div className="form-grid">
         <div>
           <label>Property Value</label>
+
           <input
             type="number"
             value={propertyPrice}
@@ -144,15 +197,19 @@ function LoanCalculator() {
 
         <div>
           <label>Down Payment %</label>
+
           <input
             type="number"
             value={downPaymentPercent}
-            onChange={(e) => setDownPaymentPercent(e.target.value)}
+            onChange={(e) =>
+              setDownPaymentPercent(e.target.value)
+            }
           />
         </div>
 
         <div>
           <label>Annual Rate / Profit Rate %</label>
+
           <input
             type="number"
             step="0.01"
@@ -162,406 +219,553 @@ function LoanCalculator() {
         </div>
 
         <div>
-          <label>Finance Period (Years)</label>
-          <input
-            type="number"
+          <label>Finance Period</label>
+
+          <select
             value={years}
             onChange={(e) => setYears(e.target.value)}
-          />
+          >
+            <option value="10">10 Years</option>
+            <option value="15">15 Years</option>
+            <option value="20">20 Years</option>
+            <option value="25">25 Years</option>
+            <option value="30">30 Years</option>
+          </select>
         </div>
       </div>
 
-      <div className="result-grid">
-        <div className="result-box">
-          <span>Down Payment</span>
-          <strong>{money(calculation.downPayment)}</strong>
-        </div>
+      <div className="top-summary">
+        <SummaryItem
+          label="Property Value"
+          value={money(calculation.price)}
+        />
 
-        <div className="result-box">
-          <span>Bank Finance</span>
-          <strong>{money(calculation.loanAmount)}</strong>
-        </div>
+        <SummaryItem
+          label="Down Payment"
+          value={money(calculation.downPayment)}
+        />
 
-        <div className="result-box highlight">
-          <span>Monthly Payment</span>
-          <strong>{money(calculation.monthlyPayment)}</strong>
-        </div>
+        <SummaryItem
+          label="Bank Finance"
+          value={money(calculation.loanAmount)}
+        />
 
-        <div className="result-box">
-          <span>Yearly Payment</span>
-          <strong>{money(calculation.yearlyPayment)}</strong>
-        </div>
+        <SummaryItem
+          label="Monthly Payment"
+          value={money(calculation.monthlyPayment)}
+          highlight
+        />
 
-        <div className="result-box">
-          <span>Total Payments</span>
-          <strong>{money(calculation.totalPayments)}</strong>
-        </div>
+        <SummaryItem
+          label="Yearly Payment"
+          value={money(calculation.yearlyPayment)}
+        />
 
-        <div className="result-box">
-          <span>Total Profit / Interest</span>
-          <strong>{money(calculation.totalProfitInterest)}</strong>
-        </div>
-      </div>
-
-      <div className="formula">
-        <strong>Example:</strong> AED 1,000,000 property with 20% down,
-        80% financing, 5.47% annual rate and 25 years.
+        <SummaryItem
+          label="Total Profit / Interest"
+          value={money(calculation.totalProfit)}
+        />
       </div>
     </div>
   );
 }
 
 /* =========================================================
-   UAE PROPERTY PURCHASE COST CALCULATOR
+   PROPERTY COST DATA
    ========================================================= */
 
-interface PropertyCosts {
-  registrationRate: number;
-  buyerRegistrationRate: number;
-
-  brokerRate: number;
-  brokerVat: number;
-
-  mortgageRegistrationRate: number;
-
-  titleDeed: number;
-
-  noc: number;
-  valuation: number;
-  bankProcessing: number;
-  other: number;
-}
-
-const defaultCosts: Record<City, PropertyCosts> = {
+const CITY_COSTS = {
   Dubai: {
-    registrationRate: 4,
-    buyerRegistrationRate: 2,
+    registrationRate: 2,
     brokerRate: 2,
     brokerVat: 5,
-    mortgageRegistrationRate: 0.25,
+    mortgageRate: 0.25,
     titleDeed: 250,
+
     noc: 0,
     valuation: 3000,
-    bankProcessing: 5250,
+    processing: 5250,
     other: 0,
   },
 
   "Abu Dhabi": {
-    registrationRate: 2,
-    buyerRegistrationRate: 1,
+    registrationRate: 1,
     brokerRate: 2,
     brokerVat: 5,
-    mortgageRegistrationRate: 0.1,
+    mortgageRate: 0.1,
     titleDeed: 0,
+
     noc: 0,
     valuation: 3000,
-    bankProcessing: 5250,
+    processing: 5250,
     other: 0,
   },
 
   Sharjah: {
     registrationRate: 2,
-    buyerRegistrationRate: 2,
     brokerRate: 2,
     brokerVat: 5,
-    mortgageRegistrationRate: 0,
+    mortgageRate: 0,
     titleDeed: 500,
+
     noc: 0,
     valuation: 3000,
-    bankProcessing: 5250,
+    processing: 5250,
     other: 0,
   },
 
   Ajman: {
     registrationRate: 3,
-    buyerRegistrationRate: 3,
     brokerRate: 2,
     brokerVat: 5,
-    mortgageRegistrationRate: 0.5,
+    mortgageRate: 0.5,
     titleDeed: 350,
+
     noc: 0,
     valuation: 3000,
-    bankProcessing: 5250,
+    processing: 5250,
     other: 0,
   },
 };
 
-function PropertyCostCalculator() {
-  const [city, setCity] = useState<City>("Dubai");
+/* =========================================================
+   PURCHASE BREAKDOWN
+   ========================================================= */
 
-  const [propertyPrice, setPropertyPrice] = useState("1000000");
-  const [downPaymentPercent, setDownPaymentPercent] = useState("20");
+function PurchaseBreakdown({
+  propertyPrice,
+  financeAmount,
+}) {
+  const [open, setOpen] = useState(true);
 
-  const [brokerRate, setBrokerRate] = useState(
-    String(defaultCosts.Dubai.brokerRate)
+  const calculateCity = (city) => {
+    const c = CITY_COSTS[city];
+
+    const registration =
+      propertyPrice * (c.registrationRate / 100);
+
+    const broker =
+      propertyPrice * (c.brokerRate / 100);
+
+    const brokerVat =
+      broker * (c.brokerVat / 100);
+
+    const mortgage =
+      financeAmount * (c.mortgageRate / 100);
+
+    const subtotal =
+      registration +
+      broker +
+      brokerVat +
+      mortgage +
+      c.titleDeed +
+      c.noc +
+      c.valuation +
+      c.processing +
+      c.other;
+
+    const grandTotal = propertyPrice + subtotal;
+
+    return {
+      registration,
+      broker,
+      brokerVat,
+      mortgage,
+      titleDeed: c.titleDeed,
+      noc: c.noc,
+      valuation: c.valuation,
+      processing: c.processing,
+      other: c.other,
+      subtotal,
+      grandTotal,
+    };
+  };
+
+  const data = {
+    Dubai: calculateCity("Dubai"),
+    "Abu Dhabi": calculateCity("Abu Dhabi"),
+    Sharjah: calculateCity("Sharjah"),
+    Ajman: calculateCity("Ajman"),
+  };
+
+  const rows = [
+    {
+      label: "Property Registration",
+      key: "registration",
+    },
+
+    {
+      label: "Broker Commission",
+      key: "broker",
+    },
+
+    {
+      label: "VAT on Broker",
+      key: "brokerVat",
+    },
+
+    {
+      label: "Mortgage / Finance Registration",
+      key: "mortgage",
+    },
+
+    {
+      label: "Title Deed / Certificate",
+      key: "titleDeed",
+    },
+
+    {
+      label: "NOC / Developer Fees",
+      key: "noc",
+    },
+
+    {
+      label: "Bank Valuation",
+      key: "valuation",
+    },
+
+    {
+      label: "Bank Processing / Admin",
+      key: "processing",
+    },
+
+    {
+      label: "Other Charges",
+      key: "other",
+    },
+  ];
+
+  return (
+    <div className="breakdown-wrapper">
+      <button
+        className="collapse-header"
+        onClick={() => setOpen(!open)}
+      >
+        <div>
+          <strong>Purchase Breakdown</strong>
+
+          <span>
+            Registration, broker, mortgage, NOC, bank and other
+            charges
+          </span>
+        </div>
+
+        <span className={`arrow ${open ? "rotate" : ""}`}>
+          ▼
+        </span>
+      </button>
+
+      {open && (
+        <div className="breakdown-content">
+          <div className="table-scroll">
+            <table className="comparison-table">
+              <thead>
+                <tr>
+                  <th>Purchase Cost</th>
+                  <th>Dubai</th>
+                  <th>Abu Dhabi</th>
+                  <th>Sharjah</th>
+                  <th>Ajman</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {rows.map((row) => (
+                  <tr key={row.key}>
+                    <td>{row.label}</td>
+
+                    <td>
+                      {money(data.Dubai[row.key])}
+                    </td>
+
+                    <td>
+                      {money(data["Abu Dhabi"][row.key])}
+                    </td>
+
+                    <td>
+                      {money(data.Sharjah[row.key])}
+                    </td>
+
+                    <td>
+                      {money(data.Ajman[row.key])}
+                    </td>
+                  </tr>
+                ))}
+
+                <tr className="subtotal-row">
+                  <td>SUBTOTAL — Additional Costs</td>
+
+                  <td>{money(data.Dubai.subtotal)}</td>
+
+                  <td>
+                    {money(data["Abu Dhabi"].subtotal)}
+                  </td>
+
+                  <td>{money(data.Sharjah.subtotal)}</td>
+
+                  <td>{money(data.Ajman.subtotal)}</td>
+                </tr>
+
+                <tr className="grand-total-row">
+                  <td>GRAND TOTAL</td>
+
+                  <td>{money(data.Dubai.grandTotal)}</td>
+
+                  <td>
+                    {money(data["Abu Dhabi"].grandTotal)}
+                  </td>
+
+                  <td>{money(data.Sharjah.grandTotal)}</td>
+
+                  <td>{money(data.Ajman.grandTotal)}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="breakdown-note">
+            <strong>Note:</strong> Registration, broker, NOC,
+            valuation, processing and other fees can vary depending
+            on the property, transaction structure, bank and
+            developer. These figures are configurable estimates.
+          </div>
+        </div>
+      )}
+    </div>
   );
+}
 
-  const [valuation, setValuation] = useState(
-    String(defaultCosts.Dubai.valuation)
-  );
+/* =========================================================
+   PROPERTY CALCULATOR
+   ========================================================= */
 
-  const [bankProcessing, setBankProcessing] = useState(
-    String(defaultCosts.Dubai.bankProcessing)
-  );
+function PropertyCalculator() {
+  const [propertyPrice, setPropertyPrice] =
+    useState("1000000");
 
-  const [noc, setNoc] = useState("0");
-  const [other, setOther] = useState("0");
+  const [downPaymentPercent, setDownPaymentPercent] =
+    useState("20");
 
-  const costs = defaultCosts[city];
+  const [rate, setRate] = useState("5.47");
+
+  const [years, setYears] = useState("25");
 
   const calculation = useMemo(() => {
     const price = Number(propertyPrice) || 0;
-    const downPercent = Number(downPaymentPercent) || 0;
 
-    const downPayment = price * (downPercent / 100);
+    const downPercent =
+      Number(downPaymentPercent) || 0;
 
-    const financeAmount = price - downPayment;
+    const downPayment =
+      price * (downPercent / 100);
 
-    const registrationFee =
-      price * (costs.buyerRegistrationRate / 100);
+    const finance =
+      price - downPayment;
 
-    const broker = price * ((Number(brokerRate) || 0) / 100);
+    const annualRate = Number(rate) || 0;
 
-    const brokerVat = broker * (costs.brokerVat / 100);
+    const months = Number(years) * 12;
 
-    const mortgageRegistration =
-      financeAmount * (costs.mortgageRegistrationRate / 100);
+    const monthlyRate =
+      annualRate / 100 / 12;
 
-    const titleDeed = costs.titleDeed;
+    let monthlyPayment = 0;
 
-    const totalAdditionalCosts =
-      registrationFee +
-      broker +
-      brokerVat +
-      mortgageRegistration +
-      titleDeed +
-      Number(noc || 0) +
-      Number(valuation || 0) +
-      Number(bankProcessing || 0) +
-      Number(other || 0);
-
-    const totalCashRequired =
-      downPayment + totalAdditionalCosts;
+    if (finance > 0 && months > 0) {
+      if (monthlyRate === 0) {
+        monthlyPayment =
+          finance / months;
+      } else {
+        monthlyPayment =
+          (finance *
+            monthlyRate *
+            Math.pow(
+              1 + monthlyRate,
+              months
+            )) /
+          (Math.pow(
+            1 + monthlyRate,
+            months
+          ) - 1);
+      }
+    }
 
     return {
       price,
       downPayment,
-      financeAmount,
-      registrationFee,
-      broker,
-      brokerVat,
-      mortgageRegistration,
-      titleDeed,
-      totalAdditionalCosts,
-      totalCashRequired,
+      finance,
+      monthlyPayment,
+      yearlyPayment:
+        monthlyPayment * 12,
     };
   }, [
     propertyPrice,
     downPaymentPercent,
-    brokerRate,
-    valuation,
-    bankProcessing,
-    noc,
-    other,
-    costs,
+    rate,
+    years,
   ]);
-
-  const changeCity = (newCity: City) => {
-    setCity(newCity);
-
-    const newCosts = defaultCosts[newCity];
-
-    setBrokerRate(String(newCosts.brokerRate));
-    setValuation(String(newCosts.valuation));
-    setBankProcessing(String(newCosts.bankProcessing));
-  };
 
   return (
     <div className="calculator-card">
-      <h2>UAE Property Purchase Calculator</h2>
+      <h2>UAE Property Cost Calculator</h2>
 
-      <div className="city-selector">
-        {(
-          ["Dubai", "Abu Dhabi", "Sharjah", "Ajman"] as City[]
-        ).map((item) => (
-          <button
-            key={item}
-            className={city === item ? "active" : ""}
-            onClick={() => changeCity(item)}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      <p className="muted">
+        Enter the property value and finance details. The
+        calculator will compare the estimated purchase cost
+        across Dubai, Abu Dhabi, Sharjah and Ajman.
+      </p>
 
       <div className="form-grid">
         <div>
           <label>Property Value</label>
+
           <input
             type="number"
             value={propertyPrice}
-            onChange={(e) => setPropertyPrice(e.target.value)}
+            onChange={(e) =>
+              setPropertyPrice(e.target.value)
+            }
           />
         </div>
 
         <div>
           <label>Down Payment %</label>
+
           <input
             type="number"
             value={downPaymentPercent}
-            onChange={(e) => setDownPaymentPercent(e.target.value)}
+            onChange={(e) =>
+              setDownPaymentPercent(
+                e.target.value
+              )
+            }
           />
         </div>
 
         <div>
-          <label>Broker Commission %</label>
+          <label>Annual Profit / Interest Rate %</label>
+
           <input
             type="number"
             step="0.01"
-            value={brokerRate}
-            onChange={(e) => setBrokerRate(e.target.value)}
+            value={rate}
+            onChange={(e) =>
+              setRate(e.target.value)
+            }
           />
         </div>
 
         <div>
-          <label>Bank Valuation</label>
-          <input
-            type="number"
-            value={valuation}
-            onChange={(e) => setValuation(e.target.value)}
-          />
-        </div>
+          <label>Finance Period</label>
 
-        <div>
-          <label>Bank Processing / Admin</label>
-          <input
-            type="number"
-            value={bankProcessing}
-            onChange={(e) => setBankProcessing(e.target.value)}
-          />
-        </div>
+          <select
+            value={years}
+            onChange={(e) =>
+              setYears(e.target.value)
+            }
+          >
+            <option value="10">
+              10 Years
+            </option>
 
-        <div>
-          <label>NOC / Developer Fees</label>
-          <input
-            type="number"
-            value={noc}
-            onChange={(e) => setNoc(e.target.value)}
-          />
-        </div>
+            <option value="15">
+              15 Years
+            </option>
 
-        <div>
-          <label>Other Fees</label>
-          <input
-            type="number"
-            value={other}
-            onChange={(e) => setOther(e.target.value)}
-          />
+            <option value="20">
+              20 Years
+            </option>
+
+            <option value="25">
+              25 Years
+            </option>
+
+            <option value="30">
+              30 Years
+            </option>
+          </select>
         </div>
       </div>
 
-      <div className="breakdown">
-        <h3>{city} Purchase Breakdown</h3>
+      {/* GENERAL / FIXED PAYMENT SUMMARY */}
 
-        <CostRow
+      <div className="summary-heading">
+        <h3>Finance Summary</h3>
+
+        <span>
+          Based on {downPaymentPercent}% down payment,
+          {100 - Number(downPaymentPercent)}% financing
+        </span>
+      </div>
+
+      <div className="top-summary">
+        <SummaryItem
           label="Property Value"
-          value={calculation.price}
+          value={money(calculation.price)}
         />
 
-        <CostRow
-          label={`Down Payment (${downPaymentPercent}%)`}
-          value={calculation.downPayment}
+        <SummaryItem
+          label="Your Down Payment"
+          value={money(
+            calculation.downPayment
+          )}
         />
 
-        <CostRow
+        <SummaryItem
           label="Bank Finance"
-          value={calculation.financeAmount}
+          value={money(
+            calculation.finance
+          )}
         />
 
-        <CostRow
-          label="Property Registration"
-          value={calculation.registrationFee}
+        <SummaryItem
+          label="Monthly Payment"
+          value={money(
+            calculation.monthlyPayment
+          )}
+          highlight
         />
 
-        <CostRow
-          label={`Broker Commission (${brokerRate}%)`}
-          value={calculation.broker}
+        <SummaryItem
+          label="Yearly Payment"
+          value={money(
+            calculation.yearlyPayment
+          )}
         />
-
-        <CostRow
-          label="VAT on Broker"
-          value={calculation.brokerVat}
-        />
-
-        <CostRow
-          label="Mortgage Registration"
-          value={calculation.mortgageRegistration}
-        />
-
-        <CostRow
-          label="Title Deed / Certificate"
-          value={calculation.titleDeed}
-        />
-
-        <CostRow
-          label="NOC / Developer"
-          value={Number(noc || 0)}
-        />
-
-        <CostRow
-          label="Bank Valuation"
-          value={Number(valuation || 0)}
-        />
-
-        <CostRow
-          label="Bank Processing / Admin"
-          value={Number(bankProcessing || 0)}
-        />
-
-        <CostRow
-          label="Other"
-          value={Number(other || 0)}
-        />
-
-        <div className="total-row">
-          <span>Additional Purchase Costs</span>
-          <strong>{money(calculation.totalAdditionalCosts)}</strong>
-        </div>
-
-        <div className="grand-total">
-          <div>
-            <span>Cash Required Initially</span>
-            <small>
-              Down payment + purchase costs
-            </small>
-          </div>
-
-          <strong>{money(calculation.totalCashRequired)}</strong>
-        </div>
       </div>
 
-      <div className="warning">
-        <strong>Important:</strong> Fees shown here are estimates/default
-        assumptions. Broker fees, NOC, bank valuation, bank processing,
-        developer fees and some registration charges can vary by transaction.
-        Confirm the final amount with the relevant authority, bank and
-        developer before purchasing.
-      </div>
+      {/* COLLAPSIBLE PURCHASE BREAKDOWN */}
+
+      <PurchaseBreakdown
+        propertyPrice={
+          calculation.price
+        }
+        financeAmount={
+          calculation.finance
+        }
+      />
     </div>
   );
 }
 
-function CostRow({
+/* =========================================================
+   SUMMARY ITEM
+   ========================================================= */
+
+function SummaryItem({
   label,
   value,
-}: {
-  label: string;
-  value: number;
+  highlight = false,
 }) {
   return (
-    <div className="cost-row">
+    <div
+      className={`summary-item ${
+        highlight ? "highlight" : ""
+      }`}
+    >
       <span>{label}</span>
-      <strong>{money(value)}</strong>
+
+      <strong>{value}</strong>
     </div>
   );
 }
@@ -570,46 +774,74 @@ function CostRow({
    MAIN COMPONENT
    ========================================================= */
 
-export default function UAEPropertyCalculator() {
-  const [activeTab, setActiveTab] = useState<
-    "area" | "loan" | "property"
-  >("property");
+export default function PropertyFinanceCalculator() {
+  const [tab, setTab] = useState("property");
 
   return (
     <div className="property-calculator">
       <div className="header">
-        <h1>Property & Finance Calculator</h1>
+        <h1>
+          UAE Property & Finance Calculator
+        </h1>
+
         <p>
-          Calculate property area, home finance and total purchase cost.
+          Property cost, home finance and area
+          conversion in one place.
         </p>
       </div>
 
       <div className="tabs">
         <button
-          className={activeTab === "property" ? "active" : ""}
-          onClick={() => setActiveTab("property")}
+          className={
+            tab === "property"
+              ? "active"
+              : ""
+          }
+          onClick={() =>
+            setTab("property")
+          }
         >
-          🏠 Property Cost
+          🏠 Property Purchase
         </button>
 
         <button
-          className={activeTab === "loan" ? "active" : ""}
-          onClick={() => setActiveTab("loan")}
+          className={
+            tab === "loan"
+              ? "active"
+              : ""
+          }
+          onClick={() =>
+            setTab("loan")
+          }
         >
           💰 Loan Calculator
         </button>
 
         <button
-          className={activeTab === "area" ? "active" : ""}
-          onClick={() => setActiveTab("area")}
+          className={
+            tab === "area"
+              ? "active"
+              : ""
+          }
+          onClick={() =>
+            setTab("area")
+          }
         >
           📐 Area Converter
         </button>
       </div>
 
-      {activeTab === "property" && <PropertyCostCalculator />}
-      {activeTab === "loan" && <LoanCalculator />}
-      {activeTab === "area" && <AreaConverter />}
+      {tab === "property" && (
+        <PropertyCalculator />
+      )}
+
+      {tab === "loan" && (
+        <LoanCalculator />
+      )}
+
+      {tab === "area" && (
+        <AreaConverter />
+      )}
 
       <style>{`
         * {
@@ -617,10 +849,16 @@ export default function UAEPropertyCalculator() {
         }
 
         .property-calculator {
-          max-width: 1050px;
+          max-width: 1200px;
           margin: 40px auto;
           padding: 24px;
-          font-family: Inter, Arial, sans-serif;
+          font-family:
+            Inter,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            sans-serif;
+
           color: #172033;
           background: #f7f9fc;
         }
@@ -634,9 +872,9 @@ export default function UAEPropertyCalculator() {
           font-size: 30px;
         }
 
-        .header p {
-          margin: 0;
-          color: #697386;
+        .header p,
+        .muted {
+          color: #687386;
         }
 
         .tabs {
@@ -646,21 +884,31 @@ export default function UAEPropertyCalculator() {
           flex-wrap: wrap;
         }
 
-        .tabs button,
-        .city-selector button {
-          border: 1px solid #d9dee8;
-          background: white;
+        .tabs button {
+          border: 1px solid #26364a;
+          background: #26364a;
+          color: #ffffff;
           padding: 12px 18px;
           border-radius: 10px;
           cursor: pointer;
           font-size: 14px;
+          transition: background-color 150ms ease, border-color 150ms ease;
         }
 
-        .tabs button.active,
-        .city-selector button.active {
-          background: #172033;
-          color: white;
-          border-color: #172033;
+        .tabs button:hover {
+          background: #354a60;
+          border-color: #354a60;
+        }
+
+        .tabs button.active {
+          background: #187456;
+          color: #ffffff;
+          border-color: #187456;
+        }
+
+        .tabs button:focus-visible {
+          outline: 3px solid #7bc8a8;
+          outline-offset: 2px;
         }
 
         .calculator-card {
@@ -668,7 +916,9 @@ export default function UAEPropertyCalculator() {
           border: 1px solid #e3e7ef;
           border-radius: 16px;
           padding: 24px;
-          box-shadow: 0 8px 30px rgba(30, 40, 60, 0.06);
+          box-shadow:
+            0 8px 30px
+            rgba(30, 40, 60, 0.06);
         }
 
         .calculator-card h2 {
@@ -676,14 +926,11 @@ export default function UAEPropertyCalculator() {
           margin-bottom: 6px;
         }
 
-        .muted {
-          color: #697386;
-          margin-top: 0;
-        }
-
         .form-grid {
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns:
+            repeat(2, 1fr);
+
           gap: 16px;
           margin: 24px 0;
         }
@@ -695,47 +942,214 @@ export default function UAEPropertyCalculator() {
           font-weight: 600;
         }
 
-        input {
+        input,
+        select {
           width: 100%;
           padding: 12px;
           border: 1px solid #d9dee8;
           border-radius: 9px;
           font-size: 15px;
+          background: white;
+        }
+
+        input:focus,
+        select:focus {
           outline: none;
+          border-color: #7c8595;
         }
 
-        input:focus {
-          border-color: #7b8496;
+        /* =========================
+           SUMMARY
+        ========================= */
+
+        .summary-heading {
+          display: flex;
+          justify-content:
+            space-between;
+
+          align-items: center;
+          margin-top: 30px;
+          margin-bottom: 12px;
         }
 
-        .result-grid {
+        .summary-heading h3 {
+          margin: 0;
+        }
+
+        .summary-heading span {
+          color: #6b7586;
+          font-size: 13px;
+        }
+
+        .top-summary {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 12px;
-          margin-top: 24px;
+          grid-template-columns:
+            repeat(5, 1fr);
+
+          gap: 10px;
         }
 
-        .result-box {
+        .summary-item {
           border: 1px solid #e5e9f0;
           background: #fafbfc;
-          padding: 18px;
+          padding: 16px;
           border-radius: 12px;
         }
 
-        .result-box span {
+        .summary-item span {
           display: block;
+          color: #687386;
           font-size: 12px;
-          color: #697386;
-          margin-bottom: 8px;
+          margin-bottom: 7px;
         }
 
-        .result-box strong {
-          font-size: 19px;
+        .summary-item strong {
+          font-size: 18px;
         }
 
-        .result-box.highlight {
+        .summary-item.highlight {
           background: #eef6f2;
           border-color: #cfe3d9;
+        }
+
+        /* =========================
+           COLLAPSIBLE
+        ========================= */
+
+        .breakdown-wrapper {
+          margin-top: 28px;
+          border: 1px solid #e1e6ee;
+          border-radius: 14px;
+          overflow: hidden;
+        }
+
+        .collapse-header {
+          width: 100%;
+          border: none;
+          background: #f7f9fb;
+          padding: 18px 20px;
+          display: flex;
+          align-items: center;
+          justify-content:
+            space-between;
+
+          text-align: left;
+          cursor: pointer;
+        }
+
+        .collapse-header strong {
+          display: block;
+          font-size: 16px;
+        }
+
+        .collapse-header span {
+          display: block;
+          margin-top: 4px;
+          color: #707b8d;
+          font-size: 12px;
+        }
+
+        .collapse-header .arrow {
+          font-size: 12px;
+          transition:
+            transform 0.2s ease;
+        }
+
+        .collapse-header .arrow.rotate {
+          transform: rotate(180deg);
+        }
+
+        .breakdown-content {
+          padding: 20px;
+          background: white;
+        }
+
+        /* =========================
+           COMPARISON TABLE
+        ========================= */
+
+        .table-scroll {
+          width: 100%;
+          overflow-x: auto;
+        }
+
+        .comparison-table {
+          width: 100%;
+          min-width: 850px;
+          border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+          padding: 13px 14px;
+          border-bottom:
+            1px solid #edf0f4;
+          text-align: right;
+          white-space: nowrap;
+        }
+
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+          text-align: left;
+          position: sticky;
+          left: 0;
+          background: white;
+        }
+
+        .comparison-table thead th {
+          background: #f4f6f9;
+          font-size: 13px;
+          font-weight: 700;
+        }
+
+        .comparison-table tbody td {
+          font-size: 13px;
+        }
+
+        .comparison-table tbody tr:hover td {
+          background: #fafbfc;
+        }
+
+        .subtotal-row td {
+          background: #f3f5f8 !important;
+          font-weight: 700;
+          border-top: 2px solid #dfe4eb;
+        }
+
+        .grand-total-row td {
+          background: #172033 !important;
+          color: white;
+          font-weight: 800;
+          font-size: 14px;
+        }
+
+        .grand-total-row td:first-child {
+          background: #172033 !important;
+          color: white;
+        }
+
+        .breakdown-note {
+          margin-top: 15px;
+          padding: 13px;
+          border-radius: 9px;
+          background: #fff8e6;
+          border: 1px solid #f1dfac;
+          color: #68551d;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+
+        /* =========================
+           AREA
+        ========================= */
+
+        .area-grid {
+          display: grid;
+          grid-template-columns:
+            repeat(3, 1fr);
+
+          gap: 16px;
+          margin-top: 24px;
         }
 
         .formula {
@@ -743,102 +1157,55 @@ export default function UAEPropertyCalculator() {
           padding: 14px;
           border-radius: 10px;
           background: #f5f7fa;
-          font-size: 13px;
           color: #596273;
-        }
-
-        .city-selector {
-          display: flex;
-          gap: 8px;
-          margin: 20px 0;
-          flex-wrap: wrap;
-        }
-
-        .breakdown {
-          margin-top: 30px;
-        }
-
-        .breakdown h3 {
-          margin-bottom: 12px;
-        }
-
-        .cost-row {
-          display: flex;
-          justify-content: space-between;
-          padding: 12px 0;
-          border-bottom: 1px solid #edf0f4;
-        }
-
-        .cost-row span {
-          color: #596273;
-        }
-
-        .total-row {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 16px;
-          padding: 16px;
-          background: #f3f5f8;
-          border-radius: 10px;
-        }
-
-        .grand-total {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 12px;
-          padding: 20px;
-          border-radius: 12px;
-          background: #172033;
-          color: white;
-        }
-
-        .grand-total span {
-          display: block;
-          font-size: 16px;
-          font-weight: 600;
-        }
-
-        .grand-total small {
-          display: block;
-          margin-top: 4px;
-          opacity: 0.7;
-        }
-
-        .grand-total strong {
-          font-size: 24px;
-        }
-
-        .warning {
-          margin-top: 20px;
-          padding: 14px;
-          border-radius: 10px;
-          background: #fff8e6;
-          border: 1px solid #f1dfac;
-          color: #6b551d;
           font-size: 13px;
-          line-height: 1.5;
+          line-height: 1.7;
         }
 
-        @media (max-width: 700px) {
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 900px) {
+          .top-summary {
+            grid-template-columns:
+              repeat(2, 1fr);
+          }
+
+          .area-grid {
+            grid-template-columns:
+              1fr;
+          }
+        }
+
+        @media (max-width: 650px) {
           .property-calculator {
             margin: 0;
             padding: 14px;
-          }
-
-          .form-grid,
-          .result-grid {
-            grid-template-columns: 1fr;
           }
 
           .calculator-card {
             padding: 18px;
           }
 
-          .grand-total {
-            gap: 15px;
-            flex-direction: column;
+          .form-grid {
+            grid-template-columns:
+              1fr;
+          }
+
+          .top-summary {
+            grid-template-columns:
+              1fr;
+          }
+
+          .summary-heading {
             align-items: flex-start;
+            flex-direction: column;
+            gap: 5px;
+          }
+
+          .tabs button {
+            flex: 1;
           }
         }
       `}</style>

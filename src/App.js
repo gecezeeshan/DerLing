@@ -8,6 +8,7 @@ import Home from './Home';
 import Quiz from './Quiz';
 import QuizSaa from './QuizSAA';
 import Ocr from './Ocr';
+import UAEPropertyCalculator from './DerPropCal';
 // import KidsVocabularyTest from './KidsVocabularyTest';
 // import KidsHangman from './KidsHangman';
 // import AdditionQuiz from './AdditionQuiz';
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/OCR" element={<Ocr />} />
         <Route path="/PMP" element={<Quiz />} />
         <Route path="/SAA" element={<QuizSaa />} />
+        <Route path="/PropertyCalculator" element={<UAEPropertyCalculator />} />
 
         {/* <Route path="/Addition" element={<AdditionQuiz />} />
         <Route path="/KidsVocabulary" element={<KidsVocabularyTest />} />
